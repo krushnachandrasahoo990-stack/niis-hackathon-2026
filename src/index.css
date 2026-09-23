@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-ticker-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+/* Hover karne par text pause ho jayega taaki notice padh sakein */
+.animate-ticker-marquee:hover {
+  animation-play-state: paused;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+}
