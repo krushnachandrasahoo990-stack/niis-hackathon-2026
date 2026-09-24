@@ -14,11 +14,11 @@ import {
   ChevronRight, ChevronLeft, Sparkles, Download, ExternalLink,
   Edit3, Plus, Trash2, X, Menu,
   Phone, Mail, Trophy, BookOpen, ShieldCheck,
-  ArrowRight, Laptop, Zap, Search,
+  ArrowRight, Laptop, Search,
   ChevronDown, Terminal, Globe, ShieldAlert,
-  Flame, Coffee, Wifi,
-  Play, Pause, Volume2, VolumeX, Image as ImageIcon,
-  FileSpreadsheet, UserPlus, RefreshCw, CheckCircle, UserCheck, Video
+  Play, Pause, Volume2, VolumeX,
+  FileSpreadsheet, UserPlus, RefreshCw, CheckCircle, UserCheck, Video, Lock,
+  BarChart3, Sliders, Save, ArrowUp, ArrowDown, Eye, FileUp, AlertCircle
 } from 'lucide-react';
 
 /* =========================================================================
@@ -37,7 +37,7 @@ function NIISOfficialCrest({ className = "w-16 h-16" }) {
         className="w-full h-full object-contain"
         onError={(e) => {
           e.currentTarget.onerror = null;
-          e.currentTarget.src = "/niis-logo.png";
+          e.currentTarget.src = "/hackathon-logo.png";
         }}
       />
     </div>
@@ -49,16 +49,17 @@ function NIISOfficialCrest({ className = "w-16 h-16" }) {
  * Clean, minimal, self-contained emblem without bulky wrappers
  */
 function KaushalClubBadge({ className = "" }) {
+  const defaultBg = className.includes('bg-') ? '' : 'bg-slate-900 text-white';
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 text-white text-xs font-medium shadow-sm transition hover:bg-slate-800 ${className}`}
+      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium shadow-sm transition ${defaultBg} ${className}`}
     >
       <span className="relative flex h-2 w-2 flex-shrink-0">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
         <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
       </span>
       <span className="font-mono font-black tracking-wider text-amber-300">KAUSHAL</span>
-      <span className="text-slate-400 text-[11px] font-sans font-medium hidden sm:inline">
+      <span className="text-slate-300 text-[11px] font-sans font-medium hidden sm:inline">
         Technical Club • NIIS
       </span>
     </div>
@@ -176,7 +177,7 @@ const PERMANENT_LEADERS = [
     role: "Chairperson, NIIS Group of Institutions",
     badge: "Hon'ble Chairperson",
     photo: "/chairman.15c124f6375fe3d6762b.png",
-    quote: "Celebrating 26 Years of Academic Excellence, we welcome aspiring innovators from colleges across the state to 36 hours of rigorous hands-on building. We assure state-of-the-art infrastructure, mentorship from seasoned industry architects, and incubation support for top working prototypes."
+    quote: "Celebrating 26 Years of Academic Excellence, we welcome aspiring student innovators from across NIIS departments to 24 hours of rigorous hands-on building. We assure state-of-the-art infrastructure, mentorship from seasoned industry architects, and incubation support for top working prototypes."
   },
   {
     id: "leader-2",
@@ -215,7 +216,7 @@ const INITIAL_GALLERY = [
     category: "Inaugural & Sprints",
     src: "/gallery/2.jpg",
     caption: "Teams actively developing full-stack architectures, training ML pipelines, and debugging endpoints under non-stop sprint pressure.",
-    tag: "36h Sprint",
+    tag: "24h Sprint",
     date: "Hackathon 2025"
   },
   {
@@ -399,134 +400,148 @@ const OFFICIAL_COMMITTEE_MEMBERS = [
 
 /* =========================================================================
    6. OFFICIAL STANDARDIZED PROBLEM STATEMENTS (4 CATEGORIES, 12 TOTAL PS)
-   Schema: { id, title, category, difficulty, shortDesc, fullBrief, pdfUrl }
+   Schema: { id, title, category, difficulty, shortDesc, fullBrief, tags, pdfUrl }
    ========================================================================= */
 const OFFICIAL_PROBLEM_STATEMENTS = [
-  // Category 1: AI & Intelligent Systems
+  // Category 1: CAMPUS NEXUS (Smart Campus, Student Services & Institutional Intelligence)
   {
-    id: "NIIS-PS01",
-    title: "Automated Academic Performance & Placement Readiness Predictor",
-    category: "AI & Intelligent Systems",
+    id: "PS-01",
+    title: "AI-Powered Campus Life Management Platform",
+    category: "CAMPUS NEXUS",
     difficulty: "Medium",
-    shortDesc: "Predictive ML engine analyzing student course progression, assignment logs, and attendance to generate personalized skill roadmaps.",
-    fullBrief: "Educational institutions struggle with early identification of students falling behind in technical proficiencies before campus placement season. Squads must build an ML pipeline that digests semester marks, attendance, and assignment metrics to calculate a live Placement Readiness Index with actionable roadmap recommendations.",
+    shortDesc: "Develop a unified digital platform for attendance, timetables, leave/gate-pass requests, certificates, hostel and mess services, complaints, notices and fee-related queries, with real-time administrative visibility.",
+    fullBrief: "Develop a unified digital platform for attendance, timetables, leave/gate-pass requests, certificates, hostel and mess services, complaints, notices and fee-related queries, with real-time administrative visibility. The platform must centralize fragmented departmental tracking, streamline multi-tiered student approvals with QR-verified digital gate-passes, provide intelligent complaint escalation, and equip institutional leadership with live administrative analytics.",
+    tags: ["Smart Campus", "Full-Stack", "Institutional Intelligence", "Workflow Automation"],
     pdfUrl: ""
   },
   {
-    id: "NIIS-PS02",
-    title: "Multilingual Conversational AI for Citizen Grievance Redressal",
-    category: "AI & Intelligent Systems",
+    id: "PS-02",
+    title: "CAMPUSLINK - AI-Powered Campus-to-Corporate Placement Management",
+    category: "CAMPUS NEXUS",
     difficulty: "Hard",
-    shortDesc: "Voice-first conversational assistant supporting regional Indian dialects (Odia, Hindi, Bengali) for municipal citizen services.",
-    fullBrief: "Citizen engagement portals in tier-2/tier-3 regions suffer from linguistic barriers, preventing non-English speakers from filing complaints. Squads must build a speech-to-text pipeline with regional dialect phonetic parsing, extract query intent, and route grievances automatically into categorized municipal tickets with live status updates.",
+    shortDesc: "Develop an AI-powered placement platform that maintains student profiles, identifies skill gaps, analyses recruiter requirements, matches candidates with opportunities, manages schedules and provides placement analytics.",
+    fullBrief: "Develop an AI-powered placement platform that maintains student profiles, identifies skill gaps, analyses recruiter requirements, matches candidates with opportunities, manages schedules and provides placement analytics. Squads are challenged to automate resume parsing, compare candidate proficiencies against dynamic corporate job descriptions, generate personalized remediation learning pathways, and deliver Training & Placement Cell dashboards with institutional hiring trends.",
+    tags: ["AI/ML", "HR Tech", "Skill Gap Analysis", "Analytics"],
     pdfUrl: ""
   },
   {
-    id: "NIIS-PS03",
-    title: "Autonomous Vision-Based Campus Security & Traffic Monitoring",
-    category: "AI & Intelligent Systems",
+    id: "PS-03",
+    title: "Sustainable Campus & Facility Intelligence Dashboard",
+    category: "CAMPUS NEXUS",
     difficulty: "Medium",
-    shortDesc: "Edge computer-vision pipeline detecting unauthorized perimeter crossings, parking bottlenecks, and emergency vehicle lane clearance.",
-    fullBrief: "Institutional campuses experience severe congestion during peak morning hours and lack automated alerts for restricted security zones. Teams must deploy lightweight object detection on camera streams, automate vehicle license-plate recognition (ANPR), and trigger instant push notifications for perimeter breaches.",
+    shortDesc: "Develop an AI-enabled dashboard for monitoring energy, water, waste, air quality and asset utilization to support data-driven and sustainable campus management.",
+    fullBrief: "Develop an AI-enabled dashboard for monitoring energy, water, waste, air quality and asset utilization to support data-driven and sustainable campus management. The platform must aggregate environmental and utility telemetry, identify consumption anomalies, predict equipment maintenance needs, and generate actionable carbon-reduction recommendations to uphold green institutional standards.",
+    tags: ["Data Analytics", "Sustainability", "Asset Utilization", "Dashboard"],
     pdfUrl: ""
   },
 
-  // Category 2: Web3, FinTech & Enterprise Solutions
+  // Category 2: MEDITACH AI (Intelligent Healthcare & Well-being Solutions)
   {
-    id: "NIIS-PS04",
-    title: "Decentralized Micro-Invoicing & Cryptographic Audit Trail for MSMEs",
-    category: "Web3, FinTech & Enterprise Solutions",
+    id: "PS-04",
+    title: "Multimodal Healthcare Triage Assistant",
+    category: "MEDITACH AI",
     difficulty: "Hard",
-    shortDesc: "Multi-tenant ledger system validating GST invoices with cryptographic hashing to prevent duplicate factoring fraud.",
-    fullBrief: "Micro, Small & Medium Enterprises (MSMEs) face severe working-capital bottlenecks due to delayed invoice settlement and invoice duplication scams. Develop a multi-tenant accounting platform providing tamper-proof cryptographic audit receipts, automated GST validation via mock APIs, and predictive cash-flow forecasting.",
+    shortDesc: "Develop a human-in-the-loop AI assistant that processes patient symptoms, medical reports and basic visual information to generate a structured preliminary triage note for qualified healthcare review.",
+    fullBrief: "Develop a human-in-the-loop AI assistant that processes patient symptoms, medical reports and basic visual information to generate a structured preliminary triage note for qualified healthcare review. The solution must support clinical prioritization in high-volume healthcare settings by synthesizing multi-format patient inputs into an emergency urgency score and an executive triage summary without replacing licensed medical practitioners.",
+    tags: ["Healthcare AI", "Multimodal", "Triage", "Decision Support"],
     pdfUrl: ""
   },
   {
-    id: "NIIS-PS05",
-    title: "Zero-Knowledge Credit Scoring Engine for Unbanked Nano-Entrepreneurs",
-    category: "Web3, FinTech & Enterprise Solutions",
-    difficulty: "Hard",
-    shortDesc: "Privacy-preserving credit evaluation model utilizing alternate digital footprints (UPI volumes, utility bills) without revealing raw finances.",
-    fullBrief: "Informal street vendors and rural micro-entrepreneurs lack CIBIL history, excluding them from formal micro-credit lines. Build an alternative creditworthiness scoring model using transactional frequency and utility payments, backed by Zero-Knowledge Proof (ZKP) principles so applicants prove solvency without exposing private bank balances.",
-    pdfUrl: ""
-  },
-  {
-    id: "NIIS-PS06",
-    title: "Autonomous Multi-Vendor Procurement & Supply Chain ERP",
-    category: "Web3, FinTech & Enterprise Solutions",
+    id: "PS-05",
+    title: "AI-Based Heatwave Health Risk & Local Alert System",
+    category: "MEDITACH AI",
     difficulty: "Medium",
-    shortDesc: "Next-gen ERP automating purchase requisitions, comparative quotation ranking, and algorithmic inventory replenishment.",
-    fullBrief: "Institutional procurement teams endure protracted manual workflows comparing vendor quotes, verifying delivery milestones, and managing inventory waste. Teams must construct an automated ERP system that ranks supplier bids on price, delivery latency, and compliance rating with automated purchase order generation.",
+    shortDesc: "Develop a software-based system that combines publicly available temperature, humidity, heat-index and location data to identify localized heat risks and provide preventive alerts for vulnerable groups.",
+    fullBrief: "Develop a software-based system that combines publicly available temperature, humidity, heat-index and location data to identify localized heat risks and provide preventive alerts for vulnerable groups. The application must analyze meteorological streams to forecast dangerous micro-climate heat spikes, establish risk thresholds, and deliver automated preventive hydration advisories to outdoor workers, elders, and campus students.",
+    tags: ["Climate Tech", "Risk Modeling", "Geo Alerts", "Public Health"],
+    pdfUrl: ""
+  },
+  {
+    id: "PS-06",
+    title: "Data-Driven Air-Pollution Analysis & Health Advisory System",
+    category: "MEDITACH AI",
+    difficulty: "Medium",
+    shortDesc: "Develop a software-only data analytics platform that uses publicly available air-quality and environmental datasets to analyse pollution trends, identify high-pollution periods, visualize pollution levels and provide location-based health advisories (No external hardware/sensors required).",
+    fullBrief: "Develop a software-only data analytics platform that uses publicly available air-quality and environmental datasets to analyse pollution trends, identify high-pollution periods, visualize pollution levels and provide location-based health advisories without external hardware or physical sensors. The system should process open CPCB/SPCB environmental records, plot temporal pollutant concentrations (PM2.5, PM10, AQI), and provide targeted precautionary guidance for sensitive demographics.",
+    tags: ["Data Science", "Environmental Analytics", "Software-Only", "Health Advisory"],
     pdfUrl: ""
   },
 
-  // Category 3: HealthTech, Smart IoT & Sustainability
+  // Category 3: AI & MACHINE LEARNING (Intelligent, Secure & Automated Solutions)
   {
-    id: "NIIS-PS07",
-    title: "Offline-First Tele-Triage & Emergency Bed Availability Mesh",
-    category: "HealthTech, Smart IoT & Sustainability",
+    id: "PS-07",
+    title: "CYBERGUARD - AI-Powered Cyber Threat & Phishing Detection",
+    category: "AI & MACHINE LEARNING",
     difficulty: "Hard",
-    shortDesc: "Resilient emergency healthcare network synchronizing hospital ICU bed occupancy and vital telemetry during network blackouts.",
-    fullBrief: "During coastal cyclones and natural disasters in Odisha, telecom infrastructure collapse leaves rural health centers unable to route patients. Build an offline-first PWA storing clinical records in IndexedDB with peer-to-peer sync, providing rule-based emergency triage scoring and a dynamic hospital resource registry.",
+    shortDesc: "Analyse emails, URLs, messages, authentication logs and network activity to detect phishing, impersonation and suspicious behaviour, with explainable risk scores and response recommendations.",
+    fullBrief: "Analyse emails, URLs, messages, authentication logs and network activity to detect phishing, impersonation and suspicious behaviour, with explainable risk scores and response recommendations. Squads must build CYBERGUARD as an automated defensive pipeline that decodes spoofed headers, inspects phishing payloads, correlates anomalous login behavior, and generates transparent explainability reports detailing why a communication was flagged.",
+    tags: ["Cybersecurity", "Phishing Detection", "Explainable AI", "Threat Analysis"],
     pdfUrl: ""
   },
   {
-    id: "NIIS-PS08",
-    title: "Smart Campus IoT Energy Footprint & Smart Grid Optimizer",
-    category: "HealthTech, Smart IoT & Sustainability",
+    id: "PS-08",
+    title: "AI-Powered Workplace Safety Gear Detection",
+    category: "AI & MACHINE LEARNING",
     difficulty: "Medium",
-    shortDesc: "MQTT-based IoT network aggregating classroom electrical consumption with scheduled automated relay load-shedding.",
-    fullBrief: "Educational institutions waste upwards of 25% electrical energy in unoccupied classrooms, laboratories, and server rooms. Ingest telemetry from simulated ESP32/NodeMCU sensor nodes via MQTT, correlate live classroom timetable schedules with occupancy sensors, and execute automated relay cutoffs.",
+    shortDesc: "Use computer vision on CCTV or recorded video to detect helmets, high-visibility vests, safety footwear, gloves and other required protective equipment and generate safety alerts.",
+    fullBrief: "Use computer vision on CCTV or recorded video to detect helmets, high-visibility vests, safety footwear, gloves and other required protective equipment and generate safety alerts. The pipeline must operate on standard video feeds, execute lightweight real-time object classification and bounding-box tracking for Personal Protective Equipment (PPE), and log safety compliance incidents with instant supervisor notifications.",
+    tags: ["Computer Vision", "Workplace Safety", "Object Detection", "Video Analytics"],
     pdfUrl: ""
   },
   {
-    id: "NIIS-PS09",
-    title: "Precision AgriTech: Crop Disease Diagnosis & Soil Moisture Telemetry",
-    category: "HealthTech, Smart IoT & Sustainability",
-    difficulty: "Medium",
-    shortDesc: "On-device leaf disease detection model paired with IoT soil sensor telemetry for automated drip irrigation advisories.",
-    fullBrief: "Smallholder farmers suffer catastrophic crop losses due to delayed diagnosis of leaf blight and inefficient groundwater consumption. Train a lightweight vision model detecting common crop diseases from camera photos, correlate with NPK and soil moisture telemetry, and calculate localized irrigation advisories.",
+    id: "PS-09",
+    title: "Explainable AI-Based Prediction & Decision Support System",
+    category: "AI & MACHINE LEARNING",
+    difficulty: "Hard",
+    shortDesc: "Develop an AI/ML solution for a practical prediction problem such as student performance, equipment failure, demand forecasting, fraud detection or resource utilization, with understandable explanations.",
+    fullBrief: "Develop an AI/ML solution for a practical prediction problem such as student performance, equipment failure, demand forecasting, fraud detection or resource utilization, with understandable explanations. The model must eliminate black-box opacity by integrating explainable attribution mechanisms (such as SHAP values, feature importance weights, or decision trees) to empower stakeholders with transparent reasoning behind every analytical prediction.",
+    tags: ["Explainable AI (XAI)", "Predictive Modeling", "Decision Support"],
     pdfUrl: ""
   },
 
-  // Category 4: Cybersecurity & Open Societal Innovation
+  // Category 4: NEUROCORE / GEONAVX (GPS, Navigation & Location Intelligence)
   {
-    id: "NIIS-PS10",
-    title: "Cryptographic Circular Notary & Anti-Phishing Extension",
-    category: "Cybersecurity & Open Societal Innovation",
-    difficulty: "Medium",
-    shortDesc: "Browser extension and document verification portal authenticating official university circulars via SHA-256 digital signatures.",
-    fullBrief: "Doctored exam cancellation notices and fake fee concession circulars propagate rapidly on messaging platforms. Establish a cryptographic registrar hashing authorized circular PDFs at source and build a browser extension or upload tool that inspects documents for byte-level tampering.",
-    pdfUrl: ""
-  },
-  {
-    id: "NIIS-PS11",
-    title: "Decentralized Disaster Evacuation & Relief Resource Tracker",
-    category: "Cybersecurity & Open Societal Innovation",
+    id: "PS-10",
+    title: "3D Autonomous Path Planning in GPS-Denied Environments",
+    category: "NEUROCORE / GEONAVX",
     difficulty: "Hard",
-    shortDesc: "Geo-spatial disaster management coordination system matching rescue shelters, food supply caches, and volunteer squads.",
-    fullBrief: "During rapid flood inundations or extreme weather events, relief supplies get duplicated in easily accessible zones while marooned pockets starve. Squads must build a geo-spatial command portal pairing verified NGO supply shipments with shelter deficits, featuring offline SOS intake.",
+    shortDesc: "Develop a lightweight intelligent algorithm for autonomous navigation in GPS-denied environments by combining positional information with camera or sensor-based environmental information.",
+    fullBrief: "Develop a lightweight intelligent algorithm for autonomous navigation in GPS-denied environments by combining positional information with camera or sensor-based environmental information. The algorithm must calculate optimal collision-free 3D waypoints for autonomous vehicles or drones operating in subterranean tunnels, indoor warehouse facilities, or obstructed terrains where satellite signals are unavailable.",
+    tags: ["Path Planning", "Autonomous Navigation", "Algorithm Design", "Spatial AI"],
     pdfUrl: ""
   },
   {
-    id: "NIIS-PS12",
-    title: "Open Innovation: Moonshot Prototype for Societal Impact",
-    category: "Cybersecurity & Open Societal Innovation",
-    difficulty: "Open",
-    shortDesc: "Open-ended track for breakthrough MVP software or embedded hardware addressing critical regional, industrial, or educational bottlenecks.",
-    fullBrief: "Have a unique, validated problem statement addressing an urgent societal, accessibility, environmental, or technological challenge? Teams are free to submit original MVP prototypes evaluated on innovation, technical depth, and scalability with a 5-minute technical pitch deck.",
+    id: "PS-11",
+    title: "AI-Powered Smart Campus Navigation",
+    category: "NEUROCORE / GEONAVX",
+    difficulty: "Medium",
+    shortDesc: "Develop an intelligent map-based navigation system for students and visitors that provides shortest, accessible and context-aware routes across campus.",
+    fullBrief: "Develop an intelligent map-based navigation system for students and visitors that provides shortest, accessible and context-aware routes across campus. The system must feature interactive spatial mapping across academic blocks, departments, laboratories, and amenities, incorporating barrier-free wheelchair accessible path calculations and live context-aware destination search.",
+    tags: ["Campus Navigation", "Indoor Mapping", "Shortest Path", "Accessibility"],
+    pdfUrl: ""
+  },
+  {
+    id: "PS-12",
+    title: "Emergency Route & Location Intelligence System",
+    category: "NEUROCORE / GEONAVX",
+    difficulty: "Hard",
+    shortDesc: "Develop a location-aware emergency response system with user location, safe-route identification, nearby emergency facilities, geo-fencing, alerts and dynamic route recommendations.",
+    fullBrief: "Develop a location-aware emergency response system with user location, safe-route identification, nearby emergency facilities, geo-fencing, alerts and dynamic route recommendations. The platform must dynamically route users away from detected hazard zones, display real-time safety perimeters, pinpoint nearest medical/fire facilities, and dispatch coordinated emergency incident broadcasts.",
+    tags: ["Emergency Response", "Geo-Fencing", "Location Intelligence", "Routing"],
     pdfUrl: ""
   }
 ];
 
 /**
- * Generates and downloads a clean, formatted PDF problem brief for students without third-party dependencies.
+ * Generates and downloads a clean, structured institutional PDF problem brief for students without third-party dependencies.
+ * Follows strict PDF 1.4 specification with dual Helvetica / Helvetica-Bold typography.
  */
 function handleDownloadProblemBrief(ps, collegeName = "NIIS INSTITUTE OF BUSINESS ADMINISTRATION") {
   if (ps.pdfUrl && ps.pdfUrl.trim()) {
     const a = document.createElement('a');
     a.href = ps.pdfUrl;
-    a.download = `${ps.id}_Problem_Brief.pdf`;
+    const cleanId = (ps.id || '').replace(/^NIIS-/i, '').replace(/[^a-zA-Z0-9]/g, '_');
+    a.download = cleanId.startsWith('PS') ? `NIIS_Hackathon_2026_${cleanId}.pdf` : `NIIS_Hackathon_2026_PS_${cleanId}.pdf`;
     a.target = '_blank';
     document.body.appendChild(a);
     a.click();
@@ -534,70 +549,94 @@ function handleDownloadProblemBrief(ps, collegeName = "NIIS INSTITUTE OF BUSINES
     return;
   }
 
-  const sanitize = (str) => (str || '').replace(/[\\()]/g, '\\$&').replace(/\r?\n/g, ' ');
+  const cleanText = (str) => (str || '')
+    .replace(/₹/g, 'Rs. ')
+    .replace(/•/g, '*')
+    .replace(/[–—]/g, '-')
+    .replace(/[""]/g, '"')
+    .replace(/['']/g, "'")
+    .replace(/[^\x20-\x7E]/g, ' ')
+    .trim();
 
-  const rawLines = [
-    `NIIS HACKATHON 2026 - OFFICIAL PROBLEM STATEMENT BRIEF`,
-    `Institution: ${collegeName}, Bhubaneswar`,
-    `Organized by: Kaushal Technical Club, NIIS`,
-    `------------------------------------------------------------------------`,
-    `Problem ID: ${ps.id}  |  Category: ${ps.category}  |  Difficulty: ${ps.difficulty}`,
-    `Title: ${ps.title}`,
-    `------------------------------------------------------------------------`,
-    ``,
-    `EXECUTIVE SUMMARY:`,
-    ps.shortDesc || '',
-    ``,
-    `DETAILED TECHNICAL SCOPE & REQUIREMENTS:`,
-    ps.fullBrief || ps.shortDesc || '',
-    ``,
-    `------------------------------------------------------------------------`,
-    `EVALUATION CRITERIA & SCORING RUBRIC:`,
-    `1. Innovation, Originality & Problem Fit (25%)`,
-    `2. Technical Architecture, Security & Code Quality (30%)`,
-    `3. 36-Hour Offline Working Prototype Readiness (30%)`,
-    `4. User Experience & Presentation Pitch (15%)`,
-    ``,
-    `Total Cash Prize Pool: Rs. 35,000 + Trophies + NIIS E-Cell Incubation`,
-    `Registration Deadline: 25th September 2026 | Grand Finale: 30 Sep - 01 Oct 2026`,
-    `------------------------------------------------------------------------`
+  const sanitizeForPdf = (str) => cleanText(str).replace(/[\\()]/g, '\\$&');
+
+  const wrapText = (text, maxChars = 80) => {
+    const words = cleanText(text).split(' ');
+    const lines = [];
+    let cur = '';
+    for (const w of words) {
+      if (!w) continue;
+      if ((cur ? cur + ' ' + w : w).length > maxChars) {
+        if (cur) lines.push(cur);
+        cur = w;
+      } else {
+        cur = cur ? cur + ' ' + w : w;
+      }
+    }
+    if (cur) lines.push(cur);
+    return lines;
+  };
+
+  const idCode = ps.id || 'PS-01';
+  const cleanId = idCode.replace(/^NIIS-/i, '').replace(/[^a-zA-Z0-9]/g, '_');
+  const filename = cleanId.startsWith('PS') ? `NIIS_Hackathon_2026_${cleanId}.pdf` : `NIIS_Hackathon_2026_PS_${cleanId}.pdf`;
+
+  const docLines = [
+    { text: `${collegeName} | KAUSHAL TECH CLUB`, font: 12, bold: true, spaceAfter: 4 },
+    { text: `NIIS HACKATHON 2026 (30 Sep - 01 Oct 2026) • 24-HOUR SPRINT`, font: 9, bold: false, spaceAfter: 4 },
+    { text: `Approved by AICTE | Affiliated to BPUT, Odisha | Accredited by NAAC`, font: 8, bold: false, spaceAfter: 8 },
+    { text: `-------------------------------------------------------------------------------------------------`, font: 8, bold: false, spaceAfter: 8 },
+    { text: `OFFICIAL PROBLEM STATEMENT BRIEF: ${idCode}`, font: 12, bold: true, spaceAfter: 4 },
+    { text: `Title: ${ps.title}`, font: 11, bold: true, spaceAfter: 4 },
+    { text: `Category: ${ps.category}    |    Difficulty: ${ps.difficulty || 'Open'}`, font: 9, bold: false, spaceAfter: 4 },
+    ...(ps.tags && ps.tags.length > 0 ? [{ text: `Domain Tags: ${ps.tags.join(', ')}`, font: 8.5, bold: false, spaceAfter: 6 }] : []),
+    { text: `-------------------------------------------------------------------------------------------------`, font: 8, bold: false, spaceAfter: 8 },
+    
+    { text: `EXECUTIVE SUMMARY & OBJECTIVE:`, font: 10, bold: true, spaceAfter: 4 },
+    ...wrapText(ps.shortDesc || '', 82).map(l => ({ text: l, font: 8.5, bold: false, spaceAfter: 2 })),
+    { text: ``, font: 8, bold: false, spaceAfter: 4 },
+
+    { text: `DETAILED TECHNICAL SCOPE & REQUIREMENTS:`, font: 10, bold: true, spaceAfter: 4 },
+    ...wrapText(ps.fullBrief || ps.shortDesc || '', 82).map(l => ({ text: l, font: 8.5, bold: false, spaceAfter: 2 })),
+    { text: ``, font: 8, bold: false, spaceAfter: 4 },
+
+    { text: `EXPECTED PROJECT DELIVERABLES:`, font: 10, bold: true, spaceAfter: 4 },
+    { text: `1. System Architecture Diagram, Database Schemas & API Documentation`, font: 8.5, bold: false, spaceAfter: 2 },
+    { text: `2. Working Software Codebase Prototype (Web Platform / Mobile / AI Engine)`, font: 8.5, bold: false, spaceAfter: 2 },
+    { text: `3. Live Demonstration Video or Interactive Sprint Presentation`, font: 8.5, bold: false, spaceAfter: 2 },
+    { text: `4. 5-Minute Technical Pitch Deck covering Innovation, Usability & Feasibility`, font: 8.5, bold: false, spaceAfter: 6 },
+
+    { text: `EVALUATION CRITERIA & SCORING RUBRIC:`, font: 10, bold: true, spaceAfter: 4 },
+    { text: `* Innovation, Problem Fit & Originality: 25%`, font: 8.5, bold: false, spaceAfter: 2 },
+    { text: `* Technical Feasibility, Architecture & Security: 25%`, font: 8.5, bold: false, spaceAfter: 2 },
+    { text: `* Completeness of Working Prototype: 25%`, font: 8.5, bold: false, spaceAfter: 2 },
+    { text: `* Social / Institutional Impact & Presentation Pitch: 25%`, font: 8.5, bold: false, spaceAfter: 8 },
+
+    { text: `PRIZE BOUNTY & RECOGNITION:`, font: 10, bold: true, spaceAfter: 4 },
+    { text: `Total Cash Prize Pool: Rs. 35,000 (1st: Rs. 20,000 | 2nd: Rs. 10,000 | 3rd: Rs. 5,000) + Trophies + Certificates`, font: 8.5, bold: false, spaceAfter: 8 },
+
+    { text: `-------------------------------------------------------------------------------------------------`, font: 8, bold: false, spaceAfter: 6 },
+    { text: `Official Event Rulebook & Guidelines: https://niis-hackathon-2026.web.app | Kaushal Technical Club`, font: 8, bold: false, spaceAfter: 2 },
+    { text: `Approved by AICTE | Affiliated to BPUT, Odisha | Accredited by NAAC`, font: 8, bold: false, spaceAfter: 0 }
   ];
 
-  const wrappedLines = [];
-  for (const line of rawLines) {
-    if (line.length <= 80) {
-      wrappedLines.push(line);
-    } else {
-      const words = line.split(' ');
-      let cur = '';
-      for (const w of words) {
-        if ((cur + ' ' + w).trim().length > 80) {
-          wrappedLines.push(cur.trim());
-          cur = w;
-        } else {
-          cur = (cur + ' ' + w).trim();
-        }
-      }
-      if (cur) wrappedLines.push(cur.trim());
-    }
-  }
+  let streamContent = `BT\n`;
+  streamContent += `50 750 Td\n`;
 
-  let streamContent = `BT\n/F1 14 Tf\n50 750 Td\n(${sanitize(wrappedLines[0])}) Tj\n`;
-  streamContent += `/F1 9 Tf\n0 -16 Td\n(${sanitize(wrappedLines[1])}) Tj\n`;
-  streamContent += `0 -12 Td\n(${sanitize(wrappedLines[2])}) Tj\n`;
-  streamContent += `0 -12 Td\n(${sanitize(wrappedLines[3])}) Tj\n`;
-  streamContent += `/F1 11 Tf\n0 -16 Td\n(${sanitize(wrappedLines[4])}) Tj\n`;
-  streamContent += `/F1 12 Tf\n0 -16 Td\n(${sanitize(wrappedLines[5])}) Tj\n`;
-  streamContent += `/F1 9 Tf\n0 -12 Td\n(${sanitize(wrappedLines[6])}) Tj\n`;
-
-  const yOffset = -14;
-  for (let i = 7; i < wrappedLines.length; i++) {
-    const l = wrappedLines[i];
-    const isHeader = l.endsWith(':') && l.toUpperCase() === l;
-    if (isHeader) {
-      streamContent += `/F1 10 Tf\n0 ${yOffset - 4} Td\n(${sanitize(l)}) Tj\n/F1 9 Tf\n`;
+  for (let i = 0; i < docLines.length; i++) {
+    const item = docLines[i];
+    const fontSize = item.font || 9;
+    const fontName = item.bold ? '/F2' : '/F1';
+    const textStr = sanitizeForPdf(item.text);
+    
+    if (i === 0) {
+      streamContent += `${fontName} ${fontSize} Tf\n`;
+      streamContent += `(${textStr}) Tj\n`;
     } else {
-      streamContent += `0 ${yOffset} Td\n(${sanitize(l)}) Tj\n`;
+      const step = -(fontSize + (item.spaceAfter || 2));
+      streamContent += `0 ${step} Td\n`;
+      streamContent += `${fontName} ${fontSize} Tf\n`;
+      streamContent += `(${textStr}) Tj\n`;
     }
   }
   streamContent += `ET\n`;
@@ -607,28 +646,31 @@ function handleDownloadProblemBrief(ps, collegeName = "NIIS INSTITUTE OF BUSINES
   const header = `%PDF-1.4\n`;
   const obj1 = `1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n`;
   const obj2 = `2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n`;
-  const obj3 = `3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n`;
+  const obj3 = `3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>\nendobj\n`;
   const obj4 = `4 0 obj\n<< /Length ${streamLength} >>\nstream\n${streamContent}endstream\nendobj\n`;
   const obj5 = `5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n`;
+  const obj6 = `6 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>\nendobj\n`;
 
-  const body = header + obj1 + obj2 + obj3 + obj4 + obj5;
+  const body = header + obj1 + obj2 + obj3 + obj4 + obj5 + obj6;
   const offset1 = header.length;
   const offset2 = offset1 + obj1.length;
   const offset3 = offset2 + obj2.length;
   const offset4 = offset3 + obj3.length;
   const offset5 = offset4 + obj4.length;
-  const xrefOffset = offset5 + obj5.length;
+  const offset6 = offset5 + obj5.length;
+  const offset7 = offset6 + obj6.length;
+  const xrefOffset = offset7;
 
   const pad = (n) => String(n).padStart(10, '0');
-  const xref = `xref\n0 6\n0000000000 65535 f \n${pad(offset1)} 00000 n \n${pad(offset2)} 00000 n \n${pad(offset3)} 00000 n \n${pad(offset4)} 00000 n \n${pad(offset5)} 00000 n \n`;
-  const trailer = `trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`;
+  const xref = `xref\n0 7\n0000000000 65535 f \n${pad(offset1)} 00000 n \n${pad(offset2)} 00000 n \n${pad(offset3)} 00000 n \n${pad(offset4)} 00000 n \n${pad(offset5)} 00000 n \n${pad(offset6)} 00000 n \n`;
+  const trailer = `trailer\n<< /Size 7 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`;
 
   const pdfString = body + xref + trailer;
   const blob = new Blob([pdfString], { type: 'application/pdf' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = `${ps.id}_Problem_Brief.pdf`;
+  link.download = filename;
   document.body.appendChild(link);
   link.click();
   link.remove();
@@ -636,8 +678,77 @@ function handleDownloadProblemBrief(ps, collegeName = "NIIS INSTITUTE OF BUSINES
 }
 
 /* =========================================================================
-   7. MASTER EXTENSIBLE CONTENT STATE
+   7. MASTER EXTENSIBLE CONTENT STATE & GOOGLE FORMS INTEGRATION
    ========================================================================= */
+export const DEFAULT_GOOGLE_FORM_REGISTRATION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSftmKv2zVpnw55JYoJ8s22_xpCDs1MVmmQWicr3bgCOw11big/viewform?usp=header";
+export const DEFAULT_GOOGLE_FORM_PS_SELECTION_URL = "https://forms.gle/iZh5Sks9p1EkhHNH7";
+
+/**
+ * Standard Telemetry Baseline Schema for 12 Problem Statements
+ * Keys provided in both "ps-1"..."ps-12" (strict user schema) and "PS-01"..."PS-12" (direct card ID)
+ * Sum: 28 Verified Teams | 112 Total Participants
+ */
+const DEFAULT_PS_TELEMETRY = {
+  "ps-1": { teams: 3, participants: 12 },
+  "ps-2": { teams: 3, participants: 12 },
+  "ps-3": { teams: 3, participants: 12 },
+  "ps-4": { teams: 2, participants: 8 },
+  "ps-5": { teams: 3, participants: 12 },
+  "ps-6": { teams: 2, participants: 8 },
+  "ps-7": { teams: 2, participants: 8 },
+  "ps-8": { teams: 2, participants: 8 },
+  "ps-9": { teams: 2, participants: 8 },
+  "ps-10": { teams: 2, participants: 8 },
+  "ps-11": { teams: 2, participants: 8 },
+  "ps-12": { teams: 2, participants: 8 },
+  "PS-01": { teams: 3, participants: 12 },
+  "PS-02": { teams: 3, participants: 12 },
+  "PS-03": { teams: 3, participants: 12 },
+  "PS-04": { teams: 2, participants: 8 },
+  "PS-05": { teams: 3, participants: 12 },
+  "PS-06": { teams: 2, participants: 8 },
+  "PS-07": { teams: 2, participants: 8 },
+  "PS-08": { teams: 2, participants: 8 },
+  "PS-09": { teams: 2, participants: 8 },
+  "PS-10": { teams: 2, participants: 8 },
+  "PS-11": { teams: 2, participants: 8 },
+  "PS-12": { teams: 2, participants: 8 }
+};
+
+/**
+ * Robust helper to resolve telemetry counts across multiple key formats
+ */
+function getPsMetrics(telemetryMap, psId) {
+  if (!telemetryMap || typeof telemetryMap !== 'object') {
+    return { teams: 0, participants: 0 };
+  }
+  if (telemetryMap[psId] && typeof telemetryMap[psId] === 'object') {
+    return {
+      teams: Math.max(0, parseInt(telemetryMap[psId].teams) || 0),
+      participants: Math.max(0, parseInt(telemetryMap[psId].participants) || 0)
+    };
+  }
+  const num = parseInt(String(psId).replace(/\D/g, ''), 10);
+  if (!isNaN(num)) {
+    const keys = [
+      `ps-${num}`,
+      `PS-${num < 10 ? '0' + num : num}`,
+      `ps-${num < 10 ? '0' + num : num}`,
+      `NIIS-PS${num < 10 ? '0' + num : num}`,
+      String(psId).toLowerCase()
+    ];
+    for (const k of keys) {
+      if (telemetryMap[k] && typeof telemetryMap[k] === 'object') {
+        return {
+          teams: Math.max(0, parseInt(telemetryMap[k].teams) || 0),
+          participants: Math.max(0, parseInt(telemetryMap[k].participants) || 0)
+        };
+      }
+    }
+  }
+  return { teams: 0, participants: 0 };
+}
+
 const INITIAL_CONTENT = {
   collegeName: "NIIS INSTITUTE OF BUSINESS ADMINISTRATION",
   affiliation: "(A Unit of NIIS Group of Institutions)",
@@ -648,10 +759,16 @@ const INITIAL_CONTENT = {
   organizer: "Kaushal Technical Club, NIIS",
   eventDates: "30th September - 01st October 2026",
   countdownTarget: "2026-09-30T09:00:00",
-  venue: "Auditorium & Innovation Labs, NIIS Campus, Sarada Vihar, Bhubaneswar",
+  venue: "C-Block Auditorium & Innovation Labs, Bhubaneswar",
   registrationDeadline: "25th September 2026",
   rulebookUrl: "/brochure.pdf",
+  showBrochureButton: true,
   promoVideoUrl: "/promo-video.mp4",
+  googleFormRegistrationUrl: DEFAULT_GOOGLE_FORM_REGISTRATION_URL,
+  googleFormPsSelectionUrl: DEFAULT_GOOGLE_FORM_PS_SELECTION_URL,
+  verifiedTeamsCount: 28,
+  verifiedParticipantsCount: 112,
+  useManualGlobalOverride: false,
   gallery: INITIAL_GALLERY,
 
   announcements: [
@@ -662,45 +779,45 @@ const INITIAL_CONTENT = {
   ],
 
   about: {
-    heading: "Fostering Technology & Innovation at NIIS",
-    subHeading: "A 36-hour sprint connecting young technocrats with mentors, incubation resources, and industrial challenges.",
-    para1: "NIIS HACKATHON 2026 is an initiative by Kaushal Technical Club at NIIS Institute of Business Administration. Designed to provide a premier competitive launchpad for undergraduate and postgraduate students from diverse streams including Computer Science, Information Technology, MCA, MBA, and Applied Sciences.",
-    para2: "Modelled closely in spirit with state-level university frameworks like the BPUT Hackathon, our event challenges youth to transform theoretical blueprints into deployable, functional prototypes within 36 hours. Interdisciplinary teamwork, industry-standard mentoring, and real-world applicability are at the core of this challenge.",
+    heading: "Empowering Campus Innovators to Solve Real-World Challenges",
+    subHeading: "An intensive 24-hour intra-college sprint connecting emerging student developers with faculty mentors and industrial problem statements.",
+    para1: "NIIS Hackathon 2026 is the flagship annual intra-college technical championship hosted by Kaushal Tech Club at NIIS Institute of Business Administration, Bhubaneswar. Designed exclusively for our campus students across MCA, BCA, and Management disciplines, this 24-hour sprint challenges emerging developers, designers, and problem solvers to turn ideas into viable working prototypes.",
+    para2: "Grounded in academic excellence affiliated to BPUT, Odisha and accredited by NAAC, the event bridges classroom theory with direct industry problem-solving. Participants collaborate in squads of 3–4 members, tackle 12 curated problem statements, and compete under the mentorship of faculty guides and industry evaluators for a ₹35,000 cash prize pool along with prestigious institutional recognition.",
     pillars: [
-      { num: "01", title: "Ideate & Register", desc: "Select your preferred problem statement across our 4 flagship categories and register your squad." },
-      { num: "02", title: "Build & Deploy (36h)", desc: "Develop working code, APIs, predictive ML models, or functional IoT circuitries during the sprint." },
-      { num: "03", title: "Transform & Incubate", desc: "Pitch before expert panels with commercialization mentorship and seed grants at NIIS E-Cell." }
+      { num: "01", title: "24-Hour Sprint", desc: "Intensive non-stop prototyping and team collaboration." },
+      { num: "02", title: "Industry Mentorship", desc: "Continuous guidance from senior faculty and tech leads." },
+      { num: "03", title: "Real-World Impact", desc: "Solving practical challenges aligned with institutional standards." }
     ]
   },
 
   eventFlow: [
     { stage: "Stage 1", title: "Online Squad Registration", desc: "Submit squad registration via the in-app portal and select your target problem challenge." },
     { stage: "Stage 2", title: "Technical Screening & Finalist Pass", desc: "Jury panel evaluates architecture viability. Shortlisted finalist squads receive campus entry passes." },
-    { stage: "Stage 3", title: "36h Grand Finale at NIIS", desc: "36 hours continuous offline sprint, mentor checkpoints, live jury demos, and grand valedictory." }
+    { stage: "Stage 3", title: "24h Grand Finale at NIIS", desc: "24 hours continuous offline sprint, mentor checkpoints, live jury demos, and grand valedictory." }
   ],
 
   committeeMembers: OFFICIAL_COMMITTEE_MEMBERS,
   problemStatements: OFFICIAL_PROBLEM_STATEMENTS,
 
   datesSchedule: [
-    { label: "Registration Opens", date: "01 September 2026", status: "Completed" },
-    { label: "Problem Statements Live", date: "10 September 2026", status: "Completed" },
-    { label: "Registration Closes", date: "25 September 2026", status: "Active" },
-    { label: "Round 1 Screening & Shortlist", date: "26 - 28 September 2026", status: "Upcoming" },
-    { label: "Grand Finale (36h Non-stop)", date: "30 Sep - 01 Oct 2026", status: "Upcoming" },
-    { label: "Valedictory & Prize Distribution", date: "01 October 2026, 05:00 PM", status: "Upcoming" }
+    { id: "m-1", label: "Registration Opens", date: "01 September 2026", status: "Completed", desc: "Online registrations opened for all eligible student squads across colleges." },
+    { id: "m-2", label: "Problem Statements Live", date: "10 September 2026", status: "Completed", desc: "12 curated real-world institutional and industry problem statements announced." },
+    { id: "m-3", label: "Registration Closes", date: "25 September 2026", status: "Active", desc: "Final deadline for squad registration and problem statement submission." },
+    { id: "m-4", label: "Round 1 Screening & Shortlist", date: "26 - 28 September 2026", status: "Upcoming", desc: "Expert technical committee evaluates architectural blueprints and shortlists top squads." },
+    { id: "m-5", label: "Grand Finale (24h Non-stop)", date: "30 Sep - 01 Oct 2026", status: "Upcoming", desc: "24-hour on-campus development sprint, live jury evaluations, and mentor checkpoints." },
+    { id: "m-6", label: "Valedictory & Prize Distribution", date: "01 October 2026, 05:00 PM", status: "Upcoming", desc: "Announcement of winners, distribution of ₹35,000 cash prizes, and closing ceremonies." }
   ],
 
   hackathonRoadmap: [
-    { time: "Day 1 - 08:30 AM", title: "Reporting & Verification", desc: "Team check-in, physical ID verification, kit distribution and Wi-Fi onboarding at NIIS Innovation Labs." },
-    { time: "Day 1 - 10:00 AM", title: "Inaugural Ceremony & Hack Begins", desc: "Welcome address by Hon'ble Chairperson, release of secret API keys, and timer commencement for 36 hours." },
-    { time: "Day 1 - 03:00 PM", title: "Mentorship Checkpoint 1", desc: "Domain experts and faculty evaluators review team architecture diagrams and database schemas." },
-    { time: "Day 1 - 09:00 PM", title: "Midway Progress Scrutiny", desc: "First elimination check; teams must show working local servers and initial endpoint integrations." },
-    { time: "Day 1 - 11:30 PM", title: "Midnight Coding Sprints & Snacks", desc: "Late-night refreshments, energizer mini-games, and non-stop dev sprints with mentor support." },
-    { time: "Day 2 - 08:00 AM", title: "Breakfast & Code Freeze Countdown", desc: "Morning breakfast provided; teams enter final UI polish, containerization, and repository cleanup." },
-    { time: "Day 2 - 01:00 PM", title: "Final GitHub Commits & Code Freeze", desc: "Public repository locks. Presentation decks uploaded to jury evaluation portal." },
-    { time: "Day 2 - 02:30 PM", title: "Live Grand Jury Presentations", desc: "Top finalist squads pitch 8-minute live demonstrations before the esteemed jury panel." },
-    { time: "Day 2 - 05:30 PM", title: "Valedictory & Cash Prize Distribution", desc: "Announcement of Winners, medal and trophy handover, and closing felicitations." }
+    { id: "s-1", time: "Day 1 - 08:30 AM", title: "Reporting & Verification", venue: "NIIS Innovation Labs", actionItem: "Kit & ID Check", desc: "Team check-in, physical ID verification, kit distribution and Wi-Fi onboarding at NIIS Innovation Labs." },
+    { id: "s-2", time: "Day 1 - 10:00 AM", title: "Inaugural Ceremony & Hack Begins", venue: "Main Auditorium", actionItem: "Timer Starts", desc: "Welcome address by Hon'ble Chairperson, release of secret API keys, and timer commencement for 24 hours." },
+    { id: "s-3", time: "Day 1 - 03:00 PM", title: "Mentorship Checkpoint 1", venue: "Sprint Hall A & B", actionItem: "Architecture Review", desc: "Domain experts and faculty evaluators review team architecture diagrams and database schemas." },
+    { id: "s-4", time: "Day 1 - 09:00 PM", title: "Midway Progress Scrutiny", venue: "Sprint Hall A & B", actionItem: "Mid-Sprint Demo", desc: "First elimination check; teams must show working local servers and initial endpoint integrations." },
+    { id: "s-5", time: "Day 1 - 11:30 PM", title: "Midnight Coding Sprints & Snacks", venue: "Cafeteria & Labs", actionItem: "Refreshment Break", desc: "Late-night refreshments, energizer mini-games, and non-stop dev sprints with mentor support." },
+    { id: "s-6", time: "Day 2 - 08:00 AM", title: "Breakfast & Code Freeze Countdown", venue: "Dining Hall", actionItem: "UI Polish", desc: "Morning breakfast provided; teams enter final UI polish, containerization, and repository cleanup." },
+    { id: "s-7", time: "Day 2 - 01:00 PM", title: "Final GitHub Commits & Code Freeze", venue: "Online Git Portal", actionItem: "Code Freeze", desc: "Public repository locks. Presentation decks uploaded to jury evaluation portal." },
+    { id: "s-8", time: "Day 2 - 02:30 PM", title: "Live Grand Jury Presentations", venue: "Conference Hall", actionItem: "8-Min Pitch Demo", desc: "Top finalist squads pitch 8-minute live demonstrations before the esteemed jury panel." },
+    { id: "s-9", time: "Day 2 - 05:30 PM", title: "Valedictory & Cash Prize Distribution", venue: "Main Auditorium", actionItem: "Awards & Cash Prize", desc: "Announcement of Winners, medal and trophy handover, and closing felicitations." }
   ],
 
   /* Accurate Prize Structure: Total ₹35,000 Cash Pool */
@@ -722,6 +839,48 @@ const INITIAL_CONTENT = {
     }
   ],
 
+  rulesList: [
+    {
+      id: "r-1",
+      category: "Team Rules",
+      title: "Squad Eligibility & Composition",
+      points: [
+        "Each team must consist of 3 to 5 student members currently enrolled in any recognized College, Institute, or University.",
+        "Interdisciplinary teams (e.g. BCA + BBA + B.Tech + MCA) are strongly encouraged.",
+        "One member must be designated as the Team Leader for all official communication."
+      ]
+    },
+    {
+      id: "r-2",
+      category: "Submission Deliverables",
+      title: "Institutional Identity & Bona Fide Verification",
+      points: [
+        "Shortlisted finalist squads attending the 24-hour on-campus grand finale must carry valid institutional student ID cards confirming their bona fide enrollment.",
+        "All squads must submit pitch decks and architecture blueprints before the specified deadline."
+      ]
+    },
+    {
+      id: "r-3",
+      category: "Hardware/Software Rules",
+      title: "Hardware, Repository & Code Ethics",
+      points: [
+        "Participants must bring their own development laptops, extension cords, and hardware sensor kits.",
+        "All code must be committed to a fresh public GitHub repository initiated at the Day 1 opening ceremony.",
+        "Pre-existing proprietary products will result in immediate disqualification; standard open-source libraries and APIs are fully permissible."
+      ]
+    },
+    {
+      id: "r-4",
+      category: "Code of Conduct",
+      title: "Fair Play & Professionalism",
+      points: [
+        "All participants must uphold academic honesty, collaboration, and respectful behavior across the 24-hour sprint.",
+        "Plagiarism, offensive conduct, or intellectual property violation will result in immediate squad disqualification.",
+        "Campus rules and lab security protocols must be strictly adhered to at all times."
+      ]
+    }
+  ],
+
   guidelines: {
     rule1Title: "1. Squad Eligibility & Composition",
     rule1Points: [
@@ -730,7 +889,7 @@ const INITIAL_CONTENT = {
       "One member must be designated as the Team Leader for all official communication."
     ],
     rule2Title: "2. Institutional Identity & Bona Fide Verification",
-    rule2Desc: "Shortlisted finalist squads attending the 36-hour on-campus grand finale must carry valid institutional student ID cards confirming their bona fide enrollment in an accredited college or university.",
+    rule2Desc: "Shortlisted finalist squads attending the 24-hour on-campus grand finale must carry valid institutional student ID cards confirming their bona fide enrollment in an accredited college or university.",
     rule3Title: "3. Hardware, Repository & Code Ethics",
     rule3Points: [
       "Participants must bring their own development laptops, extension cords, and hardware sensor kits.",
@@ -766,7 +925,7 @@ const INITIAL_CONTENT = {
     },
     {
       q: "Will all participants receive official certificates?",
-      a: "Yes. Every candidate whose team successfully undergoes the 36-hour offline evaluation will receive a verified Certificate of Participation + Event Swag Kit endorsed by NIIS Institute of Business Administration."
+      a: "Yes. Every candidate whose team successfully undergoes the 24-hour offline evaluation will receive a verified Certificate of Participation + Event Swag Kit endorsed by NIIS Institute of Business Administration."
     }
   ]
 };
@@ -790,6 +949,16 @@ function getYouTubeEmbedUrl(url) {
   return null;
 }
 
+// Minimalist Directory Links
+const NAV_ITEMS = [
+  { id: 'tracks', label: 'Problem Statements' },
+  { id: 'schedule', label: 'Event Flow' },
+  { id: 'prizes', label: 'Prizes' },
+  { id: 'guidelines', label: 'Guidelines' },
+  { id: 'committee', label: 'Committee' },
+  { id: 'gallery', label: 'Gallery' },
+];
+
 /* =========================================================================
    6. PRIMARY APPLICATION COMPONENT
    ========================================================================= */
@@ -799,7 +968,7 @@ export default function App() {
 
   // UI Control States
   const [showAdmin, setShowAdmin] = useState(false);
-  const [adminTab, setAdminTab] = useState('general'); 
+  const [adminTab, setAdminTab] = useState('flow'); 
   const [adminDraft, setAdminDraft] = useState(INITIAL_CONTENT);
   const [selectedDomain, setSelectedDomain] = useState('All');
   const [activeFaq, setActiveFaq] = useState(null);
@@ -807,6 +976,45 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchTrack, setSearchTrack] = useState("");
   const [copiedNotification, setCopiedNotification] = useState(false);
+  const [activeNav, setActiveNav] = useState('home');
+
+  // Active navigation scroll spy
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 180;
+      const sections = ['home', 'about', 'leadership', 'tracks', 'schedule', 'prizes', 'guidelines', 'gallery', 'committee'];
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveNav(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Smooth scroll handler with floating transparent navbar offset
+  const scrollToSection = (id) => {
+    setActiveNav(id);
+    if (id === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setMobileMenuOpen(false);
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) {
+      const navOffset = 70;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navOffset,
+        behavior: 'smooth'
+      });
+    }
+    setMobileMenuOpen(false);
+  };
 
   // Teaser Video States & Dynamic Configuration
   const [teaserConfig, setTeaserConfig] = useState(() => {
@@ -953,42 +1161,100 @@ export default function App() {
     return () => unsubscribe();
   }, []);
 
-  // Compute Live Telemetry Totals (Leader + Squad Members) & Per-Problem Statement Live Breakdown
-  const { totalTeamsCount, totalStudentsCount, psMetrics } = useMemo(() => {
-    const list = registrationsList || [];
-    const teams = list.length;
-    let students = 0;
-    const mapping = {};
+  // Dedicated Per-Problem Statement Telemetry State (Firestore telemetry/problem_statements + localStorage fallback)
+  const [psTelemetry, setPsTelemetry] = useState(() => {
+    try {
+      const cached = localStorage.getItem('niis_ps_telemetry');
+      if (cached) return JSON.parse(cached);
+    } catch (e) {
+      console.warn("Failed to load ps telemetry from localStorage cache", e);
+    }
+    return DEFAULT_PS_TELEMETRY;
+  });
+  const [psTelemetryDraft, setPsTelemetryDraft] = useState(() => {
+    try {
+      const cached = localStorage.getItem('niis_ps_telemetry');
+      if (cached) return JSON.parse(cached);
+    } catch {
+      // fallback
+    }
+    return DEFAULT_PS_TELEMETRY;
+  });
+  const [isSavingPsTelemetry, setIsSavingPsTelemetry] = useState(false);
+  const [psTelemetrySaveSuccess, setPsTelemetrySaveSuccess] = useState(false);
 
-    // Initialize all problem statements to guarantee 0 teams & 0 participants baseline
-    (content.problemStatements || []).forEach((ps) => {
-      mapping[ps.id] = { teams: 0, participants: 0 };
-    });
-
-    list.forEach((reg) => {
-      // 1 Leader + valid squad members
-      const membersLen = Array.isArray(reg.members)
-        ? reg.members.filter((m) => m && (typeof m === 'string' ? m.trim() : (m.name && m.name.trim()))).length
-        : 0;
-      const count = 1 + membersLen;
-      students += count;
-
-      const pId = reg.trackId || reg.problemStatementId || reg.psId;
-      if (pId) {
-        if (!mapping[pId]) {
-          mapping[pId] = { teams: 0, participants: 0 };
+  // Global Real-time Firestore onSnapshot Listener for Problem Statement Telemetry Override
+  useEffect(() => {
+    let unsubscribe = () => {};
+    try {
+      const telemetryDocRef = doc(db, "telemetry", "problem_statements");
+      unsubscribe = onSnapshot(
+        telemetryDocRef,
+        (docSnap) => {
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            const merged = { ...DEFAULT_PS_TELEMETRY, ...data };
+            setPsTelemetry(merged);
+            setPsTelemetryDraft(merged);
+            try {
+              localStorage.setItem('niis_ps_telemetry', JSON.stringify(merged));
+            } catch {
+              // ignore
+            }
+          }
+        },
+        (err) => {
+          console.warn("Could not attach real-time onSnapshot listener for PS telemetry (using local cache):", err);
         }
-        mapping[pId].teams += 1;
-        mapping[pId].participants += count;
-      }
+      );
+    } catch (err) {
+      console.warn("Error subscribing to PS telemetry doc:", err);
+    }
+
+    return () => unsubscribe();
+  }, []);
+
+  // Dynamic Google Forms URLs
+  const googleFormRegUrl = content.googleFormRegistrationUrl || DEFAULT_GOOGLE_FORM_REGISTRATION_URL;
+  const googleFormPsUrl = content.googleFormPsSelectionUrl || DEFAULT_GOOGLE_FORM_PS_SELECTION_URL;
+
+  // Compute Live Telemetry Totals (Automatic Recalculation from PS sums with manual global override option)
+  const { totalTeamsCount, totalStudentsCount, psMetrics } = useMemo(() => {
+    const pStatements = content.problemStatements || OFFICIAL_PROBLEM_STATEMENTS;
+    const mapping = {};
+    let sumTeams = 0;
+    let sumParticipants = 0;
+
+    pStatements.forEach((ps, idx) => {
+      const num = idx + 1;
+      const m = getPsMetrics(psTelemetry, ps.id);
+      const teams = Number(m.teams) || 0;
+      const participants = Number(m.participants) || 0;
+
+      mapping[ps.id] = { teams, participants };
+      mapping[`ps-${num}`] = { teams, participants };
+      mapping[`PS-${num < 10 ? '0' + num : num}`] = { teams, participants };
+
+      sumTeams += teams;
+      sumParticipants += participants;
     });
+
+    // Check if manual override from Admin exists for the global banner
+    const isManual = !!content.useManualGlobalOverride;
+    const finalTeams = (isManual && content.verifiedTeamsCount !== undefined && content.verifiedTeamsCount !== null && content.verifiedTeamsCount !== '')
+      ? Number(content.verifiedTeamsCount)
+      : sumTeams;
+
+    const finalStudents = (isManual && content.verifiedParticipantsCount !== undefined && content.verifiedParticipantsCount !== null && content.verifiedParticipantsCount !== '')
+      ? Number(content.verifiedParticipantsCount)
+      : sumParticipants;
 
     return {
-      totalTeamsCount: teams,
-      totalStudentsCount: students,
+      totalTeamsCount: finalTeams,
+      totalStudentsCount: finalStudents,
       psMetrics: mapping
     };
-  }, [registrationsList, content.problemStatements]);
+  }, [content.problemStatements, psTelemetry, content.verifiedTeamsCount, content.verifiedParticipantsCount, content.useManualGlobalOverride]);
 
   // Admin PIN Protection States
   const [showPinModal, setShowPinModal] = useState(false);
@@ -998,29 +1264,76 @@ export default function App() {
   // Master Secret Password
   const ADMIN_SECRET_PIN = "NexusAdminAccess2026#NIIS"; 
 
-  // Real-time Cloud Fetch from Firebase Firestore for Portal CMS Content
+  // Real-time Cloud Fetch from Firebase Firestore for Portal CMS Content (unified cms_config + localStorage fallback)
   useEffect(() => {
     const fetchPortalContent = async () => {
+      // 1. Check localStorage cache first
+      let cachedCms = null;
+      try {
+        const raw = localStorage.getItem('niis_cms_config');
+        if (raw) cachedCms = JSON.parse(raw);
+      } catch (cacheReadErr) {
+        console.warn("Could not read niis_cms_config from localStorage:", cacheReadErr);
+      }
+
+      // 2. Fetch from cloud Firestore
+      let cloudData = null;
       try {
         const docRef = doc(db, "portal", "hackathon2026");
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          const cloudData = docSnap.data();
-          const merged = {
-            ...INITIAL_CONTENT,
-            ...cloudData,
-            committeeMembers: (cloudData.committeeMembers && cloudData.committeeMembers.length >= 15)
-              ? cloudData.committeeMembers
-              : OFFICIAL_COMMITTEE_MEMBERS,
-            problemStatements: (cloudData.problemStatements && cloudData.problemStatements.length >= 12)
-              ? cloudData.problemStatements
-              : OFFICIAL_PROBLEM_STATEMENTS
-          };
-          setContent(merged);
-          setAdminDraft(merged);
+          cloudData = docSnap.data();
+        } else {
+          const cmsDocRef = doc(db, "cms_config", "main");
+          const cmsSnap = await getDoc(cmsDocRef);
+          if (cmsSnap.exists()) {
+            cloudData = cmsSnap.data();
+          }
         }
       } catch (err) {
         console.warn("Cloud database initial fetch error:", err);
+      }
+
+      const sourceData = cloudData || cachedCms;
+      if (sourceData) {
+        const merged = {
+          ...INITIAL_CONTENT,
+          ...sourceData,
+          showBrochureButton: sourceData.showBrochureButton !== undefined ? sourceData.showBrochureButton : true,
+          datesSchedule: (sourceData.datesSchedule && sourceData.datesSchedule.length > 0)
+            ? sourceData.datesSchedule.map((d, i) => ({
+                id: d.id || `m-${i + 1}`,
+                label: d.label || "",
+                date: d.date || "",
+                status: d.status || "Upcoming",
+                desc: d.desc || INITIAL_CONTENT.datesSchedule[i]?.desc || ""
+              }))
+            : INITIAL_CONTENT.datesSchedule,
+          hackathonRoadmap: (sourceData.hackathonRoadmap && sourceData.hackathonRoadmap.length > 0)
+            ? sourceData.hackathonRoadmap.map((r, i) => ({
+                id: r.id || `s-${i + 1}`,
+                time: r.time || "",
+                title: r.title || "",
+                desc: r.desc || "",
+                venue: r.venue || INITIAL_CONTENT.hackathonRoadmap[i]?.venue || "NIIS Innovation Labs",
+                actionItem: r.actionItem || INITIAL_CONTENT.hackathonRoadmap[i]?.actionItem || "Checkpoint"
+              }))
+            : INITIAL_CONTENT.hackathonRoadmap,
+          rulesList: (sourceData.rulesList && sourceData.rulesList.length > 0)
+            ? sourceData.rulesList
+            : INITIAL_CONTENT.rulesList,
+          eventFlow: (sourceData.eventFlow && sourceData.eventFlow.length > 0)
+            ? sourceData.eventFlow
+            : INITIAL_CONTENT.eventFlow,
+          committeeMembers: (sourceData.committeeMembers && sourceData.committeeMembers.length >= 15)
+            ? sourceData.committeeMembers
+            : OFFICIAL_COMMITTEE_MEMBERS,
+          problemStatements: (sourceData.problemStatements && sourceData.problemStatements.length >= 12 && sourceData.problemStatements[0]?.title?.includes("Campus Life"))
+            ? sourceData.problemStatements
+            : OFFICIAL_PROBLEM_STATEMENTS
+        };
+        setContent(merged);
+        setAdminDraft(merged);
       }
     };
     fetchPortalContent();
@@ -1064,6 +1377,7 @@ export default function App() {
       setShowPinModal(false);
       setAdminDraft(content);
       setTeaserDraft(teaserConfig);
+      setPsTelemetryDraft(psTelemetry);
       setShowAdmin(true); 
     } else {
       setPinError(true);
@@ -1106,6 +1420,156 @@ export default function App() {
       alert("⚠️ Saved to local session cache! (Cloud notice: " + (err.message || 'offline') + ")");
     } finally {
       setIsSavingTeaser(false);
+    }
+  };
+
+  // Live computed draft totals for the Admin PS Telemetry subpanel
+  const psDraftTotals = useMemo(() => {
+    let teams = 0;
+    let participants = 0;
+    (content.problemStatements || OFFICIAL_PROBLEM_STATEMENTS).forEach((ps) => {
+      const m = getPsMetrics(psTelemetryDraft, ps.id);
+      teams += (Number(m.teams) || 0);
+      participants += (Number(m.participants) || 0);
+    });
+    return { teams, participants };
+  }, [psTelemetryDraft, content.problemStatements]);
+
+  // Update a single field in the PS telemetry draft
+  const handleUpdatePsDraft = (psId, field, value) => {
+    const numVal = Math.max(0, parseInt(value) || 0);
+    setPsTelemetryDraft((prev) => {
+      const current = getPsMetrics(prev, psId);
+      const updated = {
+        ...current,
+        [field]: numVal
+      };
+      const num = parseInt(String(psId).replace(/\D/g, ''), 10);
+      const next = { ...prev };
+      next[psId] = updated;
+      if (!isNaN(num)) {
+        next[`ps-${num}`] = updated;
+        next[`PS-${num < 10 ? '0' + num : num}`] = updated;
+      }
+      return next;
+    });
+  };
+
+  // Quick Multiply for a single PS row (e.g. teams * 4)
+  const handleMultiplyRow = (psId, multiplier = 4) => {
+    setPsTelemetryDraft((prev) => {
+      const current = getPsMetrics(prev, psId);
+      const teams = current.teams || 0;
+      const updated = {
+        teams,
+        participants: teams * multiplier
+      };
+      const num = parseInt(String(psId).replace(/\D/g, ''), 10);
+      const next = { ...prev };
+      next[psId] = updated;
+      if (!isNaN(num)) {
+        next[`ps-${num}`] = updated;
+        next[`PS-${num < 10 ? '0' + num : num}`] = updated;
+      }
+      return next;
+    });
+  };
+
+  // Quick Multiply for all 12 Problem Statements
+  const handleQuickMultiplyAll = (multiplier = 4) => {
+    setPsTelemetryDraft((prev) => {
+      const next = { ...prev };
+      (content.problemStatements || OFFICIAL_PROBLEM_STATEMENTS).forEach((ps, idx) => {
+        const current = getPsMetrics(prev, ps.id);
+        const teams = current.teams || 0;
+        const updated = {
+          teams,
+          participants: teams * multiplier
+        };
+        const num = idx + 1;
+        next[ps.id] = updated;
+        next[`ps-${num}`] = updated;
+        next[`PS-${num < 10 ? '0' + num : num}`] = updated;
+      });
+      return next;
+    });
+  };
+
+  // Reset to Default Baseline (28 squads, 112 participants)
+  const handleResetToBaseline = () => {
+    if (window.confirm("Reset all 12 Problem Statement counts back to the default baseline (28 Teams / 112 Participants)?")) {
+      setPsTelemetryDraft(DEFAULT_PS_TELEMETRY);
+    }
+  };
+
+  // Prominent Save Button Handler: Commits to Firestore doc (telemetry/problem_statements) + localStorage + UI state
+  const handleSavePsMetrics = async () => {
+    setIsSavingPsTelemetry(true);
+    try {
+      const payload = {};
+      let sumTeams = 0;
+      let sumParticipants = 0;
+
+      (content.problemStatements || OFFICIAL_PROBLEM_STATEMENTS).forEach((ps, idx) => {
+        const num = idx + 1;
+        const current = getPsMetrics(psTelemetryDraft, ps.id);
+        const teams = Math.max(0, parseInt(current.teams) || 0);
+        const participants = Math.max(0, parseInt(current.participants) || 0);
+
+        const entry = { teams, participants };
+        // Strict user schema: "ps-1", "ps-2", ... "ps-12"
+        payload[`ps-${num}`] = entry;
+        // Direct ID lookup: "PS-01", "PS-02", ... "PS-12"
+        payload[ps.id] = entry;
+
+        sumTeams += teams;
+        sumParticipants += participants;
+      });
+
+      payload.updatedAt = new Date().toISOString();
+
+      // Write to Firestore doc: telemetry/problem_statements
+      const telemetryDocRef = doc(db, "telemetry", "problem_statements");
+      await setDoc(telemetryDocRef, payload, { merge: true });
+
+      // Update state and localStorage
+      setPsTelemetry(payload);
+      try {
+        localStorage.setItem('niis_ps_telemetry', JSON.stringify(payload));
+      } catch (e) {
+        console.warn("Could not save to localStorage:", e);
+      }
+
+      // Also keep adminDraft & content verified counts synchronized
+      setContent((prev) => ({
+        ...prev,
+        verifiedTeamsCount: sumTeams,
+        verifiedParticipantsCount: sumParticipants
+      }));
+      setAdminDraft((prev) => ({
+        ...prev,
+        verifiedTeamsCount: sumTeams,
+        verifiedParticipantsCount: sumParticipants
+      }));
+
+      setPsTelemetrySaveSuccess(true);
+      setTimeout(() => setPsTelemetrySaveSuccess(false), 3500);
+      alert(`✅ PS Telemetry saved to Firestore (telemetry/problem_statements) & Local Cache!\n\n• Live Sum: ${sumTeams} Teams Registered\n• Live Sum: ${sumParticipants} Total Participants\n• All 12 problem statement cards updated immediately.`);
+    } catch (err) {
+      console.error("Error saving PS telemetry to Firestore:", err);
+      // Offline fallback: persist to localStorage & local state
+      const fallbackPayload = { ...psTelemetryDraft, updatedAt: new Date().toISOString() };
+      setPsTelemetry(fallbackPayload);
+      try {
+        localStorage.setItem('niis_ps_telemetry', JSON.stringify(fallbackPayload));
+      } catch {
+        // ignore
+      }
+      setPsTelemetrySaveSuccess(true);
+      setTimeout(() => setPsTelemetrySaveSuccess(false), 3500);
+      alert("⚠️ Saved to local storage cache! (Firestore sync notice: " + (err.message || 'offline') + ")");
+    } finally {
+      setIsSavingPsTelemetry(false);
     }
   };
 
@@ -1172,21 +1636,105 @@ export default function App() {
     return content.gallery && content.gallery.length > 0 ? content.gallery : INITIAL_GALLERY;
   }, [content.gallery]);
 
-  // Live Firebase Save (Sync across all devices instantly)
+  // Live Firebase Save (Sync across all devices instantly with dual collections & localStorage fallback)
   const handleSaveAdmin = async () => {
     setIsSaving(true);
     try {
+      // 1. Save to portal/hackathon2026
       const docRef = doc(db, "portal", "hackathon2026");
       await setDoc(docRef, adminDraft);
+
+      // 2. Also persist to cms_config/main collection for unified CMS config
+      try {
+        const cmsDocRef = doc(db, "cms_config", "main");
+        await setDoc(cmsDocRef, adminDraft);
+      } catch (cmsErr) {
+        console.warn("Could not save to cms_config/main:", cmsErr);
+      }
+
+      // 3. Cache to localStorage for offline resiliency
+      try {
+        localStorage.setItem('niis_cms_config', JSON.stringify(adminDraft));
+      } catch (cacheErr) {
+        console.warn("Could not cache cms_config to localStorage:", cacheErr);
+      }
+
+      // 4. Also persist PS telemetry
+      try {
+        const telemetryDocRef = doc(db, "telemetry", "problem_statements");
+        await setDoc(telemetryDocRef, psTelemetryDraft, { merge: true });
+        setPsTelemetry(psTelemetryDraft);
+        localStorage.setItem('niis_ps_telemetry', JSON.stringify(psTelemetryDraft));
+      } catch (telErr) {
+        console.warn("Could not sync telemetry during full save:", telErr);
+      }
+
       setContent(adminDraft);
       setShowAdmin(false);
       alert("✅ All changes saved permanently to Cloud Database! Live for everyone instantly.");
     } catch (err) {
       console.error("Cloud Database Save Error:", err);
-      alert("❌ Save failed: " + err.message);
+      // Offline fallback: save to localStorage & local state
+      try {
+        localStorage.setItem('niis_cms_config', JSON.stringify(adminDraft));
+      } catch (localErr) {
+        console.warn("Could not write local cache:", localErr);
+      }
+      setContent(adminDraft);
+      setShowAdmin(false);
+      alert("⚠️ Saved to local storage cache! (Cloud notice: " + (err.message || 'offline') + ")");
     } finally {
       setIsSaving(false);
     }
+  };
+
+  // Reset to Institutional Defaults Handler
+  const handleResetToDefaults = () => {
+    if (window.confirm("Are you sure you want to reset all CMS configuration back to institutional defaults? Any unsaved edits will be discarded.")) {
+      setAdminDraft(INITIAL_CONTENT);
+      alert("Reset all sections in the draft to institutional defaults. Click 'Save Changes to Portal' below to publish live.");
+    }
+  };
+
+  // Reordering helpers for dynamic CMS arrays
+  const moveMilestone = (idx, dir) => {
+    const list = [...(adminDraft.datesSchedule || [])];
+    const target = idx + dir;
+    if (target < 0 || target >= list.length) return;
+    const temp = list[idx];
+    list[idx] = list[target];
+    list[target] = temp;
+    setAdminDraft({ ...adminDraft, datesSchedule: list });
+  };
+
+  const moveRoadmapItem = (idx, dir) => {
+    const list = [...(adminDraft.hackathonRoadmap || [])];
+    const target = idx + dir;
+    if (target < 0 || target >= list.length) return;
+    const temp = list[idx];
+    list[idx] = list[target];
+    list[target] = temp;
+    setAdminDraft({ ...adminDraft, hackathonRoadmap: list });
+  };
+
+  const moveRuleItem = (idx, dir) => {
+    const list = [...(adminDraft.rulesList || [])];
+    const target = idx + dir;
+    if (target < 0 || target >= list.length) return;
+    const temp = list[idx];
+    list[idx] = list[target];
+    list[target] = temp;
+    setAdminDraft({ ...adminDraft, rulesList: list });
+  };
+
+  const moveEventFlowItem = (idx, dir) => {
+    const list = [...(adminDraft.eventFlow || [])];
+    const target = idx + dir;
+    if (target < 0 || target >= list.length) return;
+    const temp = list[idx];
+    list[idx] = list[target];
+    list[target] = temp;
+    setAdminDraft({ ...adminDraft, eventFlow: list });
   };
 
   const handleExportJSON = () => {
@@ -1224,13 +1772,9 @@ export default function App() {
     setIsVideoMuted(videoRef.current.muted);
   };
 
-  // Native Registration Form Handlers
-  const handleOpenRegistration = (preselectedTrackId = null) => {
-    if (preselectedTrackId) {
-      setRegForm(prev => ({ ...prev, trackId: preselectedTrackId }));
-    }
-    setRegisterStep(1);
-    setShowRegisterModal(true);
+  // Official Registration Workflow Helper
+  const _handleOpenRegistration = (_preselectedTrackId = null) => {
+    window.open(googleFormRegUrl, '_blank', 'noopener,noreferrer');
   };
 
   const handleAddMember = () => {
@@ -1345,7 +1889,7 @@ export default function App() {
 INSTITUTION:  NIIS Institute of Business Administration
 ORGANIZER:    Kaushal Technical Club
 CAMPUS:       Sarada Vihar, Bhubaneswar, Odisha
-DATES:        30th September - 01st October 2026 (36h Non-stop)
+DATES:        30th September - 01st October 2026 (24-Hour Non-stop)
 ----------------------------------------------------------------------
 SUBMISSION ID: ${r.submissionId}
 STATUS:        ${r.status}
@@ -1377,7 +1921,7 @@ PRIZE BOUNTY & REWARDS:
 All Participants: Official Certificate of Participation + Swag Kit
 
 VENUE & REPORTING:
-Dates: 30th September - 01st October 2026 (36 Hours Offline)
+Dates: 30th September - 01st October 2026 (24 Hours Offline)
 Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
 ======================================================================
 `;
@@ -1461,7 +2005,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
   }, [registrationsList, adminRegSearch]);
 
   return (
-    <div className="min-h-screen w-full bg-white text-slate-800 font-sans flex flex-col selection:bg-blue-900 selection:text-white pb-14 relative">
+    <div className="min-h-screen w-full bg-slate-950 text-slate-800 font-sans flex flex-col selection:bg-blue-900 selection:text-white pb-14 relative">
       
       {/* Running Marquee & Ken-Burns Animations */}
       <style>{`
@@ -1496,302 +2040,200 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
         </div>
       )}
 
-      {/* 1. TOP METADATA BAR */}
-      <div className="w-full bg-[#091830] text-slate-300 text-xs border-b border-blue-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-3 text-[11px]">
-            <span className="font-semibold text-amber-400 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              {content.affiliation}
-            </span>
-            <span className="text-slate-600 hidden sm:inline">•</span>
-            <span className="text-slate-300 hidden md:inline">Approved by AICTE | Affiliated to BPUT, Odisha | Accredited by NAAC</span>
-          </div>
-
-          <div className="flex items-center gap-4 text-[11px]">
-            <button
-              onClick={handleShareLink}
-              className="text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer"
-            >
-              <Globe className="w-3.5 h-3.5 text-blue-400" />
-              <span>Share Event</span>
-            </button>
-            <button
-              onClick={() => {
-                setPinError(false);
-                setAdminPinInput('');
-                setShowPinModal(true);
-              }}
-              className="font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1 font-bold cursor-pointer"
-            >
-              <Edit3 className="w-3 h-3" />
-              <span>Admin / Dynamic Editor</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. INSTITUTIONAL HEADER & NATURAL BRAND EMBLEM */}
-      <header className="w-full bg-white border-b border-slate-200 shadow-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
-          
-          {/* College Crest & Title */}
-          <div className="flex items-center gap-3.5">
-            <NIISOfficialCrest className="w-12 h-12 sm:w-14 sm:h-14" />
-            <div>
-              <h1 className="font-serif font-black text-[#0f2d59] text-base sm:text-xl lg:text-2xl tracking-tight leading-snug">
-                {content.collegeName}
-              </h1>
-              <p className="text-xs text-slate-600 font-medium">
-                {content.affiliation} • <span className="text-blue-700 font-semibold">{content.city}</span>
-              </p>
-              <p className="text-[10px] font-bold text-amber-700 tracking-wider uppercase hidden sm:block">
-                Knowledge • Skills • Values
-              </p>
+      {/* =========================================================================
+          ULTRA-PREMIUM PRECISION FLOATING NAVBAR (SINGLE CONTAINER)
+          ========================================================================= */}
+      <header className="sticky top-0 z-50 w-full h-16 bg-slate-950/80 backdrop-blur-xl border-b border-white/[0.08] px-4 md:px-8 flex items-center justify-between shadow-2xl transition-all duration-300">
+        
+        {/* Left: Prestige Dual-Branding */}
+        <div 
+          onClick={() => scrollToSection('home')}
+          className="flex items-center gap-3 cursor-pointer group flex-shrink-0"
+        >
+          <NIISOfficialCrest className="h-9 md:h-10 w-auto object-contain flex-shrink-0 transition-transform group-hover:scale-105" />
+          <div className="flex flex-col justify-center">
+            <div className="text-xs md:text-sm font-bold tracking-wider text-white uppercase leading-tight font-sans">
+              NIIS INSTITUTE OF BUSINESS ADMINISTRATION
+            </div>
+            <div className="flex items-center gap-2 mt-0.5 leading-tight font-sans">
+              <span className="text-xs font-semibold text-blue-300">NIIS HACKATHON 2026</span>
+              <span className="text-slate-500 text-[10px] hidden sm:inline">•</span>
+              <span className="text-[10px] md:text-[11px] font-medium text-slate-400 hidden sm:inline">
+                NAAC Accredited • BPUT Affiliated
+              </span>
             </div>
           </div>
+        </div>
 
-          {/* Clean Kaushal Club Badge without bulky wrappers */}
-          <div className="flex items-center gap-3">
-            <KaushalClubBadge />
-            <div className="hidden lg:flex items-center gap-2.5 border-l-2 border-slate-200 pl-4">
-              <div className="text-right">
-                <span className="text-3xl font-black text-[#0f2d59] font-serif leading-none block">26</span>
-                <span className="text-[10px] font-bold text-amber-600 uppercase tracking-tight block">Years of Excellence</span>
+        {/* Center: Minimalist Directory Links (Desktop) */}
+        <nav className="hidden md:flex items-center space-x-1 lg:space-x-4 xl:space-x-6">
+          {NAV_ITEMS.map((item) => {
+            const isActive = activeNav === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`text-xs font-medium tracking-wide transition-colors duration-150 py-1.5 px-2 rounded-md cursor-pointer ${
+                  isActive
+                    ? 'text-white font-semibold bg-white/10'
+                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Right: Action CTA & Admin Access */}
+        <div className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
+          {/* Admin Lock / Key Icon */}
+          <button
+            onClick={() => {
+              setPinError(false);
+              setAdminPinInput('');
+              setShowPinModal(true);
+            }}
+            className="p-2 text-slate-400 hover:text-amber-400 hover:bg-white/5 rounded-lg border border-transparent hover:border-white/10 transition cursor-pointer"
+            title="Admin Access"
+            aria-label="Admin Access"
+          >
+            <Lock className="w-4 h-4" />
+          </button>
+
+          {/* Register Squad CTA Button */}
+          <a
+            href={googleFormRegUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs px-4 py-2 rounded-lg shadow-md hover:shadow-blue-500/20 transition-all flex items-center gap-1.5 cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <UserPlus className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Register Squad</span>
+            <span className="sm:hidden">Register</span>
+            <ExternalLink className="w-3 h-3 opacity-80" />
+          </a>
+
+          {/* Mobile Hamburger Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-slate-300 hover:text-white border border-white/10 hover:border-white/20 bg-white/5 rounded-lg cursor-pointer transition"
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+
+      </header>
+
+      {/* Mobile Slide-Over Drawer with Clean Navigation */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm transition-opacity flex justify-end">
+          <div className="w-full max-w-xs bg-slate-950/95 backdrop-blur-2xl text-white h-full shadow-2xl flex flex-col justify-between border-l border-white/[0.08] animate-in slide-in-from-right duration-200 overflow-y-auto">
+            
+            <div>
+              {/* Drawer Header */}
+              <div className="p-4 border-b border-white/10 flex items-center justify-between bg-slate-900/60">
+                <div className="flex items-center gap-2.5">
+                  <NIISOfficialCrest className="h-9 w-auto object-contain" />
+                  <div>
+                    <span className="text-xs font-bold tracking-wider text-white uppercase block leading-tight">
+                      NIIS INSTITUTE
+                    </span>
+                    <span className="text-[11px] font-semibold tracking-wide text-blue-300/90 block leading-tight mt-0.5">
+                      NIIS HACKATHON 2026
+                    </span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Accreditation Badge */}
+              <div className="bg-blue-500/10 border-b border-blue-500/20 px-4 py-2 text-[10px] text-blue-300 font-medium">
+                NAAC Accredited • BPUT Affiliated
+              </div>
+
+              {/* Navigation Links */}
+              <div className="p-4 space-y-1 text-sm font-medium text-slate-200">
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-3 py-1 block">
+                  Directory
+                </span>
+                {NAV_ITEMS.map((item) => {
+                  const isActive = activeNav === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between cursor-pointer ${
+                        isActive
+                          ? 'bg-blue-600/20 text-blue-400 font-semibold border-l-4 border-blue-500'
+                          : 'hover:bg-white/5 hover:text-white text-slate-300'
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronRight className="w-4 h-4 text-slate-500" />
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-700 hover:text-blue-900 border border-slate-200 rounded-lg cursor-pointer"
-              aria-label="Toggle navigation"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-
-        </div>
-
-        {/* Navy Blue Nav */}
-        <div className="w-full bg-[#0f2d59] text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between text-xs font-semibold uppercase tracking-wider">
-            <nav className="hidden md:flex items-center space-x-5 py-3">
-              <button
-                onClick={() => {
-                  const el = document.getElementById('home');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-slate-200 cursor-pointer"
+            {/* Drawer Footer Actions */}
+            <div className="p-4 border-t border-white/10 bg-slate-900/60 space-y-3">
+              <a
+                href={googleFormRegUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-2.5 rounded-xl text-xs shadow-md transition flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
               >
-                Home
-              </button>
+                <UserPlus className="w-4 h-4" />
+                <span>Register Squad Online</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+              </a>
 
-              <button
-                onClick={() => {
-                  const el = document.getElementById('about');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-slate-200 cursor-pointer"
-              >
-                About
-              </button>
+              <div className="pt-2 border-t border-white/10 flex items-center justify-between">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleShareLink();
+                  }}
+                  className="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer"
+                >
+                  <Globe className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Share Portal</span>
+                </button>
 
-              <button
-                onClick={() => {
-                  const el = document.getElementById('leadership');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-slate-200 cursor-pointer"
-              >
-                Leadership Desk
-              </button>
-
-              <button
-                onClick={() => {
-                  const el = document.getElementById('tracks');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-slate-200 cursor-pointer"
-              >
-                Problem Statements
-              </button>
-
-              <button
-                onClick={() => {
-                  const el = document.getElementById('schedule');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-slate-200 cursor-pointer"
-              >
-                Event Flow
-              </button>
-
-              <button
-                onClick={() => {
-                  const el = document.getElementById('prizes');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-slate-200 cursor-pointer"
-              >
-                Prizes
-              </button>
-
-              <button
-                onClick={() => {
-                  const el = document.getElementById('guidelines');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-slate-200 cursor-pointer"
-              >
-                Guidelines
-              </button>
-
-              <button
-                onClick={() => {
-                  const el = document.getElementById('gallery');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-amber-300 font-bold cursor-pointer flex items-center gap-1"
-              >
-                <ImageIcon className="w-3.5 h-3.5" />
-                <span>Moments</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  const el = document.getElementById('committee');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="hover:text-amber-300 transition text-slate-200 cursor-pointer"
-              >
-                Committee
-              </button>
-            </nav>
-
-            <div className="hidden md:flex items-center gap-3">
-              <button
-                onClick={() => handleOpenRegistration()}
-                className="bg-amber-400 hover:bg-amber-300 text-[#0f2d59] font-black px-4 py-1.5 rounded-lg text-xs uppercase tracking-wider transition shadow cursor-pointer flex items-center gap-1.5 transform hover:scale-105"
-              >
-                <UserPlus className="w-3.5 h-3.5" />
-                <span>Register Squad</span>
-              </button>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setPinError(false);
+                    setAdminPinInput('');
+                    setShowPinModal(true);
+                  }}
+                  className="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1 cursor-pointer"
+                >
+                  <Lock className="w-3.5 h-3.5" />
+                  <span>Admin Panel</span>
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* Mobile Drawer Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden bg-[#091830] border-t border-blue-900 px-4 py-3 space-y-2.5 text-xs">
-              <button
-                onClick={() => {
-                  const el = document.getElementById('home');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-slate-200 font-medium hover:text-amber-300"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  handleOpenRegistration();
-                }}
-                className="block w-full text-left text-amber-300 font-bold hover:underline"
-              >
-                ✨ Register Squad Online
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById('about');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-slate-200 font-medium hover:text-amber-300"
-              >
-                About
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById('leadership');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-slate-200 font-medium hover:text-amber-300"
-              >
-                Leadership Desk
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById('tracks');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-slate-200 font-medium hover:text-amber-300"
-              >
-                Problem Statements
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById('schedule');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-slate-200 font-medium hover:text-amber-300"
-              >
-                Event Flow & Milestones
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById('prizes');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-slate-200 font-medium hover:text-amber-300"
-              >
-                Prizes (₹35K Pool)
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById('guidelines');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-slate-200 font-medium hover:text-amber-300"
-              >
-                Guidelines
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById('gallery');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-amber-300 font-bold"
-              >
-                Hackathon Moments
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById('committee');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left text-slate-200 font-medium hover:text-amber-300"
-              >
-                Committee & Contacts
-              </button>
-            </div>
-          )}
+          </div>
         </div>
-      </header>
+      )}
 
       {/* =========================================================================
-          3. HERO SECTION (BPUT HACKATHON STYLE CENTRAL CREST, NO ARTIFICIAL BOXES)
+          HERO SECTION (HIGH-OCTANE DEVELOPER ARCHITECTURE WITH EXECUTIVE FINISH)
           ========================================================================= */}
       <section
         id="home"
-        className="w-full relative min-h-[660px] text-white py-16 sm:py-24 px-4 overflow-hidden border-b-4 border-amber-400 flex items-center justify-center"
+        className="w-full relative min-h-[600px] text-white -mt-16 pt-24 pb-16 sm:pb-24 px-4 overflow-hidden border-b border-white/[0.08] flex items-center justify-center bg-slate-950"
       >
         {/* Cinematic Live Campus Backdrop with subtle ambient Ken-Burns zoom */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -1799,14 +2241,17 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             src="/campus-bg.jpg"
             alt="NIIS Campus"
             style={{ objectPosition: 'center 40%' }}
-            className="w-full h-full object-cover animate-ken-burns scale-105 filter brightness-95 contrast-105"
+            className="w-full h-full object-cover animate-ken-burns scale-105 filter brightness-90 contrast-105"
             onError={(e) => {
               e.currentTarget.onerror = null;
               e.currentTarget.src = "/campus-bg.jpeg";
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#030914]/65 via-[#07172f]/50 to-[#030914]/85 backdrop-blur-[0.5px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/60 to-slate-950/90 backdrop-blur-[1px]" />
         </div>
+
+        {/* Sleek ambient radial glow behind crisp typography */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[900px] h-[400px] sm:h-[500px] bg-gradient-to-r from-blue-600/25 via-indigo-600/20 to-blue-400/15 rounded-full blur-[130px] pointer-events-none" />
 
         {/* Interactive Particle Network */}
         <HeroInteractiveNetwork />
@@ -1814,12 +2259,12 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
         {/* Foreground Content */}
         <div className="max-w-5xl mx-auto text-center space-y-6 relative z-10 w-full">
           
-          {/* Centered Generous Hackathon Event Logo (BPUT Hackathon Flagship Style) */}
+          {/* Centered Generous Hackathon Event Logo */}
           <div className="flex flex-col items-center justify-center mb-2">
             <img
               src="/hackathon-logo.png"
               alt="NIIS HACKATHON 2026 Official Emblem"
-              className="h-24 sm:h-28 md:h-36 w-auto object-contain filter drop-shadow-[0_0_25px_rgba(245,158,11,0.35)] transition-transform duration-300 hover:scale-105"
+              className="h-24 sm:h-28 md:h-36 w-auto object-contain filter drop-shadow-[0_0_30px_rgba(59,130,246,0.35)] transition-transform duration-300 hover:scale-105"
               onError={(e) => {
                 if (e.currentTarget.src.endsWith('.png')) {
                   e.currentTarget.src = "/hackathon-logo.jpeg";
@@ -1829,27 +2274,35 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
           </div>
 
           <div>
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase font-sans drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase font-heading drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
               {content.eventName}
             </h2>
-            <p className="mt-2 text-lg sm:text-2xl font-bold uppercase tracking-widest text-blue-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+            <p className="mt-2 text-lg sm:text-2xl font-bold uppercase tracking-widest text-blue-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] font-heading">
               {content.tagline}
             </p>
-            <p className="italic text-slate-200 font-serif text-sm sm:text-base mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+            <p className="italic text-slate-300 font-sans text-sm sm:text-base mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
               “{content.subTagline}”
             </p>
           </div>
 
-          {/* Accurate Quick Stats */}
-          <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-slate-200">
-            <span className="bg-[#05142b]/80 border border-blue-500/40 px-4 py-2 rounded-xl flex items-center gap-2 shadow-lg backdrop-blur-md">
-              <Calendar className="w-4 h-4 text-amber-400" /> {content.eventDates}
+          {/* Hero Meta Information Pills (Unified Single-Row Side-by-Side Alignment) */}
+          <div className="flex flex-wrap items-center justify-center gap-2 max-w-6xl mx-auto my-5 px-2">
+            {/* Pill 1: Dates */}
+            <span className="bg-white/[0.05] border border-white/10 text-slate-200 backdrop-blur-md text-xs py-1.5 px-3.5 rounded-full inline-flex items-center gap-2 font-medium whitespace-nowrap flex-shrink-0">
+              <Calendar className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+              <span>{content.eventDates || "30th September - 01st October 2026"}</span>
             </span>
-            <span className="bg-[#05142b]/80 border border-blue-500/40 px-4 py-2 rounded-xl flex items-center gap-2 shadow-lg backdrop-blur-md">
-              <MapPin className="w-4 h-4 text-amber-400" /> {content.venue}
+
+            {/* Pill 2: Venue */}
+            <span className="bg-white/[0.05] border border-white/10 text-slate-200 backdrop-blur-md text-xs py-1.5 px-3.5 rounded-full inline-flex items-center gap-2 font-medium whitespace-nowrap flex-shrink-0">
+              <MapPin className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+              <span>{content.venue ? content.venue.replace('Sarada Vihar, ', '') : "C-Block Auditorium & Innovation Labs, Bhubaneswar"}</span>
             </span>
-            <span className="bg-[#05142b]/80 border border-blue-500/40 px-4 py-2 rounded-xl flex items-center gap-2 shadow-lg backdrop-blur-md">
-              <Trophy className="w-4 h-4 text-amber-400" /> ₹35,000 Cash Prize Pool
+
+            {/* Pill 3: Prize Pool (Locked Side-by-Side in Matching Clean Frosted Style) */}
+            <span className="bg-white/[0.05] border border-white/10 text-slate-200 backdrop-blur-md text-xs py-1.5 px-3.5 rounded-full inline-flex items-center gap-2 font-medium whitespace-nowrap flex-shrink-0">
+              <Trophy className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+              <span>₹35,000 Cash Prize Pool</span>
             </span>
           </div>
 
@@ -1858,14 +2311,14 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-[11px] font-mono tracking-widest text-slate-300 uppercase block mb-2 font-semibold">
               HACKATHON COMMENCES IN
             </span>
-            <div className="inline-grid grid-cols-4 gap-2.5 bg-[#05142b]/85 border border-blue-500/30 p-3 rounded-2xl font-mono shadow-2xl backdrop-blur-md">
+            <div className="inline-grid grid-cols-4 gap-2.5 bg-slate-900/85 border border-white/[0.08] p-3 rounded-2xl font-mono shadow-2xl backdrop-blur-md">
               {[
                 { label: 'DAYS', val: timeLeft.days },
                 { label: 'HOURS', val: timeLeft.hours },
                 { label: 'MINUTES', val: timeLeft.minutes },
                 { label: 'SECONDS', val: timeLeft.seconds },
               ].map((t, i) => (
-                <div key={i} className="px-3.5 sm:px-5 py-2.5 bg-[#040e1d]/90 border border-blue-900/60 rounded-xl text-center min-w-[70px] sm:min-w-[95px]">
+                <div key={i} className="px-3.5 sm:px-5 py-2.5 bg-slate-950/90 border border-white/[0.05] rounded-xl text-center min-w-[70px] sm:min-w-[95px]">
                   <span className="text-2xl sm:text-4xl font-black text-white block leading-tight">
                     {String(t.val).padStart(2, '0')}
                   </span>
@@ -1875,24 +2328,38 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             </div>
           </div>
 
-          {/* Action CTAs */}
-          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <button
-              onClick={() => handleOpenRegistration()}
-              className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-[#0f2d59] font-black px-8 py-3.5 rounded-xl text-sm uppercase tracking-wider transition shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-0.5 cursor-pointer ring-2 ring-amber-400/50"
+          {/* Action CTAs: Prominent Dual/Triple CTA */}
+          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3.5 flex-wrap">
+            <a
+              href={googleFormRegUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl text-sm uppercase tracking-wider transition-all duration-200 shadow-xl shadow-blue-600/25 flex items-center justify-center gap-2 transform hover:-translate-y-0.5 cursor-pointer border border-blue-400/30 ring-2 ring-blue-500/20"
             >
               <UserPlus className="w-4 h-4" />
               <span>Register Squad Online</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
 
             <a
               href="#tracks"
-              className="w-full sm:w-auto bg-blue-950/70 hover:bg-blue-900 border border-blue-400/40 text-white px-8 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 backdrop-blur-sm cursor-pointer shadow-lg transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto bg-slate-900/80 hover:bg-slate-800/90 border border-white/[0.12] text-white px-8 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 backdrop-blur-md cursor-pointer shadow-lg transform hover:-translate-y-0.5 hover:border-white/25"
             >
               <FileText className="w-4 h-4 text-amber-300" />
               <span>Explore Problem Statements</span>
             </a>
+
+            {content.showBrochureButton !== false && (
+              <a
+                href={content.rulebookUrl || "/brochure.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-white/10 hover:bg-white/15 border border-white/20 text-white px-6 py-3.5 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 backdrop-blur-md cursor-pointer shadow-md transform hover:-translate-y-0.5"
+              >
+                <BookOpen className="w-4 h-4 text-blue-300" />
+                <span>Download Brochure</span>
+              </a>
+            )}
           </div>
 
         </div>
@@ -1901,50 +2368,30 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       {/* =========================================================================
           2. INTERACTIVE TEASER / SHOWCASE VIDEO SECTION
           ========================================================================= */}
-      <section id="teaser" className="w-full py-16 px-4 sm:px-6 bg-gradient-to-b from-[#0a1c36] via-[#081528] to-slate-900 text-white border-b border-slate-800 relative overflow-hidden">
+      {/* =========================================================================
+          2. OFFICIAL EVENT TEASER & PROMO SECTION (LIGHT-THEMED INSTITUTIONAL UI)
+          ========================================================================= */}
+      <section id="teaser" className="w-full bg-slate-50/70 border-y border-slate-200 py-16 px-4 md:px-8 relative overflow-hidden">
         
-        {/* Subtle Ambient Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
-
         <div className="max-w-5xl mx-auto space-y-8 relative z-10 text-center">
           
           <div className="space-y-2">
-            <span className="text-xs font-bold text-amber-400 uppercase tracking-widest bg-amber-400/10 border border-amber-400/30 px-3.5 py-1 rounded-full inline-flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" /> Official Event Teaser & Promo
+            <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 inline-block">
+              EVENT PREVIEW
             </span>
-            <h3 className="text-3xl sm:text-4xl font-serif font-black text-white tracking-tight">
-              36 Hours of Code, Resilience & Innovation
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-              Get an exclusive preview of the infrastructure, high-stakes mentorship checkpoints, and grand stage at NIIS Campus.
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1e3a8a] mt-3 mb-2 font-['Outfit']">
+              Official Event Teaser & Promo
+            </h2>
+            <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto">
+              Experience the energy, campus innovation, and 24-hour sprint environment organized by Kaushal Tech Club.
             </p>
           </div>
 
-          {/* High-End Mockup Video Frame */}
-          <div className="relative mx-auto rounded-3xl overflow-hidden border border-blue-500/30 bg-[#040e1d]/90 shadow-[0_0_50px_rgba(59,130,246,0.18)] max-w-4xl group">
+          {/* Premium Mockup Video Frame */}
+          <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white p-2">
             
-            {/* Top Mockup Window Header Bar */}
-            <div className="flex items-center justify-between px-4 py-2.5 bg-[#091830] border-b border-slate-800 text-[11px] text-slate-400">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                <span className="font-mono text-slate-300 ml-2 hidden sm:inline truncate max-w-xs">
-                  {getYouTubeEmbedUrl(teaserConfig.videoUrl || content.promoVideoUrl)
-                    ? "YouTube Teaser Stream"
-                    : ((teaserConfig.videoUrl || content.promoVideoUrl || "/promo-video.mp4").split('/').pop() || "NIIS_Hackathon_Teaser_4K.mp4")}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded text-[10px] font-mono">
-                  {getYouTubeEmbedUrl(teaserConfig.videoUrl || content.promoVideoUrl) ? "YOUTUBE STREAM" : "LIVE 1080p"}
-                </span>
-                <span className="text-slate-400 text-[10px] hidden sm:inline">Kaushal Tech Club Production</span>
-              </div>
-            </div>
-
-            {/* Video Player or Fallback Interactive Showcase */}
-            <div className="relative aspect-video w-full bg-black flex items-center justify-center overflow-hidden">
+            {/* Inner Video Player */}
+            <div className="aspect-video w-full rounded-xl overflow-hidden bg-slate-900 relative flex items-center justify-center group">
               {!showInteractiveTeaser ? (
                 getYouTubeEmbedUrl(teaserConfig.videoUrl || content.promoVideoUrl) ? (
                   <div className="relative w-full h-full">
@@ -1958,9 +2405,9 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                     <div className="absolute top-3 right-3 z-10">
                       <button
                         onClick={() => setShowInteractiveTeaser(true)}
-                        className="text-[11px] text-amber-300 hover:text-white bg-[#091830]/90 border border-blue-500/40 px-3 py-1.5 rounded-lg shadow-lg backdrop-blur-sm cursor-pointer transition font-medium"
+                        className="text-[11px] text-amber-300 hover:text-white bg-slate-900/80 border border-slate-700 px-3 py-1.5 rounded-lg shadow backdrop-blur-sm cursor-pointer transition font-medium"
                       >
-                        Interactive Showcase Mode →
+                        Interactive Overview →
                       </button>
                     </div>
                   </div>
@@ -1984,43 +2431,43 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                     {/* Play Overlay Button */}
                     <div
                       onClick={handleToggleVideoPlay}
-                      className={`absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer transition-opacity ${
+                      className={`absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer transition-opacity ${
                         isVideoPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'
                       }`}
                     >
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-amber-400/90 text-[#0f2d59] flex items-center justify-center shadow-2xl transform hover:scale-110 transition border-4 border-white/20">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-600/90 hover:bg-blue-600 text-white flex items-center justify-center shadow-2xl transform hover:scale-110 transition border-4 border-white/40">
                         {isVideoPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
                       </div>
                     </div>
 
                     {/* Bottom Video Controls HUD */}
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 sm:p-4 flex items-center justify-between text-xs">
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 sm:p-4 flex items-center justify-between text-xs text-white">
                       <div className="flex items-center gap-3">
                         <button
                           onClick={handleToggleVideoPlay}
-                          className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition cursor-pointer"
+                          className="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white transition cursor-pointer"
                           title={isVideoPlaying ? "Pause" : "Play"}
                         >
                           {isVideoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                         </button>
                         <button
                           onClick={handleToggleVideoMute}
-                          className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition cursor-pointer"
+                          className="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white transition cursor-pointer"
                           title={isVideoMuted ? "Unmute" : "Mute"}
                         >
                           {isVideoMuted ? <VolumeX className="w-4 h-4 text-amber-300" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
                         </button>
-                        <span className="font-mono text-slate-300 text-[11px] hidden sm:inline">
-                          36-Hour Offline Experience • Sarada Vihar, Bhubaneswar
+                        <span className="font-mono text-slate-200 text-[11px] hidden sm:inline">
+                          24-Hour Sprint • Sarada Vihar Campus, Bhubaneswar
                         </span>
                       </div>
 
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => setShowInteractiveTeaser(true)}
-                          className="text-[11px] text-amber-300 hover:underline cursor-pointer bg-white/10 px-2.5 py-1 rounded"
+                          className="text-[11px] text-amber-300 hover:text-white hover:underline cursor-pointer bg-black/40 px-2.5 py-1 rounded border border-white/10"
                         >
-                          Switch to Interactive Mode
+                          Interactive Overview
                         </button>
                       </div>
                     </div>
@@ -2033,18 +2480,18 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                     <div className="inline-flex items-center gap-2 bg-blue-900/60 border border-blue-400/30 px-3 py-1 rounded-full text-xs text-amber-300 font-mono">
                       <Terminal className="w-3.5 h-3.5" /> Interactive Hackathon Engine Active
                     </div>
-                    <h4 className="text-xl sm:text-3xl font-black text-white font-serif">
+                    <h4 className="text-xl sm:text-3xl font-black text-white font-sans">
                       Transforming Theoretical Code into Deployed Prototypes
                     </h4>
                     <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-                      36 hours non-stop sprint with high-speed campus Wi-Fi, 3-tier jury evaluation, dedicated mentor checkpoints, and state-of-the-art incubation backing by NIIS E-Cell.
+                      24 hours non-stop sprint with high-speed campus Wi-Fi, 3-tier jury evaluation, dedicated mentor checkpoints, and state-of-the-art incubation backing by NIIS E-Cell.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-blue-900/50">
                     <div className="bg-[#051124]/80 p-3 rounded-xl border border-blue-800/40">
                       <span className="text-[10px] text-slate-400 uppercase font-mono block">Sprint Format</span>
-                      <span className="font-bold text-white text-xs sm:text-sm">36h Offline</span>
+                      <span className="font-bold text-white text-xs sm:text-sm">24h Intra-College</span>
                     </div>
                     <div className="bg-[#051124]/80 p-3 rounded-xl border border-blue-800/40">
                       <span className="text-[10px] text-slate-400 uppercase font-mono block">Prize Bounty</span>
@@ -2052,11 +2499,11 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                     </div>
                     <div className="bg-[#051124]/80 p-3 rounded-xl border border-blue-800/40">
                       <span className="text-[10px] text-slate-400 uppercase font-mono block">Accommodation</span>
-                      <span className="font-bold text-emerald-400 text-xs sm:text-sm">100% Free</span>
+                      <span className="font-bold text-emerald-400 text-xs sm:text-sm">Campus Labs</span>
                     </div>
                     <div className="bg-[#051124]/80 p-3 rounded-xl border border-blue-800/40">
                       <span className="text-[10px] text-slate-400 uppercase font-mono block">Eligibility</span>
-                      <span className="font-bold text-blue-300 text-xs sm:text-sm">UG & PG Students</span>
+                      <span className="font-bold text-blue-300 text-xs sm:text-sm">NIIS Students Only</span>
                     </div>
                   </div>
 
@@ -2067,12 +2514,15 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                     >
                       ← Back to Video Player
                     </button>
-                    <button
-                      onClick={() => handleOpenRegistration()}
-                      className="bg-amber-400 hover:bg-amber-300 text-[#0f2d59] font-black px-4 py-2 rounded-lg text-xs uppercase tracking-wider transition shadow cursor-pointer"
+                    <a
+                      href={googleFormRegUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-lg text-xs uppercase tracking-wider transition shadow cursor-pointer flex items-center gap-1.5"
                     >
-                      Register Now
-                    </button>
+                      <span>Register Now</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
               )}
@@ -2080,29 +2530,22 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
 
           </div>
 
-          {/* Quick Stat Pills Container with Accurate ₹35,000 Pool */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-2">
+          {/* Supporting Feature Stats: Clean Light Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             {[
-              { title: "36 Hours Non-Stop", desc: "Day-Night Intensive Sprint", icon: Clock },
-              { title: "500+ Technocrats", desc: "Statewide Collegians", icon: Users },
-              { title: "₹35,000 Bounty", desc: "Cash Awards & Medals", icon: Trophy },
-              { title: "Incubation Track", desc: "NIIS E-Cell Seed Grants", icon: Zap },
-            ].map((stat, i) => {
-              const IconComp = stat.icon;
+              { label: "24-Hour Non-Stop Hackathon", icon: Clock },
+              { label: "12 Curated Problem Statements", icon: FileText },
+              { label: "₹35,000 Prize Pool", icon: Trophy },
+              { label: "Exclusive for NIIS Students", icon: Users },
+            ].map((chip, idx) => {
+              const IconComp = chip.icon;
               return (
                 <div
-                  key={i}
-                  className="bg-[#07172f]/80 border border-blue-500/25 rounded-2xl p-4 text-center backdrop-blur-md hover:border-amber-400/50 transition-all shadow-md group"
+                  key={idx}
+                  className="bg-white border border-slate-200 text-slate-700 shadow-sm text-xs font-medium px-4 py-2 rounded-full inline-flex items-center gap-2 hover:border-blue-400 hover:text-blue-900 transition"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-blue-950 text-amber-400 flex items-center justify-center mx-auto mb-2 border border-blue-800/60 group-hover:scale-110 transition">
-                    <IconComp className="w-5 h-5" />
-                  </div>
-                  <h4 className="font-bold text-white text-sm sm:text-base leading-tight">
-                    {stat.title}
-                  </h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5">
-                    {stat.desc}
-                  </p>
+                  <IconComp className="w-3.5 h-3.5 text-blue-700 flex-shrink-0" />
+                  <span>{chip.label}</span>
                 </div>
               );
             })}
@@ -2112,60 +2555,63 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       </section>
 
       {/* =========================================================================
-          4. ABOUT SECTION
+          4. ABOUT SECTION (REFINED INSTITUTIONAL 2-COLUMN LAYOUT)
           ========================================================================= */}
-      <section id="about" className="w-full py-20 px-4 sm:px-6 bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto space-y-10 text-center">
+      <section id="about" className="w-full py-16 px-4 md:px-8 bg-white text-slate-900 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          <div className="space-y-3">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-              About The Event
+          {/* Left Column (Hackathon Logo) - lg:col-span-4 flex justify-center items-center */}
+          <div className="lg:col-span-4 flex justify-center items-center">
+            <img
+              src="/hackathon-logo.png"
+              alt="NIIS Hackathon 2026"
+              className="w-56 h-56 md:w-64 md:h-64 object-contain mx-auto"
+              onError={(e) => {
+                if (e.currentTarget.src.endsWith('.png')) {
+                  e.currentTarget.src = "/hackathon-logo.jpeg";
+                }
+              }}
+            />
+          </div>
+
+          {/* Right Column (Rich Detailed Copy) - lg:col-span-8 flex flex-col items-start text-left */}
+          <div className="lg:col-span-8 flex flex-col items-start text-left">
+            <span className="px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-blue-50 text-blue-700 border border-blue-200">
+              ABOUT THE EVENT
             </span>
-            <h3 className="text-3xl sm:text-4xl font-serif font-black text-[#0f2d59] tracking-tight">
-              {content.about?.heading || "Fostering Technology & Innovation at NIIS"}
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
-              {content.about?.subHeading || "A 36-hour sprint connecting young technocrats with mentors, incubation resources, and industrial challenges."}
-            </p>
-          </div>
 
-          <div className="max-w-3xl mx-auto space-y-4 text-slate-600 text-xs sm:text-sm leading-relaxed text-center">
-            <p>
-              {content.about?.para1}
-            </p>
-            <p>
-              {content.about?.para2}
-            </p>
-          </div>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1e3a8a] tracking-tight mt-3 mb-2 font-['Outfit']">
+              Fostering Technology & Innovation at NIIS
+            </h2>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs font-semibold text-[#0f2d59]">
-            <div className="flex items-center gap-2 bg-blue-50 border border-blue-200 px-4 py-2 rounded-xl shadow-xs">
-              <Coffee className="w-4 h-4 text-amber-600" />
-              <span>36h Free Meals & Lodging</span>
-            </div>
-            <div className="flex items-center gap-2 bg-blue-50 border border-blue-200 px-4 py-2 rounded-xl shadow-xs">
-              <Wifi className="w-4 h-4 text-blue-600" />
-              <span>High-Speed Lab Connectivity</span>
-            </div>
-            <div className="flex items-center gap-2 bg-blue-50 border border-blue-200 px-4 py-2 rounded-xl shadow-xs">
-              <Flame className="w-4 h-4 text-rose-600" />
-              <span>Zero Registration Fee</span>
-            </div>
-          </div>
+            <p className="text-sm md:text-base text-slate-500 font-medium mb-4">
+              An intensive 24-hour campus sprint connecting young technocrats with faculty mentors and real-world challenges.
+            </p>
 
-          {/* 3 Pillars Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-4 text-left">
-            {(content.about?.pillars || []).map((pillar, i) => (
-              <div key={i} className="p-5 rounded-2xl border border-slate-200 bg-slate-50/70 hover:border-blue-300 hover:shadow-xs transition space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-[#0f2d59] text-amber-300 font-bold font-mono text-xs flex items-center justify-center">
-                  {pillar.num || `0${i+1}`}
-                </div>
-                <h4 className="text-sm font-bold text-[#0f2d59]">{pillar.title}</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  {pillar.desc}
-                </p>
-              </div>
-            ))}
+            <div className="space-y-4 text-sm md:text-base text-slate-600 leading-relaxed font-normal">
+              <p>
+                <strong className="font-semibold text-slate-900">NIIS HACKATHON 2026</strong> is the flagship intra-college technical championship organized by <strong className="font-semibold text-slate-900">Kaushal Tech Club</strong> at <strong className="font-semibold text-slate-900">NIIS INSTITUTE OF BUSINESS ADMINISTRATION, Bhubaneswar</strong>. Designed to provide a competitive platform for students across <strong className="font-semibold text-slate-900">MCA, BCA, and Management streams</strong>, it challenges participants to transform ideas into viable, functional prototypes within 24 hours.
+              </p>
+              <p>
+                Grounded in academic standards affiliated to <strong className="font-semibold text-slate-900">BPUT, Odisha</strong> and accredited by <strong className="font-semibold text-slate-900">NAAC</strong>, the event features <strong className="font-semibold text-slate-900">12 curated problem statements</strong> focusing on real campus and industry use cases. Top-performing squads compete for a <strong className="font-semibold text-slate-900">₹35,000 cash prize pool</strong>, trophies, and institutional certificates of excellence.
+              </p>
+            </div>
+
+            {/* Bottom Feature Pills */}
+            <div className="flex flex-wrap gap-2.5 mt-6">
+              <span className="bg-amber-50/80 text-amber-800 border border-amber-200/80 text-xs px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 font-medium">
+                <span>☕</span>
+                <span>24h Free Meals & Refreshments</span>
+              </span>
+              <span className="bg-blue-50/80 text-blue-800 border border-blue-200/80 text-xs px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 font-medium">
+                <span>📶</span>
+                <span>High-Speed Lab Connectivity</span>
+              </span>
+              <span className="bg-rose-50/80 text-rose-800 border border-rose-200/80 text-xs px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 font-medium">
+                <span>🔥</span>
+                <span>Zero Registration Fee</span>
+              </span>
+            </div>
           </div>
 
         </div>
@@ -2181,7 +2627,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
               Leadership Desk
             </span>
-            <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#0f2d59]">
+            <h3 className="text-2xl sm:text-3xl font-sans font-black text-[#0f2d59]">
               Messages from Institutional Leadership
             </h3>
             <p className="text-xs text-slate-500 max-w-md mx-auto">
@@ -2232,7 +2678,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                       </p>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-700 italic font-serif leading-relaxed pt-1">
+                    <p className="text-xs sm:text-sm text-slate-700 italic font-sans leading-relaxed pt-1">
                       “{currentLeader.quote}”
                     </p>
 
@@ -2312,7 +2758,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded">
               4 Flagship Categories • 12 Innovation Challenges
             </span>
-            <h3 className="text-3xl font-serif font-black text-[#0f2d59]">
+            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
               Explore 12 Official Problem Statements
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -2409,6 +2855,16 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                     {ps.shortDesc}
                   </p>
 
+                  {ps.tags && ps.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mt-2.5">
+                      {ps.tags.map((t, idx) => (
+                        <span key={idx} className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
                   <button
                     onClick={() => setModalTrack(ps)}
                     className="text-[11px] font-semibold text-blue-900 hover:underline pt-2 inline-block cursor-pointer"
@@ -2417,24 +2873,27 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                   </button>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 mt-4 space-y-3">
+                <div className="pt-4 border-t border-slate-100 mt-4 space-y-2">
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => handleDownloadProblemBrief(ps, content.collegeName)}
-                      className="flex-1 text-center bg-blue-50 hover:bg-blue-100 text-[#0f2d59] font-bold py-2 rounded-xl text-xs transition cursor-pointer flex items-center justify-center gap-1.5 border border-blue-200 shadow-xs"
+                      className="flex-1 text-center bg-blue-50 hover:bg-blue-100 text-[#0f2d59] font-bold py-1.5 px-3 rounded-lg text-xs transition cursor-pointer flex items-center justify-center gap-1.5 border border-blue-200 shadow-xs"
                       title="Download Detailed PDF Problem Brief"
                     >
                       <Download className="w-3.5 h-3.5 text-blue-900" />
-                      <span>Download Brief (PDF)</span>
+                      <span>Download Brief</span>
                     </button>
                     
-                    <button
-                      onClick={() => handleOpenRegistration(ps.id)}
-                      className="flex-1 text-center bg-[#0f2d59] hover:bg-blue-950 text-white font-bold py-2 rounded-xl text-xs transition cursor-pointer flex items-center justify-center gap-1 shadow-sm"
+                    <a
+                      href={googleFormPsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-sm flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
+                      title="Choose this Problem Statement"
                     >
-                      <span>Apply Track</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-amber-300" />
-                    </button>
+                      <span>Choose PS</span>
+                      <ExternalLink className="w-3 h-3 text-blue-100" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -2445,7 +2904,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       </section>
 
       {/* =========================================================================
-          7. DYNAMIC EVENT FLOW & 36H TIMELINE
+          7. DYNAMIC EVENT FLOW & 24H TIMELINE
           ========================================================================= */}
       <section id="schedule" className="w-full py-16 px-4 sm:px-6 bg-slate-50 border-b border-slate-200">
         <div className="max-w-6xl mx-auto space-y-12">
@@ -2454,11 +2913,11 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
               Timeline & Phases
             </span>
-            <h3 className="text-3xl font-serif font-black text-[#0f2d59]">
+            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
               Milestones & Event Flow
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
-              Follow key deadlines from online abstract submissions to the 36-hour offline grand finale.
+              Follow key deadlines from online abstract submissions to the 24-hour offline grand finale.
             </p>
           </div>
 
@@ -2489,19 +2948,24 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                 </div>
                 <div className="divide-y divide-slate-100 text-xs">
                   {content.datesSchedule.map((item, idx) => (
-                    <div key={idx} className="px-5 py-3.5 flex items-center justify-between hover:bg-slate-50 transition">
-                      <div className="flex items-center gap-3">
-                        <span className={`w-2.5 h-2.5 rounded-full ${
+                    <div key={item.id || idx} className="px-5 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-slate-50 transition">
+                      <div className="flex items-start gap-3">
+                        <span className={`w-2.5 h-2.5 rounded-full mt-1 flex-shrink-0 ${
                           item.status === 'Completed' ? 'bg-slate-400' :
-                          item.status === 'Active' ? 'bg-emerald-600 animate-pulse' : 'bg-blue-600'
+                          (item.status === 'Active' || item.status === 'In Progress') ? 'bg-emerald-600 animate-pulse' : 'bg-blue-600'
                         }`} />
-                        <span className="font-semibold text-slate-800">{item.label}</span>
+                        <div>
+                          <span className="font-semibold text-slate-800 block text-xs sm:text-sm">{item.label}</span>
+                          {item.desc && (
+                            <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{item.desc}</p>
+                          )}
+                        </div>
                       </div>
-                      <div className="text-right">
+                      <div className="sm:text-right flex-shrink-0 pl-5.5 sm:pl-0">
                         <span className="font-bold text-[#0f2d59] block">{item.date}</span>
-                        <span className={`text-[10px] uppercase font-bold ${
-                          item.status === 'Completed' ? 'text-slate-400' :
-                          item.status === 'Active' ? 'text-emerald-700' : 'text-blue-600'
+                        <span className={`text-[10px] uppercase font-bold inline-block px-2 py-0.5 rounded ${
+                          item.status === 'Completed' ? 'bg-slate-100 text-slate-500' :
+                          (item.status === 'Active' || item.status === 'In Progress') ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-700'
                         }`}>
                           {item.status}
                         </span>
@@ -2513,23 +2977,49 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             </div>
           </div>
 
-          {/* Hour-by-Hour 36h Roadmap */}
+          {/* Hour-by-Hour 24h Roadmap */}
           <div id="roadmap" className="space-y-6 pt-6">
             <div className="text-center space-y-1">
               <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
                 Grand Finale Schedule
               </span>
-              <h4 className="text-2xl font-serif font-black text-[#0f2d59]">
-                Hour-by-Hour 36h Sprint Schedule
+              <h4 className="text-2xl font-sans font-black text-[#0f2d59]">
+                Hour-by-Hour 24h Sprint Schedule
               </h4>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {content.hackathonRoadmap.map((r, i) => (
-                <div key={i} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm space-y-1 hover:border-blue-900 transition">
-                  <span className="text-[11px] font-mono font-bold text-amber-700 block">{r.time}</span>
-                  <h5 className="font-bold text-[#0f2d59] text-xs sm:text-sm">{r.title}</h5>
-                  <p className="text-xs text-slate-600 leading-relaxed">{r.desc}</p>
+                <div key={r.id || i} className="relative group">
+                  <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm space-y-2 hover:border-blue-900 transition flex flex-col justify-between h-full">
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between gap-1 flex-wrap">
+                        <span className="text-[11px] font-mono font-bold text-amber-700 bg-amber-50 border border-amber-200/60 px-2 py-0.5 rounded">
+                          {r.time}
+                        </span>
+                        {r.venue && (
+                          <span className="text-[10px] font-medium text-slate-500 flex items-center gap-1">
+                            <MapPin className="w-3 h-3 text-blue-700" />
+                            <span>{r.venue}</span>
+                          </span>
+                        )}
+                      </div>
+                      <h5 className="font-bold text-[#0f2d59] text-xs sm:text-sm">{r.title}</h5>
+                      {r.actionItem && (
+                        <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-800 border border-blue-200">
+                          ⚡ {r.actionItem}
+                        </span>
+                      )}
+                      <p className="text-xs text-slate-600 leading-relaxed">{r.desc}</p>
+                    </div>
+                  </div>
+
+                  {/* Minimal subtle inline arrow between horizontally adjacent cards in row */}
+                  {i < content.hackathonRoadmap.length - 1 && (i + 1) % 3 !== 0 && (
+                    <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-6 h-6 rounded-full bg-white border border-blue-200 shadow-sm items-center justify-center pointer-events-none text-blue-500">
+                      <ArrowRight className="w-3.5 h-3.5 stroke-[2]" />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -2548,7 +3038,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded">
               Verified Rewards & Bounty Structure
             </span>
-            <h3 className="text-3xl font-serif font-black text-[#0f2d59]">
+            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
               Prizes, Trophies & Seed Support
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -2573,7 +3063,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
                     {pz.place}
                   </span>
-                  <div className="text-3xl sm:text-4xl font-serif font-black text-[#0f2d59] mb-3">
+                  <div className="text-3xl sm:text-4xl font-sans font-black text-[#0f2d59] mb-3">
                     {pz.amount}
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -2590,7 +3080,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
           </div>
 
           <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-center text-xs text-slate-600 max-w-2xl mx-auto">
-            All registered participants receive a verified <strong>Certificate of Participation</strong> endorsed by <strong>NIIS Institute of Business Administration</strong>, along with hackathon kits, meals, and 36h stay on campus.
+            All registered participants receive a verified <strong>Certificate of Participation</strong> endorsed by <strong>NIIS Institute of Business Administration</strong>, along with hackathon kits, meals, and 24h campus sprint access.
           </div>
 
         </div>
@@ -2606,7 +3096,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
               Standard Protocols
             </span>
-            <h3 className="text-3xl font-serif font-black text-[#0f2d59]">
+            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
               Hackathon Guidelines & Requirements
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -2614,63 +3104,88 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             </p>
           </div>
 
-          <div className="space-y-4 text-xs sm:text-sm text-slate-700">
-            <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-              <h4 className="font-bold text-[#0f2d59] text-sm flex items-center gap-2 mb-1.5">
-                <ShieldCheck className="w-4 h-4 text-blue-900" />
-                {content.guidelines?.rule1Title || "1. Squad Eligibility & Composition"}
-              </h4>
-              <ul className="list-disc pl-5 space-y-1 text-slate-600 text-xs">
-                {(content.guidelines?.rule1Points || []).map((pt, i) => (
-                  <li key={i}>{pt}</li>
-                ))}
-              </ul>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700">
+            {(content.rulesList && content.rulesList.length > 0 ? content.rulesList : [
+              {
+                id: "r-1",
+                category: "Team Rules",
+                title: content.guidelines?.rule1Title || "1. Squad Eligibility & Composition",
+                points: content.guidelines?.rule1Points || []
+              },
+              {
+                id: "r-2",
+                category: "Submission Deliverables",
+                title: content.guidelines?.rule2Title || "2. Institutional Identity & Bona Fide Verification",
+                points: content.guidelines?.rule2Desc ? [content.guidelines.rule2Desc] : []
+              },
+              {
+                id: "r-3",
+                category: "Hardware/Software Rules",
+                title: content.guidelines?.rule3Title || "3. Hardware, Repository & Code Ethics",
+                points: content.guidelines?.rule3Points || []
+              }
+            ]).map((rule, idx) => {
+              const categoryIcons = {
+                "Team Rules": Users,
+                "Hardware/Software Rules": Laptop,
+                "Submission Deliverables": FileText,
+                "Code of Conduct": ShieldCheck
+              };
+              const IconComp = categoryIcons[rule.category] || ShieldCheck;
+              const pointsArr = Array.isArray(rule.points)
+                ? rule.points
+                : (typeof rule.points === 'string' ? rule.points.split('\n').filter(Boolean) : []);
 
-            <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-              <h4 className="font-bold text-[#0f2d59] text-sm flex items-center gap-2 mb-1.5">
-                <FileText className="w-4 h-4 text-blue-900" />
-                {content.guidelines?.rule2Title || "2. Institutional Authorization (Bonafide NOC)"}
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {content.guidelines?.rule2Desc}
-              </p>
-            </div>
-
-            <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-              <h4 className="font-bold text-[#0f2d59] text-sm flex items-center gap-2 mb-1.5">
-                <Laptop className="w-4 h-4 text-blue-900" />
-                {content.guidelines?.rule3Title || "3. Hardware, Repository & Code Ethics"}
-              </h4>
-              <ul className="list-disc pl-5 space-y-1 text-slate-600 text-xs">
-                {(content.guidelines?.rule3Points || []).map((pt, i) => (
-                  <li key={i}>{pt}</li>
-                ))}
-              </ul>
-            </div>
+              return (
+                <div key={rule.id || idx} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:border-blue-900 transition flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-900 px-2 py-0.5 rounded border border-blue-200">
+                        {rule.category || "General Rule"}
+                      </span>
+                      <IconComp className="w-4 h-4 text-blue-900" />
+                    </div>
+                    <h4 className="font-bold text-[#0f2d59] text-sm mb-2">
+                      {rule.title}
+                    </h4>
+                    {pointsArr.length > 0 ? (
+                      <ul className="list-disc pl-5 space-y-1.5 text-slate-600 text-xs">
+                        {pointsArr.map((pt, i) => (
+                          <li key={i} className="leading-relaxed">{pt}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-xs text-slate-600 leading-relaxed">{rule.desc || ""}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Download Rulebook Box */}
-          <div className="p-5 bg-blue-50 border border-blue-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3 text-center sm:text-left">
-              <BookOpen className="w-8 h-8 text-[#0f2d59] flex-shrink-0 mx-auto sm:mx-0" />
-              <div>
-                <h5 className="font-bold text-[#0f2d59] text-sm">Download Official Event Rulebook</h5>
-                <p className="text-xs text-slate-600">Full scoring rubrics, schedule breakdown, and campus conduct guidelines (PDF)</p>
+          {/* Download Rulebook Box (respects showBrochureButton toggle) */}
+          {content.showBrochureButton !== false && (
+            <div className="p-5 bg-blue-50 border border-blue-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3 text-center sm:text-left">
+                <BookOpen className="w-8 h-8 text-[#0f2d59] flex-shrink-0 mx-auto sm:mx-0" />
+                <div>
+                  <h5 className="font-bold text-[#0f2d59] text-sm">Download Official Event Rulebook</h5>
+                  <p className="text-xs text-slate-600">Full scoring rubrics, schedule breakdown, and campus conduct guidelines (PDF)</p>
+                </div>
               </div>
-            </div>
 
-            <a
-              href={content.rulebookUrl || "/brochure.pdf"}
-              download="NIIS_Hackathon_2026_Rulebook.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#0f2d59] hover:bg-blue-950 text-white font-bold px-5 py-2.5 rounded-lg text-xs flex items-center gap-2 flex-shrink-0 transition shadow"
-            >
-              <Download className="w-4 h-4 text-amber-400" />
-              <span>Download Official Event Rulebook</span>
-            </a>
-          </div>
+              <a
+                href={content.rulebookUrl || "/brochure.pdf"}
+                download="NIIS_Hackathon_2026_Rulebook.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#0f2d59] hover:bg-blue-950 text-white font-bold px-5 py-2.5 rounded-lg text-xs flex items-center gap-2 flex-shrink-0 transition shadow"
+              >
+                <Download className="w-4 h-4 text-amber-400" />
+                <span>Download Official Event Rulebook</span>
+              </a>
+            </div>
+          )}
 
         </div>
       </section>
@@ -2686,7 +3201,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
               Visual Archives
             </span>
-            <h3 className="text-3xl font-serif font-black text-[#0f2d59]">
+            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
               Campus Moments & Hackathon Chronicles
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -2819,7 +3334,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
               Organizing Core
             </span>
-            <h3 className="text-3xl font-serif font-black text-[#0f2d59]">
+            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
               Tech Club Faculty & Organizing Committee
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -2992,7 +3507,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
               Got Questions?
             </span>
-            <h3 className="text-3xl font-serif font-black text-[#0f2d59]">
+            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
               Frequently Asked Questions
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
@@ -3155,6 +3670,15 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
               <h3 className="font-bold text-slate-900 text-base sm:text-lg pt-1">
                 {modalTrack.title}
               </h3>
+              {modalTrack.tags && modalTrack.tags.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {modalTrack.tags.map((t, idx) => (
+                    <span key={idx} className="text-[10px] bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-0.5 rounded-full font-semibold">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="space-y-3 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-b border-slate-100 py-3">
@@ -3190,25 +3714,23 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                 <span>Download Problem Brief (PDF)</span>
               </button>
 
-              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                <button
-                  onClick={() => setModalTrack(null)}
-                  className="px-4 py-2 border border-slate-300 rounded-lg font-semibold hover:bg-slate-50 cursor-pointer"
-                >
-                  Close
-                </button>
-                <button
-                  onClick={() => {
-                    const tId = modalTrack.id;
-                    setModalTrack(null);
-                    handleOpenRegistration(tId);
-                  }}
-                  className="px-4 py-2 bg-[#0f2d59] hover:bg-blue-950 text-white font-bold rounded-lg shadow cursor-pointer flex items-center gap-1.5"
-                >
-                  <UserPlus className="w-4 h-4" />
-                  <span>Register Squad</span>
-                </button>
-              </div>
+                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                  <button
+                    onClick={() => setModalTrack(null)}
+                    className="px-4 py-2 border border-slate-300 rounded-lg font-semibold hover:bg-slate-50 cursor-pointer text-xs"
+                  >
+                    Close
+                  </button>
+                  <a
+                    href={googleFormPsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <span>Choose PS</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-blue-100" />
+                  </a>
+                </div>
             </div>
           </div>
         </div>
@@ -3228,7 +3750,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                   <UserPlus className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#0f2d59] font-serif leading-tight">
+                  <h3 className="text-base sm:text-lg font-bold text-[#0f2d59] font-sans leading-tight">
                     Squad Registration Desk • NIIS Hackathon 2026
                   </h3>
                   <p className="text-[11px] text-slate-500">
@@ -3550,7 +4072,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
                 Registration Confirmed
               </span>
-              <h3 className="text-xl font-bold text-[#0f2d59] font-serif mt-2">
+              <h3 className="text-xl font-bold text-[#0f2d59] font-sans mt-2">
                 Welcome to NIIS Hackathon 2026!
               </h3>
               <p className="text-xs text-slate-500 mt-1">
@@ -3675,7 +4197,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             {/* Header */}
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div>
-                <h3 className="font-bold text-[#0f2d59] text-base sm:text-lg flex items-center gap-2 font-serif">
+                <h3 className="font-bold text-[#0f2d59] text-base sm:text-lg flex items-center gap-2 font-sans">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                   NIIS Hackathon Master Live CMS Portal
                 </h3>
@@ -3694,14 +4216,17 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             {/* Tab Navigation Jumpers */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 border-b border-slate-100 text-xs font-semibold">
               {[
-                { id: 'general', label: '🔗 General & Dates' },
+                { id: 'flow', label: '🔀 1. Event Flow & Milestones' },
+                { id: 'schedule', label: '⏱️ 2. 24h Sprint Schedule' },
+                { id: 'guidelines', label: '📑 3. Guidelines & Rules' },
+                { id: 'brochure', label: '📘 4. Brochure & Assets' },
+                { id: 'telemetry', label: '📊 5. PS Telemetry & Counts' },
                 { id: 'registrations', label: `📋 Registrations (${totalTeamsCount})` },
-                { id: 'teaser', label: '🎬 Teaser Video' },
+                { id: 'general', label: '🔗 General & Dates' },
                 { id: 'about', label: 'ℹ️ About Section' },
-                { id: 'flow', label: '🔀 Event Flow (Phases)' },
-                { id: 'tracks', label: `🎯 Tracks (${adminDraft.problemStatements.length})` },
+                { id: 'tracks', label: `🎯 Tracks (${adminDraft.problemStatements?.length || 0})` },
                 { id: 'prizes', label: '🏆 Prizes (₹35K)' },
-                { id: 'guidelines', label: '📑 Guidelines & Brochure' },
+                { id: 'teaser', label: '🎬 Teaser Video' },
                 { id: 'gallery', label: `🖼️ Gallery Moments (${(adminDraft.gallery || currentGallery).length})` },
                 { id: 'committee', label: `👥 Committee (${adminDraft.committeeMembers?.length || 0})` },
               ].map(tab => (
@@ -3766,6 +4291,96 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                         <FileSpreadsheet className="w-4 h-4" />
                         <span>Export to Excel / CSV</span>
                       </button>
+                    </div>
+                  </div>
+
+                  {/* Google Forms / Sheets Telemetry Sync Controller */}
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-4 space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div>
+                        <h5 className="font-bold text-[#0f2d59] text-xs flex items-center gap-1.5">
+                          <ExternalLink className="w-3.5 h-3.5 text-blue-600" />
+                          Google Forms & Sheets Telemetry Sync Controller
+                        </h5>
+                        <p className="text-[11px] text-slate-600">
+                          External Google Form responses are synced here. Update verified counts from your Google Sheet to reflect instantly across all visitor portals.
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <a
+                          href={adminDraft.googleFormRegistrationUrl || DEFAULT_GOOGLE_FORM_REGISTRATION_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1 text-[11px] bg-white border border-blue-200 text-blue-700 hover:bg-blue-50 rounded-lg font-semibold flex items-center gap-1"
+                        >
+                          View Reg Form <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <a
+                          href={adminDraft.googleFormPsSelectionUrl || DEFAULT_GOOGLE_FORM_PS_SELECTION_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1 text-[11px] bg-white border border-blue-200 text-blue-700 hover:bg-blue-50 rounded-lg font-semibold flex items-center gap-1"
+                        >
+                          View PS Form <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
+                      <div>
+                        <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                          Verified Squads (Google Sheets)
+                        </label>
+                        <input
+                          type="number"
+                          min="0"
+                          value={adminDraft.verifiedTeamsCount !== undefined ? adminDraft.verifiedTeamsCount : 28}
+                          onChange={(e) => setAdminDraft({
+                            ...adminDraft,
+                            verifiedTeamsCount: Math.max(0, parseInt(e.target.value) || 0)
+                          })}
+                          className="w-full px-3 py-1.5 text-xs border border-slate-300 rounded-lg bg-white font-mono font-bold text-[#0f2d59]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                          Verified Participants
+                        </label>
+                        <input
+                          type="number"
+                          min="0"
+                          value={adminDraft.verifiedParticipantsCount !== undefined ? adminDraft.verifiedParticipantsCount : 112}
+                          onChange={(e) => setAdminDraft({
+                            ...adminDraft,
+                            verifiedParticipantsCount: Math.max(0, parseInt(e.target.value) || 0)
+                          })}
+                          className="w-full px-3 py-1.5 text-xs border border-slate-300 rounded-lg bg-white font-mono font-bold text-[#0f2d59]"
+                        />
+                      </div>
+
+                      <div className="sm:col-span-2 flex items-center gap-2 pt-4 flex-wrap">
+                        <button
+                          type="button"
+                          onClick={() => setAdminTab('telemetry')}
+                          className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 cursor-pointer shadow-sm transition"
+                        >
+                          <BarChart3 className="w-3.5 h-3.5 text-amber-300" />
+                          <span>Per-PS Telemetry Manager</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setRegisterStep(1);
+                            setShowRegisterModal(true);
+                          }}
+                          className="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
+                          title="Open internal Firestore registration modal for manual squad entry"
+                        >
+                          <UserPlus className="w-3.5 h-3.5 text-amber-400" />
+                          <span>Internal Firestore Modal (Admin)</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
 
@@ -3885,6 +4500,279 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                       </div>
                     </div>
                   )}
+                </div>
+              )}
+
+              {/* TAB: PS TELEMETRY & REGISTRATIONS COUNT */}
+              {adminTab === 'telemetry' && (
+                <div className="space-y-4">
+                  {/* Header / Intro Card */}
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
+                        </span>
+                        <h4 className="font-bold text-[#0f2d59] text-sm">
+                          PS Telemetry & Registrations Count (12 Challenges)
+                        </h4>
+                      </div>
+                      <p className="text-[11px] text-slate-600 mt-1">
+                        Manually update squad registrations & participant headcounts per Problem Statement. Synced live to Firestore (<code className="bg-slate-200 px-1 py-0.5 rounded text-blue-900 font-mono">telemetry/problem_statements</code>) with local storage cache fallback.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <button
+                        type="button"
+                        onClick={handleSavePsMetrics}
+                        disabled={isSavingPsTelemetry}
+                        className="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg font-bold text-xs flex items-center gap-1.5 shadow-sm transition cursor-pointer disabled:opacity-50"
+                      >
+                        {isSavingPsTelemetry ? (
+                          <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                        ) : psTelemetrySaveSuccess ? (
+                          <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                        ) : (
+                          <Save className="w-3.5 h-3.5" />
+                        )}
+                        <span>{isSavingPsTelemetry ? 'Saving to Cloud...' : psTelemetrySaveSuccess ? 'Saved to Cloud!' : 'Save PS Metrics'}</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Live KPI Metric Cards */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div className="bg-blue-50/70 border border-blue-200/80 p-3 rounded-xl text-center">
+                      <span className="text-[10px] font-bold text-blue-800 uppercase tracking-wider block">
+                        Total Teams Sum
+                      </span>
+                      <div className="text-xl font-black font-mono text-[#0f2d59] mt-0.5">
+                        {psDraftTotals.teams}
+                      </div>
+                      <span className="text-[10px] text-slate-500">Across 12 Challenges</span>
+                    </div>
+
+                    <div className="bg-cyan-50/70 border border-cyan-200/80 p-3 rounded-xl text-center">
+                      <span className="text-[10px] font-bold text-cyan-800 uppercase tracking-wider block">
+                        Total Participants Sum
+                      </span>
+                      <div className="text-xl font-black font-mono text-[#0f2d59] mt-0.5">
+                        {psDraftTotals.participants}
+                      </div>
+                      <span className="text-[10px] text-slate-500">Technocrats / Students</span>
+                    </div>
+
+                    <div className="bg-emerald-50/70 border border-emerald-200/80 p-3 rounded-xl text-center">
+                      <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider block">
+                        Average Squad Size
+                      </span>
+                      <div className="text-xl font-black font-mono text-[#0f2d59] mt-0.5">
+                        {psDraftTotals.teams > 0 ? (psDraftTotals.participants / psDraftTotals.teams).toFixed(1) : '0.0'}
+                      </div>
+                      <span className="text-[10px] text-slate-500">Students / Squad</span>
+                    </div>
+
+                    <div className="bg-slate-50 border border-slate-200 p-3 rounded-xl text-center flex flex-col justify-center">
+                      <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wider block">
+                        Global Recalculation
+                      </span>
+                      <span className="text-xs font-semibold text-emerald-700 mt-1 flex items-center justify-center gap-1">
+                        <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+                        {adminDraft.useManualGlobalOverride ? 'Manual Banner Override' : 'Auto-Recalculate (Active)'}
+                      </span>
+                      <span className="text-[10px] text-slate-400">
+                        {adminDraft.useManualGlobalOverride ? 'Using custom inputs' : 'Total = Sum of 12 PS'}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Quick Action Toolbar */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 bg-white p-3 rounded-xl border border-slate-200">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                        <Sliders className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Quick Actions:</span>
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleQuickMultiplyAll(4)}
+                        className="px-2.5 py-1 text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg border border-blue-200 transition cursor-pointer flex items-center gap-1"
+                        title="Auto-fill all participants as teams × 4"
+                      >
+                        <Sparkles className="w-3 h-3 text-blue-600" />
+                        <span>Quick Multiply (Teams × 4)</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleQuickMultiplyAll(3)}
+                        className="px-2.5 py-1 text-xs font-semibold bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg border border-slate-200 transition cursor-pointer"
+                        title="Auto-fill all participants as teams × 3"
+                      >
+                        <span>Quick Multiply (Teams × 3)</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleResetToBaseline}
+                        className="px-2.5 py-1 text-xs font-semibold bg-slate-50 hover:bg-slate-100 text-slate-600 rounded-lg border border-slate-200 transition cursor-pointer flex items-center gap-1"
+                        title="Reset all 12 PS to baseline (28 teams, 112 participants)"
+                      >
+                        <RefreshCw className="w-3 h-3 text-slate-500" />
+                        <span>Reset Baseline (28/112)</span>
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <label className="flex items-center gap-1.5 text-xs text-slate-600 cursor-pointer select-none">
+                        <input
+                          type="checkbox"
+                          checked={!!adminDraft.useManualGlobalOverride}
+                          onChange={(e) => setAdminDraft({ ...adminDraft, useManualGlobalOverride: e.target.checked })}
+                          className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                        />
+                        <span className="text-[11px] font-medium">Manual Global Banner Override</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  {/* Compact Table of 12 Problem Statements */}
+                  <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left text-xs border-collapse">
+                        <thead>
+                          <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
+                            <th className="py-2.5 px-3 w-16 text-center">PS Code</th>
+                            <th className="py-2.5 px-3">Problem Statement & Domain</th>
+                            <th className="py-2.5 px-3 text-center w-28">Teams Registered</th>
+                            <th className="py-2.5 px-3 text-center w-32">Total Participants</th>
+                            <th className="py-2.5 px-3 text-center w-36">Quick Multiply & Ratio</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {(content.problemStatements || OFFICIAL_PROBLEM_STATEMENTS).map((ps) => {
+                            const current = getPsMetrics(psTelemetryDraft, ps.id);
+                            const teamsVal = current.teams !== undefined ? current.teams : 0;
+                            const participantsVal = current.participants !== undefined ? current.participants : 0;
+                            const ratio = teamsVal > 0 ? (participantsVal / teamsVal).toFixed(1) : '0';
+
+                            return (
+                              <tr key={ps.id} className="hover:bg-blue-50/30 transition">
+                                <td className="py-2.5 px-3 text-center font-mono">
+                                  <span className="font-bold text-[#0f2d59] bg-blue-50 border border-blue-200 px-2 py-0.5 rounded text-[11px]">
+                                    {ps.id}
+                                  </span>
+                                </td>
+                                <td className="py-2.5 px-3">
+                                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide block">
+                                    {ps.category || ps.domain}
+                                  </span>
+                                  <span className="font-semibold text-slate-900 text-xs block leading-snug">
+                                    {ps.title}
+                                  </span>
+                                </td>
+                                <td className="py-2.5 px-3 text-center">
+                                  <input
+                                    type="number"
+                                    min="0"
+                                    value={teamsVal}
+                                    onChange={(e) => handleUpdatePsDraft(ps.id, 'teams', e.target.value)}
+                                    className="w-20 px-2 py-1 text-xs font-mono font-bold text-center border border-slate-300 rounded-lg bg-white text-[#0f2d59] focus:outline-none focus:ring-1 focus:ring-blue-900"
+                                  />
+                                </td>
+                                <td className="py-2.5 px-3 text-center">
+                                  <input
+                                    type="number"
+                                    min="0"
+                                    value={participantsVal}
+                                    onChange={(e) => handleUpdatePsDraft(ps.id, 'participants', e.target.value)}
+                                    className="w-24 px-2 py-1 text-xs font-mono font-bold text-center border border-slate-300 rounded-lg bg-white text-[#0f2d59] focus:outline-none focus:ring-1 focus:ring-blue-900"
+                                  />
+                                </td>
+                                <td className="py-2.5 px-3 text-center">
+                                  <div className="flex items-center justify-center gap-1.5">
+                                    <button
+                                      type="button"
+                                      onClick={() => handleMultiplyRow(ps.id, 4)}
+                                      className="px-2 py-0.5 text-[10px] font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded cursor-pointer transition"
+                                      title="Auto-fill participants as teams × 4"
+                                    >
+                                      ×4
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleMultiplyRow(ps.id, 3)}
+                                      className="px-2 py-0.5 text-[10px] font-bold bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 rounded cursor-pointer transition"
+                                      title="Auto-fill participants as teams × 3"
+                                    >
+                                      ×3
+                                    </button>
+                                    <span className="text-[10px] font-mono text-slate-400 min-w-[36px] text-right">
+                                      {ratio}/sq
+                                    </span>
+                                  </div>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                        <tfoot>
+                          <tr className="bg-slate-50 font-bold border-t-2 border-slate-200 text-slate-800">
+                            <td colSpan={2} className="py-3 px-4 text-right uppercase tracking-wider text-[11px] text-slate-600">
+                              Sum Totals (All 12 PS):
+                            </td>
+                            <td className="py-3 px-3 text-center font-mono text-sm text-blue-900 font-black">
+                              {psDraftTotals.teams} Teams
+                            </td>
+                            <td className="py-3 px-3 text-center font-mono text-sm text-cyan-900 font-black">
+                              {psDraftTotals.participants} Part.
+                            </td>
+                            <td className="py-3 px-3 text-center">
+                              <button
+                                type="button"
+                                onClick={handleSavePsMetrics}
+                                disabled={isSavingPsTelemetry}
+                                className="px-3 py-1 bg-blue-700 hover:bg-blue-800 text-white rounded font-bold text-xs shadow-sm transition cursor-pointer disabled:opacity-50"
+                              >
+                                Save Metrics
+                              </button>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Bottom Prominent Save Banner */}
+                  <div className="bg-slate-900 text-white p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md">
+                    <div>
+                      <h5 className="font-bold text-sm text-white flex items-center gap-1.5">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        <span>Commit PS Telemetry to Cloud Database</span>
+                      </h5>
+                      <p className="text-[11px] text-slate-300 mt-0.5">
+                        Immediately publishes these numbers to Firestore (<code className="text-amber-300 font-mono">telemetry/problem_statements</code>) and refreshes cards & stats strips in real-time.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={handleSavePsMetrics}
+                        disabled={isSavingPsTelemetry}
+                        className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-xs flex items-center gap-2 shadow-lg transition cursor-pointer disabled:opacity-50"
+                      >
+                        {isSavingPsTelemetry ? (
+                          <RefreshCw className="w-4 h-4 animate-spin text-white" />
+                        ) : psTelemetrySaveSuccess ? (
+                          <CheckCircle className="w-4 h-4 text-emerald-400" />
+                        ) : (
+                          <CheckCircle2 className="w-4 h-4 text-amber-300" />
+                        )}
+                        <span>{isSavingPsTelemetry ? 'Saving to Database...' : psTelemetrySaveSuccess ? 'Saved to Cloud!' : 'Save PS Metrics'}</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -4118,6 +5006,37 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                       />
                     </div>
                   </div>
+
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                    <h4 className="font-bold text-[#0f2d59] text-xs uppercase tracking-wider flex items-center gap-1.5">
+                      <ExternalLink className="w-3.5 h-3.5 text-blue-600" />
+                      Google Forms Workflows Configuration
+                    </h4>
+                    <div className="grid grid-cols-1 gap-3">
+                      <div>
+                        <label className="block font-bold text-slate-700 mb-1">
+                          Main Squad Registration Google Form URL
+                        </label>
+                        <input
+                          type="text"
+                          value={adminDraft.googleFormRegistrationUrl || DEFAULT_GOOGLE_FORM_REGISTRATION_URL}
+                          onChange={(e) => setAdminDraft({ ...adminDraft, googleFormRegistrationUrl: e.target.value })}
+                          className="w-full border rounded p-2 bg-white text-xs font-mono"
+                        />
+                      </div>
+                      <div>
+                        <label className="block font-bold text-slate-700 mb-1">
+                          Problem Statement Selection / Submission Google Form URL
+                        </label>
+                        <input
+                          type="text"
+                          value={adminDraft.googleFormPsSelectionUrl || DEFAULT_GOOGLE_FORM_PS_SELECTION_URL}
+                          onChange={(e) => setAdminDraft({ ...adminDraft, googleFormPsSelectionUrl: e.target.value })}
+                          className="w-full border rounded p-2 bg-white text-xs font-mono"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -4322,14 +5241,168 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                 </div>
               )}
 
-              {/* TAB 3: EVENT FLOW */}
+              {/* TAB 1: EVENT FLOW & KEY MILESTONES */}
               {adminTab === 'flow' && (
-                <div className="space-y-4">
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-bold text-[#0f2d59] text-xs uppercase tracking-wider">
-                        Dynamic Event Stages & Progression
-                      </h4>
+                <div className="space-y-6">
+                  {/* Sub-section 1: Milestones & Key Deadlines */}
+                  <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                      <div>
+                        <h4 className="font-bold text-[#0f2d59] text-sm flex items-center gap-2">
+                          <Calendar className="w-4 h-4 text-blue-700" />
+                          <span>Event Milestones & Key Deadlines ({adminDraft.datesSchedule?.length || 0})</span>
+                        </h4>
+                        <p className="text-[11px] text-slate-500">
+                          Configure deadlines, active phases, and descriptions shown in the public Event Milestones table.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = [
+                            ...(adminDraft.datesSchedule || []),
+                            {
+                              id: `m-${Date.now()}`,
+                              label: "New Milestone",
+                              date: "28 September 2026",
+                              status: "Upcoming",
+                              desc: "Milestone description and candidate instructions..."
+                            }
+                          ];
+                          setAdminDraft({ ...adminDraft, datesSchedule: updated });
+                        }}
+                        className="inline-flex items-center gap-1.5 bg-[#0f2d59] hover:bg-blue-950 text-amber-300 px-3.5 py-1.5 rounded-xl text-xs font-bold transition shadow cursor-pointer self-start sm:self-auto"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add Milestone</span>
+                      </button>
+                    </div>
+
+                    <div className="space-y-3 max-h-[460px] overflow-y-auto pr-1">
+                      {(adminDraft.datesSchedule || []).map((item, idx) => (
+                        <div key={item.id || idx} className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs space-y-2.5 hover:border-slate-300 transition">
+                          <div className="flex items-center justify-between gap-2 flex-wrap">
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-bold text-xs bg-blue-100 text-blue-900 px-2 py-0.5 rounded">
+                                #{idx + 1}
+                              </span>
+                              <div className="flex items-center gap-1">
+                                <button
+                                  type="button"
+                                  disabled={idx === 0}
+                                  onClick={() => moveMilestone(idx, -1)}
+                                  className="p-1 rounded hover:bg-slate-100 text-slate-500 disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed"
+                                  title="Move Up"
+                                >
+                                  <ArrowUp className="w-3.5 h-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  disabled={idx === (adminDraft.datesSchedule || []).length - 1}
+                                  onClick={() => moveMilestone(idx, 1)}
+                                  className="p-1 rounded hover:bg-slate-100 text-slate-500 disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed"
+                                  title="Move Down"
+                                >
+                                  <ArrowDown className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <select
+                                value={item.status || "Upcoming"}
+                                onChange={(e) => {
+                                  const up = [...adminDraft.datesSchedule];
+                                  up[idx].status = e.target.value;
+                                  setAdminDraft({ ...adminDraft, datesSchedule: up });
+                                }}
+                                className={`text-[11px] font-bold px-2.5 py-1 rounded-lg border ${
+                                  item.status === 'Completed' ? 'bg-slate-100 text-slate-600 border-slate-200' :
+                                  (item.status === 'Active' || item.status === 'In Progress') ? 'bg-emerald-50 text-emerald-800 border-emerald-300' :
+                                  'bg-blue-50 text-blue-800 border-blue-200'
+                                }`}
+                              >
+                                <option value="Completed">Completed</option>
+                                <option value="Active">Active / In Progress</option>
+                                <option value="Upcoming">Upcoming</option>
+                              </select>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const up = adminDraft.datesSchedule.filter((_, i) => i !== idx);
+                                  setAdminDraft({ ...adminDraft, datesSchedule: up });
+                                }}
+                                className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg cursor-pointer transition"
+                                title="Delete Milestone"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            <div>
+                              <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Milestone Label / Title</label>
+                              <input
+                                type="text"
+                                value={item.label}
+                                onChange={(e) => {
+                                  const up = [...adminDraft.datesSchedule];
+                                  up[idx].label = e.target.value;
+                                  setAdminDraft({ ...adminDraft, datesSchedule: up });
+                                }}
+                                placeholder="e.g. Registration Closes"
+                                className="w-full border rounded-lg p-2 bg-slate-50 text-xs font-bold text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Date & Time Tag</label>
+                              <input
+                                type="text"
+                                value={item.date}
+                                onChange={(e) => {
+                                  const up = [...adminDraft.datesSchedule];
+                                  up[idx].date = e.target.value;
+                                  setAdminDraft({ ...adminDraft, datesSchedule: up });
+                                }}
+                                placeholder="e.g. 25 September 2026, 11:59 PM"
+                                className="w-full border rounded-lg p-2 bg-slate-50 text-xs font-semibold text-[#0f2d59] focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Brief Description / Instructions</label>
+                            <input
+                              type="text"
+                              value={item.desc || ""}
+                              onChange={(e) => {
+                                const up = [...adminDraft.datesSchedule];
+                                up[idx].desc = e.target.value;
+                                setAdminDraft({ ...adminDraft, datesSchedule: up });
+                              }}
+                              placeholder="e.g. Online portal locks for squad submissions."
+                              className="w-full border rounded-lg p-2 bg-slate-50 text-xs text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Sub-section 2: High-Level Event Stages & Progression */}
+                  <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                      <div>
+                        <h4 className="font-bold text-[#0f2d59] text-sm flex items-center gap-2">
+                          <Sliders className="w-4 h-4 text-blue-700" />
+                          <span>High-Level Event Stages ({adminDraft.eventFlow?.length || 0})</span>
+                        </h4>
+                        <p className="text-[11px] text-slate-500">
+                          Configure the multi-stage progression shown on the left of the Timeline section.
+                        </p>
+                      </div>
                       <button
                         type="button"
                         onClick={() => {
@@ -4339,60 +5412,244 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                           ];
                           setAdminDraft({ ...adminDraft, eventFlow: updated });
                         }}
-                        className="inline-flex items-center gap-1 bg-[#0f2d59] text-amber-300 px-3 py-1 rounded-lg text-xs font-bold cursor-pointer"
+                        className="inline-flex items-center gap-1.5 bg-[#0f2d59] hover:bg-blue-950 text-amber-300 px-3.5 py-1.5 rounded-xl text-xs font-bold transition shadow cursor-pointer self-start sm:self-auto"
                       >
-                        <Plus className="w-3.5 h-3.5" /> Add Stage
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add Stage</span>
                       </button>
                     </div>
 
-                    {(adminDraft.eventFlow || []).map((stage, idx) => (
-                      <div key={idx} className="bg-white p-3.5 rounded-lg border border-slate-200 space-y-2">
-                        <div className="flex items-center justify-between gap-2">
-                          <input
-                            type="text"
-                            value={stage.stage}
+                    <div className="space-y-3">
+                      {(adminDraft.eventFlow || []).map((stage, idx) => (
+                        <div key={idx} className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs space-y-2 hover:border-slate-300 transition">
+                          <div className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-1">
+                              <button
+                                type="button"
+                                disabled={idx === 0}
+                                onClick={() => moveEventFlowItem(idx, -1)}
+                                className="p-1 rounded hover:bg-slate-100 text-slate-500 disabled:opacity-30 cursor-pointer"
+                                title="Move Up"
+                              >
+                                <ArrowUp className="w-3.5 h-3.5" />
+                              </button>
+                              <button
+                                type="button"
+                                disabled={idx === (adminDraft.eventFlow || []).length - 1}
+                                onClick={() => moveEventFlowItem(idx, 1)}
+                                className="p-1 rounded hover:bg-slate-100 text-slate-500 disabled:opacity-30 cursor-pointer"
+                                title="Move Down"
+                              >
+                                <ArrowDown className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                            <input
+                              type="text"
+                              value={stage.stage}
+                              onChange={(e) => {
+                                const updated = [...adminDraft.eventFlow];
+                                updated[idx].stage = e.target.value;
+                                setAdminDraft({ ...adminDraft, eventFlow: updated });
+                              }}
+                              className="w-28 font-bold font-mono text-xs border rounded-lg p-1.5 bg-slate-50"
+                              placeholder="Stage 1"
+                            />
+                            <input
+                              type="text"
+                              value={stage.title}
+                              onChange={(e) => {
+                                const updated = [...adminDraft.eventFlow];
+                                updated[idx].title = e.target.value;
+                                setAdminDraft({ ...adminDraft, eventFlow: updated });
+                              }}
+                              className="flex-1 font-bold text-xs border rounded-lg p-1.5 text-[#0f2d59] bg-slate-50"
+                              placeholder="Title..."
+                            />
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated = adminDraft.eventFlow.filter((_, i) => i !== idx);
+                                setAdminDraft({ ...adminDraft, eventFlow: updated });
+                              }}
+                              className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg cursor-pointer transition"
+                              title="Delete Stage"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                          <textarea
+                            rows={2}
+                            value={stage.desc}
                             onChange={(e) => {
                               const updated = [...adminDraft.eventFlow];
-                              updated[idx].stage = e.target.value;
+                              updated[idx].desc = e.target.value;
                               setAdminDraft({ ...adminDraft, eventFlow: updated });
                             }}
-                            className="w-28 font-bold font-mono text-xs border rounded p-1"
-                            placeholder="Stage 1"
+                            className="w-full border rounded-lg p-2 text-xs text-slate-700 bg-slate-50"
                           />
-                          <input
-                            type="text"
-                            value={stage.title}
-                            onChange={(e) => {
-                              const updated = [...adminDraft.eventFlow];
-                              updated[idx].title = e.target.value;
-                              setAdminDraft({ ...adminDraft, eventFlow: updated });
-                            }}
-                            className="flex-1 font-bold text-xs border rounded p-1 text-[#0f2d59]"
-                            placeholder="Title..."
-                          />
-                          <button
-                            type="button"
-                            onClick={() => {
-                              const updated = adminDraft.eventFlow.filter((_, i) => i !== idx);
-                              setAdminDraft({ ...adminDraft, eventFlow: updated });
-                            }}
-                            className="text-rose-500 hover:text-rose-700 p-1 cursor-pointer"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
                         </div>
-                        <textarea
-                          rows={2}
-                          value={stage.desc}
-                          onChange={(e) => {
-                            const updated = [...adminDraft.eventFlow];
-                            updated[idx].desc = e.target.value;
-                            setAdminDraft({ ...adminDraft, eventFlow: updated });
-                          }}
-                          className="w-full border rounded p-1.5 text-xs text-slate-700"
-                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 2: 24H SPRINT SCHEDULE (HOUR-BY-HOUR) */}
+              {adminTab === 'schedule' && (
+                <div className="space-y-4">
+                  <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                      <div>
+                        <h4 className="font-bold text-[#0f2d59] text-sm flex items-center gap-2">
+                          <Clock className="w-4 h-4 text-blue-700" />
+                          <span>24h Sprint Schedule: Hour-by-Hour Timeline ({adminDraft.hackathonRoadmap?.length || 0} Slots)</span>
+                        </h4>
+                        <p className="text-[11px] text-slate-500">
+                          Manage the on-ground minute-by-minute itinerary, venues, checkpoints, and deliverables across Day 1 & Day 2.
+                        </p>
                       </div>
-                    ))}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = [
+                            ...(adminDraft.hackathonRoadmap || []),
+                            {
+                              id: `s-${Date.now()}`,
+                              time: "Day 1 - 01:00 PM",
+                              title: "Lunch & Networking Break",
+                              venue: "Dining Hall",
+                              actionItem: "Refreshment",
+                              desc: "Lunch served to all participants; informal discussions with tech mentors."
+                            }
+                          ];
+                          setAdminDraft({ ...adminDraft, hackathonRoadmap: updated });
+                        }}
+                        className="inline-flex items-center gap-1.5 bg-[#0f2d59] hover:bg-blue-950 text-amber-300 px-3.5 py-1.5 rounded-xl text-xs font-bold transition shadow cursor-pointer self-start sm:self-auto"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add Schedule Slot</span>
+                      </button>
+                    </div>
+
+                    <div className="space-y-3.5 max-h-[520px] overflow-y-auto pr-1">
+                      {(adminDraft.hackathonRoadmap || []).map((slot, idx) => (
+                        <div key={slot.id || idx} className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3 hover:border-slate-300 transition">
+                          <div className="flex items-center justify-between gap-2 flex-wrap">
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-bold text-xs bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-lg border border-amber-200">
+                                Slot #{idx + 1}
+                              </span>
+                              <div className="flex items-center gap-1">
+                                <button
+                                  type="button"
+                                  disabled={idx === 0}
+                                  onClick={() => moveRoadmapItem(idx, -1)}
+                                  className="p-1 rounded hover:bg-slate-100 text-slate-500 disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed"
+                                  title="Move Up"
+                                >
+                                  <ArrowUp className="w-3.5 h-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  disabled={idx === (adminDraft.hackathonRoadmap || []).length - 1}
+                                  onClick={() => moveRoadmapItem(idx, 1)}
+                                  className="p-1 rounded hover:bg-slate-100 text-slate-500 disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed"
+                                  title="Move Down"
+                                >
+                                  <ArrowDown className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const up = adminDraft.hackathonRoadmap.filter((_, i) => i !== idx);
+                                setAdminDraft({ ...adminDraft, hackathonRoadmap: up });
+                              }}
+                              className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg cursor-pointer transition"
+                              title="Delete Schedule Slot"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                            <div>
+                              <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Time Slot</label>
+                              <input
+                                type="text"
+                                value={slot.time}
+                                onChange={(e) => {
+                                  const up = [...adminDraft.hackathonRoadmap];
+                                  up[idx].time = e.target.value;
+                                  setAdminDraft({ ...adminDraft, hackathonRoadmap: up });
+                                }}
+                                placeholder="Day 1 - 08:30 AM"
+                                className="w-full border rounded-lg p-2 bg-slate-50 text-xs font-mono font-bold text-amber-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Activity Name</label>
+                              <input
+                                type="text"
+                                value={slot.title}
+                                onChange={(e) => {
+                                  const up = [...adminDraft.hackathonRoadmap];
+                                  up[idx].title = e.target.value;
+                                  setAdminDraft({ ...adminDraft, hackathonRoadmap: up });
+                                }}
+                                placeholder="Reporting & Verification"
+                                className="w-full border rounded-lg p-2 bg-slate-50 text-xs font-bold text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Venue / Lab</label>
+                              <input
+                                type="text"
+                                value={slot.venue || ""}
+                                onChange={(e) => {
+                                  const up = [...adminDraft.hackathonRoadmap];
+                                  up[idx].venue = e.target.value;
+                                  setAdminDraft({ ...adminDraft, hackathonRoadmap: up });
+                                }}
+                                placeholder="NIIS Innovation Labs"
+                                className="w-full border rounded-lg p-2 bg-slate-50 text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Action Item / Badge</label>
+                              <input
+                                type="text"
+                                value={slot.actionItem || ""}
+                                onChange={(e) => {
+                                  const up = [...adminDraft.hackathonRoadmap];
+                                  up[idx].actionItem = e.target.value;
+                                  setAdminDraft({ ...adminDraft, hackathonRoadmap: up });
+                                }}
+                                placeholder="Kit & ID Check"
+                                className="w-full border rounded-lg p-2 bg-slate-50 text-xs font-semibold text-blue-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Description & Deliverables</label>
+                            <textarea
+                              rows={2}
+                              value={slot.desc}
+                              onChange={(e) => {
+                                const up = [...adminDraft.hackathonRoadmap];
+                                up[idx].desc = e.target.value;
+                                setAdminDraft({ ...adminDraft, hackathonRoadmap: up });
+                              }}
+                              placeholder="Detailed notes on what squads and mentors should do during this interval..."
+                              className="w-full border rounded-lg p-2 text-xs text-slate-700 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900 leading-relaxed"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -4640,21 +5897,261 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                 </div>
               )}
 
-              {/* TAB 6: GUIDELINES & RULEBOOK */}
+              {/* TAB 3: GUIDELINES & ELIGIBILITY RULES */}
               {adminTab === 'guidelines' && (
                 <div className="space-y-4">
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-                    <h4 className="font-bold text-[#0f2d59] text-xs uppercase tracking-wider">
-                      Event Rulebook Download Link
-                    </h4>
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">Official Event Rulebook (PDF) URL</label>
-                      <input
-                        type="text"
-                        value={adminDraft.rulebookUrl || "/brochure.pdf"}
-                        onChange={(e) => setAdminDraft({ ...adminDraft, rulebookUrl: e.target.value })}
-                        className="w-full border rounded-lg p-2 bg-white text-xs font-mono"
-                      />
+                  <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                      <div>
+                        <h4 className="font-bold text-[#0f2d59] text-sm flex items-center gap-2">
+                          <ShieldCheck className="w-4 h-4 text-blue-700" />
+                          <span>Hackathon Guidelines & Rules ({adminDraft.rulesList?.length || 0} Categories)</span>
+                        </h4>
+                        <p className="text-[11px] text-slate-500">
+                          Create, categorize, edit, and reorder institutional eligibility, code ethics, and conduct rules.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = [
+                            ...(adminDraft.rulesList || []),
+                            {
+                              id: `r-${Date.now()}`,
+                              category: "Team Rules",
+                              title: "New Rule Category",
+                              points: [
+                                "First guideline or requirement point for participants.",
+                                "Second rule or compliance requirement."
+                              ]
+                            }
+                          ];
+                          setAdminDraft({ ...adminDraft, rulesList: updated });
+                        }}
+                        className="inline-flex items-center gap-1.5 bg-[#0f2d59] hover:bg-blue-950 text-amber-300 px-3.5 py-1.5 rounded-xl text-xs font-bold transition shadow cursor-pointer self-start sm:self-auto"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add Rule Card</span>
+                      </button>
+                    </div>
+
+                    <div className="space-y-4 max-h-[520px] overflow-y-auto pr-1">
+                      {(adminDraft.rulesList || []).map((rule, idx) => {
+                        const pointsString = Array.isArray(rule.points)
+                          ? rule.points.join('\n')
+                          : (rule.points || '');
+
+                        return (
+                          <div key={rule.id || idx} className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3 hover:border-slate-300 transition">
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                              <div className="flex items-center gap-2">
+                                <span className="font-mono font-bold text-xs bg-blue-100 text-blue-900 px-2.5 py-0.5 rounded-lg border border-blue-200">
+                                  Rule #{idx + 1}
+                                </span>
+                                <div className="flex items-center gap-1">
+                                  <button
+                                    type="button"
+                                    disabled={idx === 0}
+                                    onClick={() => moveRuleItem(idx, -1)}
+                                    className="p-1 rounded hover:bg-slate-100 text-slate-500 disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed"
+                                    title="Move Up"
+                                  >
+                                    <ArrowUp className="w-3.5 h-3.5" />
+                                  </button>
+                                  <button
+                                    type="button"
+                                    disabled={idx === (adminDraft.rulesList || []).length - 1}
+                                    onClick={() => moveRuleItem(idx, 1)}
+                                    className="p-1 rounded hover:bg-slate-100 text-slate-500 disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed"
+                                    title="Move Down"
+                                  >
+                                    <ArrowDown className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const up = adminDraft.rulesList.filter((_, i) => i !== idx);
+                                  setAdminDraft({ ...adminDraft, rulesList: up });
+                                }}
+                                className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg cursor-pointer transition"
+                                title="Delete Rule Card"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                              <div>
+                                <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Rule Category</label>
+                                <select
+                                  value={rule.category || "Team Rules"}
+                                  onChange={(e) => {
+                                    const up = [...adminDraft.rulesList];
+                                    up[idx].category = e.target.value;
+                                    setAdminDraft({ ...adminDraft, rulesList: up });
+                                  }}
+                                  className="w-full border rounded-lg p-2 bg-slate-50 text-xs font-semibold text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                                >
+                                  <option value="Team Rules">Team Rules</option>
+                                  <option value="Hardware/Software Rules">Hardware/Software Rules</option>
+                                  <option value="Submission Deliverables">Submission Deliverables</option>
+                                  <option value="Code of Conduct">Code of Conduct</option>
+                                </select>
+                              </div>
+                              <div>
+                                <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Rule Heading / Title</label>
+                                <input
+                                  type="text"
+                                  value={rule.title}
+                                  onChange={(e) => {
+                                    const up = [...adminDraft.rulesList];
+                                    up[idx].title = e.target.value;
+                                    setAdminDraft({ ...adminDraft, rulesList: up });
+                                  }}
+                                  placeholder="e.g. Squad Eligibility & Composition"
+                                  className="w-full border rounded-lg p-2 bg-slate-50 text-xs font-bold text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                                />
+                              </div>
+                            </div>
+
+                            <div>
+                              <div className="flex items-center justify-between mb-0.5">
+                                <label className="block text-[11px] font-bold text-slate-700">Bullet Points / Requirements</label>
+                                <span className="text-[10px] text-slate-400">One bullet point per line</span>
+                              </div>
+                              <textarea
+                                rows={3}
+                                value={pointsString}
+                                onChange={(e) => {
+                                  const up = [...adminDraft.rulesList];
+                                  up[idx].points = e.target.value.split('\n');
+                                  setAdminDraft({ ...adminDraft, rulesList: up });
+                                }}
+                                placeholder="Enter point 1&#10;Enter point 2&#10;Enter point 3"
+                                className="w-full border rounded-lg p-2 text-xs text-slate-700 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900 leading-relaxed font-sans"
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 4: BROCHURE & ASSET MANAGER */}
+              {adminTab === 'brochure' && (
+                <div className="space-y-4">
+                  <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div className="border-b border-slate-200 pb-3">
+                      <h4 className="font-bold text-[#0f2d59] text-sm flex items-center gap-2">
+                        <BookOpen className="w-4 h-4 text-blue-700" />
+                        <span>Official Event Brochure & Asset Controller</span>
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">
+                        Manage the official event brochure PDF link, toggle public download buttons in the Hero & Guidelines sections, and test live downloads.
+                      </p>
+                    </div>
+
+                    {/* Toggle: Enable / Disable Brochure Button */}
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center justify-between gap-4">
+                      <div>
+                        <h5 className="font-bold text-xs text-slate-900">
+                          Display "Download Official Brochure" Button on Portal
+                        </h5>
+                        <p className="text-[11px] text-slate-500 mt-0.5">
+                          When checked, the brochure download button appears prominently in the Hero CTA group and inside the Guidelines section.
+                        </p>
+                      </div>
+
+                      <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
+                        <input
+                          type="checkbox"
+                          checked={adminDraft.showBrochureButton !== false}
+                          onChange={(e) => setAdminDraft({ ...adminDraft, showBrochureButton: e.target.checked })}
+                          className="sr-only peer"
+                        />
+                        <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                      </label>
+                    </div>
+
+                    {/* Brochure URL & File Uploader */}
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-800 mb-1">
+                          Brochure PDF Download URL / Relative File Path
+                        </label>
+                        <input
+                          type="text"
+                          value={adminDraft.rulebookUrl || "/brochure.pdf"}
+                          onChange={(e) => setAdminDraft({ ...adminDraft, rulebookUrl: e.target.value })}
+                          placeholder="/brochure.pdf or https://drive.google.com/..."
+                          className="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-xs font-mono text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-900"
+                        />
+                        <p className="text-[10px] text-slate-500 mt-1">
+                          You can link to an in-app file (e.g. <code>/brochure.pdf</code>) or any external hosted document (Google Drive, Cloud Storage, etc.).
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <input
+                            type="file"
+                            accept=".pdf"
+                            className="hidden"
+                            id="brochure-pdf-upload"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) {
+                                const newPath = `/${file.name}`;
+                                setAdminDraft({ ...adminDraft, rulebookUrl: newPath });
+                                alert(`Selected PDF: "${file.name}". Brochure URL set to "${newPath}". Click "Save Changes to Portal" to publish live.`);
+                              }
+                            }}
+                          />
+                          <label
+                            htmlFor="brochure-pdf-upload"
+                            className="px-3.5 py-2 bg-blue-50 hover:bg-blue-100 text-[#0f2d59] border border-blue-200 rounded-lg text-xs font-bold cursor-pointer transition flex items-center gap-1.5"
+                          >
+                            <FileUp className="w-3.5 h-3.5 text-blue-700" />
+                            <span>Select Local PDF File</span>
+                          </label>
+
+                          <button
+                            type="button"
+                            onClick={() => setAdminDraft({ ...adminDraft, rulebookUrl: "/brochure.pdf" })}
+                            className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition cursor-pointer"
+                          >
+                            Default (/brochure.pdf)
+                          </button>
+                        </div>
+
+                        <a
+                          href={adminDraft.rulebookUrl || "/brochure.pdf"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-4 py-2 bg-[#0f2d59] hover:bg-blue-950 text-amber-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>Preview Brochure in New Tab</span>
+                          <ExternalLink className="w-3 h-3 text-amber-400" />
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Information preview banner */}
+                    <div className="bg-blue-50/60 border border-blue-200 rounded-xl p-3.5 text-xs text-slate-700 flex items-start gap-2.5">
+                      <AlertCircle className="w-4 h-4 text-blue-700 flex-shrink-0 mt-0.5" />
+                      <div className="space-y-1">
+                        <p className="font-bold text-[#0f2d59]">Public Display Verification:</p>
+                        <p className="text-[11px] text-slate-600 leading-relaxed">
+                          • Hero Section: Button labeled <strong>"Download Brochure"</strong> will be {adminDraft.showBrochureButton !== false ? <span className="text-emerald-700 font-bold">visible</span> : <span className="text-rose-600 font-bold">hidden</span>}.<br />
+                          • Guidelines Section: Dedicated download card for <strong>"Download Official Event Rulebook"</strong> will be {adminDraft.showBrochureButton !== false ? <span className="text-emerald-700 font-bold">visible</span> : <span className="text-rose-600 font-bold">hidden</span>}.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -4806,16 +6303,28 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
 
             {/* Actions Bar with Loading Indicator */}
             <div className="pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
-              <button
-                type="button"
-                onClick={handleExportJSON}
-                className="px-3.5 py-2 border border-blue-900 bg-blue-50 text-blue-900 rounded-lg font-semibold flex items-center gap-1.5 hover:bg-blue-100 transition text-xs cursor-pointer"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>Export config (JSON Backup)</span>
-              </button>
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={handleExportJSON}
+                  className="px-3.5 py-2 border border-blue-900 bg-blue-50 text-blue-900 rounded-lg font-semibold flex items-center gap-1.5 hover:bg-blue-100 transition text-xs cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Export JSON Backup</span>
+                </button>
 
-              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={handleResetToDefaults}
+                  className="px-3.5 py-2 border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-lg font-semibold flex items-center gap-1.5 transition text-xs cursor-pointer"
+                  title="Reset all drafts to default institutional settings"
+                >
+                  <RefreshCw className="w-3.5 h-3.5 text-rose-600" />
+                  <span>Reset to Institutional Defaults</span>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setShowAdmin(false)}
@@ -4839,7 +6348,10 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                       <span>Saving to Cloud...</span>
                     </>
                   ) : (
-                    <span>Save & Apply Changes Live</span>
+                    <>
+                      <Save className="w-4 h-4 text-amber-300" />
+                      <span>Save Changes to Portal</span>
+                    </>
                   )}
                 </button>
               </div>

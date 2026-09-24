@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+  --font-heading: 'Outfit', 'Poppins', sans-serif;
+  --font-serif: 'Poppins', sans-serif;
+}
+
 @keyframes marqueeScroll {
   0% {
     transform: translateX(100%);
@@ -21,14 +29,23 @@
 }
 
 html, body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   width: 100% !important;
   max-width: 100% !important;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Institutional Headings - Crisp & Modern NIIS Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Outfit', sans-serif;
 }
