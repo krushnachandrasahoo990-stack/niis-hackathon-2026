@@ -167,95 +167,65 @@ function HeroInteractiveNetwork() {
   );
 }
 
-/* =========================================================================
-   3. PERMANENT 3 LEADERS OF NIIS (INVIOLABLE - NEVER OVERWRITTEN BY FIRESTORE)
-   ========================================================================= */
-const PERMANENT_LEADERS = [
-  {
-    id: "leader-1",
-    name: "Dr. Subhash Chandra Nayak",
-    role: "Chairperson, NIIS Group of Institutions",
-    badge: "Hon'ble Chairperson",
-    photo: "/chairman.15c124f6375fe3d6762b.png",
-    quote: "Celebrating 26 Years of Academic Excellence, we welcome aspiring student innovators from across NIIS departments to 24 hours of rigorous hands-on building. We assure state-of-the-art infrastructure, mentorship from seasoned industry architects, and incubation support for top working prototypes."
-  },
-  {
-    id: "leader-2",
-    name: "Prof. Smurtisudha Nayak",
-    role: "Co-Founder, NIIS Group of Institutions",
-    badge: "Respected Co-Founder",
-    photo: "/trustee2.bdc730fa7ab69169ba18.png",
-    quote: "Education thrives when theoretical foundations meet transformative action. Through NIIS Hackathon 2026, we aim to nurture problem solvers and entrepreneurial leaders who will leverage emerging technologies for inclusive community development."
-  },
-  {
-    id: "leader-3",
-    name: "Mr. Sai Sambit Nayak",
-    role: "Trustee Member, NIIS Group of Institutions",
-    badge: "Trustee Member",
-    photo: "/DSC00445.JPG.jpeg",
-    quote: "Modern industry demands agility, cross-disciplinary collaboration, and hands-on grit. Our vision with this hackathon is to empower young developers with industry-grade infrastructure, cloud toolsets, and institutional seed backing to take their solutions to market."
-  }
-];
 
 /* =========================================================================
    4. HACKATHON ARCHIVES / GALLERY DATA
    ========================================================================= */
-const INITIAL_GALLERY = [
-  {
-    id: 1,
-    title: "Grand Inaugural Ceremony 2025",
-    category: "Inaugural & Sprints",
-    src: "/gallery/1.jpg",
-    caption: "Hon'ble Chairperson Dr. Subhash Chandra Nayak, academic dignitaries, and tech mentors inaugurating the previous hackathon edition.",
-    tag: "Day 1 Kickoff",
-    date: "Hackathon 2025"
-  },
-  {
-    id: 2,
-    title: "Midnight Coding Sprint (02:00 AM)",
-    category: "Inaugural & Sprints",
-    src: "/gallery/2.jpg",
-    caption: "Teams actively developing full-stack architectures, training ML pipelines, and debugging endpoints under non-stop sprint pressure.",
-    tag: "24h Sprint",
-    date: "Hackathon 2025"
-  },
-  {
-    id: 3,
-    title: "Industry Mentorship Checkpoint",
-    category: "Mentorship",
-    src: "/gallery/3.jpg",
-    caption: "Senior cloud architects and faculty experts reviewing team database schemas, API integrations, and system reliability.",
-    tag: "Mentorship",
-    date: "Hackathon 2025"
-  },
-  {
-    id: 4,
-    title: "Hardware & IoT Telemetry Labs",
-    category: "Mentorship",
-    src: "/gallery/4.jpg",
-    caption: "Participants configuring ESP32 microcontrollers, telemetry sensors, and edge gateways in the NIIS Advanced Embedded Labs.",
-    tag: "IoT & Hardware",
-    date: "Hackathon 2025"
-  },
-  {
-    id: 5,
-    title: "Top 10 Finalist Live Jury Pitches",
-    category: "Jury Demos",
-    src: "/gallery/5.jpg",
-    caption: "Shortlisted squads demonstrating live working prototypes, analytics dashboards, and commercialization plans before the jury.",
-    tag: "Grand Evaluation",
-    date: "Hackathon 2025"
-  },
-  {
-    id: 6,
-    title: "Valedictory & ₹35K Bounty Awards",
-    category: "Valedictory",
-    src: "/gallery/6.jpg",
-    caption: "Grand felicitation recognizing champion squads with cash prizes, trophies, medals, and incubation grants at the NIIS Auditorium.",
-    tag: "Awards & Bounty",
-    date: "Hackathon 2025"
-  }
+const hackathonMoments = [
+  { id: 1, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.23.jpg', title: 'Live Coding Sprint & Brainstorming', span: 'md:col-span-2' },
+  { id: 2, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.25.jpeg', title: 'Audience & Faculty Session', span: 'col-span-1' },
+  { id: 3, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.26.jpg', title: '1st Prize Felicitations & Trophy Cheque', span: 'col-span-1' },
+  { id: 4, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.27.jpg', title: 'Winning Squads & Faculty Mentors', span: 'md:col-span-2' },
+  { id: 5, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.29 (1).jpg', title: 'Grand Podium Prize Distribution', span: 'col-span-1' },
+  { id: 6, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.29.jpg', title: 'Think Build Impact Squad Team', span: 'col-span-1' },
+  { id: 7, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.32.jpg', title: 'Squad Celebration & Trophies', span: 'md:col-span-2' },
+  { id: 8, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.36.jpg', title: 'Stage Dignitaries & Winner Felicitations', span: 'col-span-1' },
+  { id: 9, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.38.jpeg', title: 'Keynote & Dignitary Address', span: 'col-span-1' },
+  { id: 10, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.39.jpg', title: 'Dais Guests & Executive Panel', span: 'md:col-span-2' },
+  { id: 11, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.40.jpg', title: 'Memento & Honor Presentation', span: 'col-span-1' },
+  { id: 12, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.41.jpg', title: 'Felicitation of Mentors', span: 'col-span-1' },
+  { id: 13, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.44.jpg', title: 'Token of Appreciation Presentation', span: 'col-span-1' },
+  { id: 14, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.46.jpg', title: 'Runner-up Cheque Presentation', span: 'col-span-1' },
+  { id: 15, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.47.jpg', title: '2nd Prize Cheque Awarded', span: 'col-span-1' },
+  { id: 16, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.48.jpg', title: 'Top 3 Winning Squads Celebration', span: 'col-span-1' },
+  { id: 17, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.50.jpg', title: 'Participants in Sprint Hall', span: 'md:col-span-2' },
+  { id: 18, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.51.jpg', title: 'Inaugural Session Address', span: 'col-span-1' },
+  { id: 19, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.52.jpeg', title: 'Campus Walkthrough by Leadership', span: 'col-span-1' },
+  { id: 20, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.54.jpg', title: 'Live Mentorship & Code Evaluation', span: 'col-span-1' },
+  { id: 21, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.56.jpg', title: 'Team AgriLearn at Work', span: 'col-span-1' },
+  { id: 22, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.58.jpg', title: 'Round Table Pitch to Evaluators', span: 'md:col-span-2' },
+  { id: 23, src: '/gallery/WhatsApp Image 2026-09-25 at 18.08.59.jpg', title: 'Sprint Squad Collaboration', span: 'col-span-1' },
+  { id: 24, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.01.jpeg', title: 'Team Farm Wise Live Hacking', span: 'col-span-1' },
+  { id: 25, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.05.jpg', title: 'Developers Building Prototypes', span: 'md:col-span-2' },
+  { id: 26, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.06 (1).jpg', title: 'Innovation Squad Workspace', span: 'col-span-1' },
+  { id: 27, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.06.jpg', title: 'Collaborative Sprint Table', span: 'col-span-1' },
+  { id: 28, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.07.jpg', title: 'Hardware & Web Interface Team', span: 'col-span-1' },
+  { id: 29, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.08 (1).jpg', title: 'Intense 24h Sprint in Action', span: 'col-span-1' },
+  { id: 30, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.08.jpg', title: 'Engineering Brainstorming Session', span: 'col-span-1' },
+  { id: 31, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.09.jpg', title: 'Hackathon Cohort at Work', span: 'md:col-span-2' },
+  { id: 32, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.10.jpg', title: 'Jury Review & Scoring Desk', span: 'col-span-1' },
+  { id: 33, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.12 (1).jpg', title: 'Mentor Interactive Discussion', span: 'col-span-1' },
+  { id: 34, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.12.jpeg', title: 'Feedback & Code Inspection', span: 'col-span-1' },
+  { id: 35, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.13.jpg', title: 'Architecture Guidance Session', span: 'col-span-1' },
+  { id: 36, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.16.jpg', title: 'Sprint Verification Review', span: 'col-span-1' },
+  { id: 37, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.26.jpg', title: 'Formal Dais Felicitations', span: 'col-span-1' },
+  { id: 38, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.30.jpg', title: 'Kaushal Tech Club Organizing Team', span: 'md:col-span-2' },
+  { id: 39, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.35.jpg', title: 'Audience & Participant Gathering', span: 'col-span-1' },
+  { id: 40, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.39.jpeg', title: 'Inaugural Address to Developers', span: 'col-span-1' },
+  { id: 41, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.41.jpg', title: 'Traditional Lamp Lighting Ceremony', span: 'col-span-1' },
+  { id: 42, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.43.jpg', title: 'Official Launch & Welcome', span: 'md:col-span-2' },
+  { id: 43, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.46.jpg', title: 'Dignitaries Reviewing Event Brochure', span: 'col-span-1' },
+  { id: 44, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.48.jpg', title: 'Squad Workspace Collaboration', span: 'col-span-1' },
+  { id: 45, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.50.jpg', title: 'Audience Hall & VIP Enclosure', span: 'col-span-1' },
+  { id: 46, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.51.jpg', title: 'Gathering of Students & Guests', span: 'md:col-span-2' },
+  { id: 47, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.53.jpg', title: 'Faculty & Industry Experts', span: 'col-span-1' },
+  { id: 48, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.55.jpg', title: 'Leadership & Guest Panel', span: 'col-span-1' },
+  { id: 49, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.56.jpg', title: 'Welcoming Dignitaries & Mentors', span: 'col-span-1' },
+  { id: 50, src: '/gallery/WhatsApp Image 2026-09-25 at 18.09.59.jpg', title: 'Jury Evaluation Checkpoint', span: 'col-span-1' },
+  { id: 51, src: '/gallery/WhatsApp Image 2026-09-25 at 18.10.00.jpg', title: 'Ceremonial Lamp Lighting Moment', span: 'col-span-1' }
 ];
+
+const INITIAL_GALLERY = hackathonMoments;
 
 /* =========================================================================
    5. OFFICIAL COMMITTEE DIRECTORY (14 FACULTY IN-CHARGE + 1 STUDENT LEAD)
@@ -403,132 +373,132 @@ const OFFICIAL_COMMITTEE_MEMBERS = [
    Schema: { id, title, category, difficulty, shortDesc, fullBrief, tags, pdfUrl }
    ========================================================================= */
 const OFFICIAL_PROBLEM_STATEMENTS = [
-  // Category 1: CAMPUS NEXUS (Smart Campus, Student Services & Institutional Intelligence)
+  // Track 1: Campus Nexus (Smart Campus, Student Services & Institutional Intelligence)
   {
     id: "PS-01",
     title: "AI-Powered Campus Life Management Platform",
-    category: "CAMPUS NEXUS",
+    category: "Campus Nexus",
     difficulty: "Medium",
     shortDesc: "Develop a unified digital platform for attendance, timetables, leave/gate-pass requests, certificates, hostel and mess services, complaints, notices and fee-related queries, with real-time administrative visibility.",
     fullBrief: "Develop a unified digital platform for attendance, timetables, leave/gate-pass requests, certificates, hostel and mess services, complaints, notices and fee-related queries, with real-time administrative visibility. The platform must centralize fragmented departmental tracking, streamline multi-tiered student approvals with QR-verified digital gate-passes, provide intelligent complaint escalation, and equip institutional leadership with live administrative analytics.",
     tags: ["Smart Campus", "Full-Stack", "Institutional Intelligence", "Workflow Automation"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-01.pdf"
   },
   {
     id: "PS-02",
     title: "CAMPUSLINK - AI-Powered Campus-to-Corporate Placement Management",
-    category: "CAMPUS NEXUS",
+    category: "Campus Nexus",
     difficulty: "Hard",
     shortDesc: "Develop an AI-powered placement platform that maintains student profiles, identifies skill gaps, analyses recruiter requirements, matches candidates with opportunities, manages schedules and provides placement analytics.",
     fullBrief: "Develop an AI-powered placement platform that maintains student profiles, identifies skill gaps, analyses recruiter requirements, matches candidates with opportunities, manages schedules and provides placement analytics. Squads are challenged to automate resume parsing, compare candidate proficiencies against dynamic corporate job descriptions, generate personalized remediation learning pathways, and deliver Training & Placement Cell dashboards with institutional hiring trends.",
     tags: ["AI/ML", "HR Tech", "Skill Gap Analysis", "Analytics"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-02.pdf"
   },
   {
     id: "PS-03",
     title: "Sustainable Campus & Facility Intelligence Dashboard",
-    category: "CAMPUS NEXUS",
+    category: "Campus Nexus",
     difficulty: "Medium",
     shortDesc: "Develop an AI-enabled dashboard for monitoring energy, water, waste, air quality and asset utilization to support data-driven and sustainable campus management.",
     fullBrief: "Develop an AI-enabled dashboard for monitoring energy, water, waste, air quality and asset utilization to support data-driven and sustainable campus management. The platform must aggregate environmental and utility telemetry, identify consumption anomalies, predict equipment maintenance needs, and generate actionable carbon-reduction recommendations to uphold green institutional standards.",
     tags: ["Data Analytics", "Sustainability", "Asset Utilization", "Dashboard"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-03.pdf"
   },
 
-  // Category 2: MEDITACH AI (Intelligent Healthcare & Well-being Solutions)
+  // Track 2: Meditech AI (Intelligent Healthcare & Well-being Solutions)
   {
     id: "PS-04",
     title: "Multimodal Healthcare Triage Assistant",
-    category: "MEDITACH AI",
+    category: "Meditech AI",
     difficulty: "Hard",
     shortDesc: "Develop a human-in-the-loop AI assistant that processes patient symptoms, medical reports and basic visual information to generate a structured preliminary triage note for qualified healthcare review.",
     fullBrief: "Develop a human-in-the-loop AI assistant that processes patient symptoms, medical reports and basic visual information to generate a structured preliminary triage note for qualified healthcare review. The solution must support clinical prioritization in high-volume healthcare settings by synthesizing multi-format patient inputs into an emergency urgency score and an executive triage summary without replacing licensed medical practitioners.",
     tags: ["Healthcare AI", "Multimodal", "Triage", "Decision Support"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-04.pdf"
   },
   {
     id: "PS-05",
     title: "AI-Based Heatwave Health Risk & Local Alert System",
-    category: "MEDITACH AI",
+    category: "Meditech AI",
     difficulty: "Medium",
     shortDesc: "Develop a software-based system that combines publicly available temperature, humidity, heat-index and location data to identify localized heat risks and provide preventive alerts for vulnerable groups.",
     fullBrief: "Develop a software-based system that combines publicly available temperature, humidity, heat-index and location data to identify localized heat risks and provide preventive alerts for vulnerable groups. The application must analyze meteorological streams to forecast dangerous micro-climate heat spikes, establish risk thresholds, and deliver automated preventive hydration advisories to outdoor workers, elders, and campus students.",
     tags: ["Climate Tech", "Risk Modeling", "Geo Alerts", "Public Health"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-05.pdf"
   },
   {
     id: "PS-06",
     title: "Data-Driven Air-Pollution Analysis & Health Advisory System",
-    category: "MEDITACH AI",
+    category: "Meditech AI",
     difficulty: "Medium",
     shortDesc: "Develop a software-only data analytics platform that uses publicly available air-quality and environmental datasets to analyse pollution trends, identify high-pollution periods, visualize pollution levels and provide location-based health advisories (No external hardware/sensors required).",
     fullBrief: "Develop a software-only data analytics platform that uses publicly available air-quality and environmental datasets to analyse pollution trends, identify high-pollution periods, visualize pollution levels and provide location-based health advisories without external hardware or physical sensors. The system should process open CPCB/SPCB environmental records, plot temporal pollutant concentrations (PM2.5, PM10, AQI), and provide targeted precautionary guidance for sensitive demographics.",
     tags: ["Data Science", "Environmental Analytics", "Software-Only", "Health Advisory"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-06.pdf"
   },
 
-  // Category 3: AI & MACHINE LEARNING (Intelligent, Secure & Automated Solutions)
+  // Track 3: AI & Machine Learning (Intelligent, Secure & Automated Solutions)
   {
     id: "PS-07",
     title: "CYBERGUARD - AI-Powered Cyber Threat & Phishing Detection",
-    category: "AI & MACHINE LEARNING",
+    category: "AI & Machine Learning",
     difficulty: "Hard",
     shortDesc: "Analyse emails, URLs, messages, authentication logs and network activity to detect phishing, impersonation and suspicious behaviour, with explainable risk scores and response recommendations.",
     fullBrief: "Analyse emails, URLs, messages, authentication logs and network activity to detect phishing, impersonation and suspicious behaviour, with explainable risk scores and response recommendations. Squads must build CYBERGUARD as an automated defensive pipeline that decodes spoofed headers, inspects phishing payloads, correlates anomalous login behavior, and generates transparent explainability reports detailing why a communication was flagged.",
     tags: ["Cybersecurity", "Phishing Detection", "Explainable AI", "Threat Analysis"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-07.pdf"
   },
   {
     id: "PS-08",
     title: "AI-Powered Workplace Safety Gear Detection",
-    category: "AI & MACHINE LEARNING",
+    category: "AI & Machine Learning",
     difficulty: "Medium",
     shortDesc: "Use computer vision on CCTV or recorded video to detect helmets, high-visibility vests, safety footwear, gloves and other required protective equipment and generate safety alerts.",
     fullBrief: "Use computer vision on CCTV or recorded video to detect helmets, high-visibility vests, safety footwear, gloves and other required protective equipment and generate safety alerts. The pipeline must operate on standard video feeds, execute lightweight real-time object classification and bounding-box tracking for Personal Protective Equipment (PPE), and log safety compliance incidents with instant supervisor notifications.",
     tags: ["Computer Vision", "Workplace Safety", "Object Detection", "Video Analytics"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-08.pdf"
   },
   {
     id: "PS-09",
     title: "Explainable AI-Based Prediction & Decision Support System",
-    category: "AI & MACHINE LEARNING",
+    category: "AI & Machine Learning",
     difficulty: "Hard",
     shortDesc: "Develop an AI/ML solution for a practical prediction problem such as student performance, equipment failure, demand forecasting, fraud detection or resource utilization, with understandable explanations.",
     fullBrief: "Develop an AI/ML solution for a practical prediction problem such as student performance, equipment failure, demand forecasting, fraud detection or resource utilization, with understandable explanations. The model must eliminate black-box opacity by integrating explainable attribution mechanisms (such as SHAP values, feature importance weights, or decision trees) to empower stakeholders with transparent reasoning behind every analytical prediction.",
     tags: ["Explainable AI (XAI)", "Predictive Modeling", "Decision Support"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-09.pdf"
   },
 
-  // Category 4: NEUROCORE / GEONAVX (GPS, Navigation & Location Intelligence)
+  // Track 4: Neurocore / GeoNavX (GPS, Navigation & Location Intelligence)
   {
     id: "PS-10",
     title: "3D Autonomous Path Planning in GPS-Denied Environments",
-    category: "NEUROCORE / GEONAVX",
+    category: "Neurocore / GeoNavX",
     difficulty: "Hard",
     shortDesc: "Develop a lightweight intelligent algorithm for autonomous navigation in GPS-denied environments by combining positional information with camera or sensor-based environmental information.",
     fullBrief: "Develop a lightweight intelligent algorithm for autonomous navigation in GPS-denied environments by combining positional information with camera or sensor-based environmental information. The algorithm must calculate optimal collision-free 3D waypoints for autonomous vehicles or drones operating in subterranean tunnels, indoor warehouse facilities, or obstructed terrains where satellite signals are unavailable.",
     tags: ["Path Planning", "Autonomous Navigation", "Algorithm Design", "Spatial AI"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-10.pdf"
   },
   {
     id: "PS-11",
     title: "AI-Powered Smart Campus Navigation",
-    category: "NEUROCORE / GEONAVX",
+    category: "Neurocore / GeoNavX",
     difficulty: "Medium",
     shortDesc: "Develop an intelligent map-based navigation system for students and visitors that provides shortest, accessible and context-aware routes across campus.",
     fullBrief: "Develop an intelligent map-based navigation system for students and visitors that provides shortest, accessible and context-aware routes across campus. The system must feature interactive spatial mapping across academic blocks, departments, laboratories, and amenities, incorporating barrier-free wheelchair accessible path calculations and live context-aware destination search.",
     tags: ["Campus Navigation", "Indoor Mapping", "Shortest Path", "Accessibility"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-11.pdf"
   },
   {
     id: "PS-12",
     title: "Emergency Route & Location Intelligence System",
-    category: "NEUROCORE / GEONAVX",
+    category: "Neurocore / GeoNavX",
     difficulty: "Hard",
     shortDesc: "Develop a location-aware emergency response system with user location, safe-route identification, nearby emergency facilities, geo-fencing, alerts and dynamic route recommendations.",
     fullBrief: "Develop a location-aware emergency response system with user location, safe-route identification, nearby emergency facilities, geo-fencing, alerts and dynamic route recommendations. The platform must dynamically route users away from detected hazard zones, display real-time safety perimeters, pinpoint nearest medical/fire facilities, and dispatch coordinated emergency incident broadcasts.",
     tags: ["Emergency Response", "Geo-Fencing", "Location Intelligence", "Routing"],
-    pdfUrl: ""
+    pdfUrl: "/briefs/PS-12.pdf"
   }
 ];
 
@@ -537,12 +507,13 @@ const OFFICIAL_PROBLEM_STATEMENTS = [
  * Follows strict PDF 1.4 specification with dual Helvetica / Helvetica-Bold typography.
  */
 function handleDownloadProblemBrief(ps, collegeName = "NIIS INSTITUTE OF BUSINESS ADMINISTRATION") {
-  if (ps.pdfUrl && ps.pdfUrl.trim()) {
+  const fileUrl = ps.pdfUrl || `/briefs/${ps.id}.pdf`;
+  if (fileUrl) {
     const a = document.createElement('a');
-    a.href = ps.pdfUrl;
-    const cleanId = (ps.id || '').replace(/^NIIS-/i, '').replace(/[^a-zA-Z0-9]/g, '_');
-    a.download = cleanId.startsWith('PS') ? `NIIS_Hackathon_2026_${cleanId}.pdf` : `NIIS_Hackathon_2026_PS_${cleanId}.pdf`;
+    a.href = fileUrl;
+    a.download = `${ps.id}.pdf`;
     a.target = '_blank';
+    a.rel = 'noopener noreferrer';
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -749,6 +720,32 @@ function getPsMetrics(telemetryMap, psId) {
   return { teams: 0, participants: 0 };
 }
 
+// Official 24-Hour Sprint Baseline Constants
+const HACKATHON_START_TIMESTAMP = new Date("2026-09-30T10:00:00+05:30").getTime();
+
+// Hour offsets for each sprint milestone slot (Hour 0 to Hour 24)
+const SPRINT_SLOT_HOURS = {
+  "s-1": { start: -1.5, end: 0 },
+  "s-2": { start: 0, end: 5 },
+  "s-3": { start: 5, end: 11 },
+  "s-4": { start: 11, end: 13.5 },
+  "s-5": { start: 13.5, end: 21.5 },
+  "s-6": { start: 21.5, end: 24 },
+  "s-7": { start: 24, end: 25.5 },
+  "s-8": { start: 25.5, end: 29.5 },
+  "s-9": { start: 29.5, end: 31 },
+};
+
+// Official Macro Milestone Windows (IST Timestamps)
+const MACRO_MILESTONE_WINDOWS = {
+  "m-1": { start: new Date("2026-09-01T00:00:00+05:30").getTime(), end: new Date("2026-09-01T23:59:59+05:30").getTime() },
+  "m-2": { start: new Date("2026-09-10T00:00:00+05:30").getTime(), end: new Date("2026-09-10T23:59:59+05:30").getTime() },
+  "m-3": { start: new Date("2026-09-11T00:00:00+05:30").getTime(), end: new Date("2026-09-25T23:59:59+05:30").getTime() },
+  "m-4": { start: new Date("2026-09-26T00:00:00+05:30").getTime(), end: new Date("2026-09-28T23:59:59+05:30").getTime() },
+  "m-5": { start: new Date("2026-09-30T10:00:00+05:30").getTime(), end: new Date("2026-10-01T10:00:00+05:30").getTime() },
+  "m-6": { start: new Date("2026-10-01T15:30:00+05:30").getTime(), end: new Date("2026-10-01T18:00:00+05:30").getTime() },
+};
+
 const INITIAL_CONTENT = {
   collegeName: "NIIS INSTITUTE OF BUSINESS ADMINISTRATION",
   affiliation: "(A Unit of NIIS Group of Institutions)",
@@ -758,7 +755,7 @@ const INITIAL_CONTENT = {
   subTagline: "Small ideas can create a big impact",
   organizer: "Kaushal Technical Club, NIIS",
   eventDates: "30th September - 01st October 2026",
-  countdownTarget: "2026-09-30T09:00:00",
+  countdownTarget: "2026-09-30T10:00:00",
   venue: "C-Block Auditorium & Innovation Labs, Bhubaneswar",
   registrationDeadline: "25th September 2026",
   rulebookUrl: "/brochure.pdf",
@@ -793,7 +790,7 @@ const INITIAL_CONTENT = {
   eventFlow: [
     { stage: "Stage 1", title: "Online Squad Registration", desc: "Submit squad registration via the in-app portal and select your target problem challenge." },
     { stage: "Stage 2", title: "Technical Screening & Finalist Pass", desc: "Jury panel evaluates architecture viability. Shortlisted finalist squads receive campus entry passes." },
-    { stage: "Stage 3", title: "24h Grand Finale at NIIS", desc: "24 hours continuous offline sprint, mentor checkpoints, live jury demos, and grand valedictory." }
+    { stage: "Stage 3", title: "24-Hour Grand Finale at NIIS", desc: "24 hours continuous offline sprint (Hour 0 to Hour 24), mentor checkpoints, live jury demos, and grand valedictory." }
   ],
 
   committeeMembers: OFFICIAL_COMMITTEE_MEMBERS,
@@ -804,20 +801,20 @@ const INITIAL_CONTENT = {
     { id: "m-2", label: "Problem Statements Live", date: "10 September 2026", status: "Completed", desc: "12 curated real-world institutional and industry problem statements announced." },
     { id: "m-3", label: "Registration Closes", date: "25 September 2026", status: "Active", desc: "Final deadline for squad registration and problem statement submission." },
     { id: "m-4", label: "Round 1 Screening & Shortlist", date: "26 - 28 September 2026", status: "Upcoming", desc: "Expert technical committee evaluates architectural blueprints and shortlists top squads." },
-    { id: "m-5", label: "Grand Finale (24h Non-stop)", date: "30 Sep - 01 Oct 2026", status: "Upcoming", desc: "24-hour on-campus development sprint, live jury evaluations, and mentor checkpoints." },
-    { id: "m-6", label: "Valedictory & Prize Distribution", date: "01 October 2026, 05:00 PM", status: "Upcoming", desc: "Announcement of winners, distribution of ₹35,000 cash prizes, and closing ceremonies." }
+    { id: "m-5", label: "Grand Finale (24h Non-stop)", date: "30 Sep - 01 Oct 2026", status: "Upcoming", desc: "24-hour on-campus non-stop development sprint, mentor checkpoints, and live jury evaluations." },
+    { id: "m-6", label: "Valedictory & Prize Distribution", date: "01 October 2026, 03:30 PM", status: "Upcoming", desc: "Announcement of winners, distribution of ₹35,000 cash prizes, and closing ceremonies." }
   ],
 
   hackathonRoadmap: [
     { id: "s-1", time: "Day 1 - 08:30 AM", title: "Reporting & Verification", venue: "NIIS Innovation Labs", actionItem: "Kit & ID Check", desc: "Team check-in, physical ID verification, kit distribution and Wi-Fi onboarding at NIIS Innovation Labs." },
-    { id: "s-2", time: "Day 1 - 10:00 AM", title: "Inaugural Ceremony & Hack Begins", venue: "Main Auditorium", actionItem: "Timer Starts", desc: "Welcome address by Hon'ble Chairperson, release of secret API keys, and timer commencement for 24 hours." },
-    { id: "s-3", time: "Day 1 - 03:00 PM", title: "Mentorship Checkpoint 1", venue: "Sprint Hall A & B", actionItem: "Architecture Review", desc: "Domain experts and faculty evaluators review team architecture diagrams and database schemas." },
-    { id: "s-4", time: "Day 1 - 09:00 PM", title: "Midway Progress Scrutiny", venue: "Sprint Hall A & B", actionItem: "Mid-Sprint Demo", desc: "First elimination check; teams must show working local servers and initial endpoint integrations." },
-    { id: "s-5", time: "Day 1 - 11:30 PM", title: "Midnight Coding Sprints & Snacks", venue: "Cafeteria & Labs", actionItem: "Refreshment Break", desc: "Late-night refreshments, energizer mini-games, and non-stop dev sprints with mentor support." },
-    { id: "s-6", time: "Day 2 - 08:00 AM", title: "Breakfast & Code Freeze Countdown", venue: "Dining Hall", actionItem: "UI Polish", desc: "Morning breakfast provided; teams enter final UI polish, containerization, and repository cleanup." },
-    { id: "s-7", time: "Day 2 - 01:00 PM", title: "Final GitHub Commits & Code Freeze", venue: "Online Git Portal", actionItem: "Code Freeze", desc: "Public repository locks. Presentation decks uploaded to jury evaluation portal." },
-    { id: "s-8", time: "Day 2 - 02:30 PM", title: "Live Grand Jury Presentations", venue: "Conference Hall", actionItem: "8-Min Pitch Demo", desc: "Top finalist squads pitch 8-minute live demonstrations before the esteemed jury panel." },
-    { id: "s-9", time: "Day 2 - 05:30 PM", title: "Valedictory & Cash Prize Distribution", venue: "Main Auditorium", actionItem: "Awards & Cash Prize", desc: "Announcement of Winners, medal and trophy handover, and closing felicitations." }
+    { id: "s-2", time: "Day 1 - 10:00 AM", title: "Inaugural Ceremony & 24h Sprint Begins", venue: "Main Auditorium", actionItem: "Hour 0 • 24h Timer Starts", desc: "Welcome address by Hon'ble Chairperson, release of secret API keys, and 24-hour non-stop countdown timer commencement." },
+    { id: "s-3", time: "Day 1 - 03:00 PM", title: "Mentorship Checkpoint 1 (Hour 5)", venue: "Sprint Hall A & B", actionItem: "Hour 5 • Architecture Review", desc: "Technical mentors and faculty evaluators review team architecture diagrams, API contracts, and database schemas." },
+    { id: "s-4", time: "Day 1 - 09:00 PM", title: "Midway Checkpoint 2 (Hour 11)", venue: "Sprint Hall A & B", actionItem: "Hour 11 • Prototype & API Check", desc: "Mid-sprint milestone evaluation; teams demonstrate working local servers, database connectivity, and initial UI screens." },
+    { id: "s-5", time: "Day 1 - 11:30 PM", title: "Midnight Coding Sprint & Refreshments", venue: "Cafeteria & Labs", actionItem: "Hour 14 • Midnight Sprint", desc: "Late-night refreshments, power snacks, technical debugging assistance, and non-stop dev sprints with mentor support." },
+    { id: "s-6", time: "Day 2 - 07:30 AM", title: "Breakfast & Final Sprint Push", venue: "Dining Hall & Labs", actionItem: "Hour 21 • Final Push", desc: "Morning breakfast served; teams enter final UI polish, containerization, deployment testing, and slide deck preparation." },
+    { id: "s-7", time: "Day 2 - 10:00 AM", title: "24h Sprint Code Freeze (Hour 24)", venue: "Online Git Portal", actionItem: "Hour 24 • Code Freeze", desc: "Strict 24-hour development sprint ends. Public repositories lock and presentation decks are submitted to the jury portal." },
+    { id: "s-8", time: "Day 2 - 11:30 AM", title: "Live Grand Jury Presentations", venue: "Conference Hall", actionItem: "8-Min Live Demos", desc: "Top finalist squads pitch 8-minute live demonstrations and functional prototypes before the esteemed jury panel." },
+    { id: "s-9", time: "Day 2 - 03:30 PM", title: "Valedictory & Cash Prize Distribution", venue: "Main Auditorium", actionItem: "₹35,000 Cash Prizes", desc: "Announcement of Winners, medal and trophy handover, and closing felicitations." }
   ],
 
   /* Accurate Prize Structure: Total ₹35,000 Cash Pool */
@@ -982,7 +979,7 @@ export default function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 180;
-      const sections = ['home', 'about', 'leadership', 'tracks', 'schedule', 'prizes', 'guidelines', 'gallery', 'committee'];
+      const sections = ['home', 'about', 'tracks', 'schedule', 'prizes', 'guidelines', 'committee', 'gallery'];
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el && el.offsetTop <= scrollPos) {
@@ -1044,10 +1041,6 @@ export default function App() {
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [newPhotoUrl, setNewPhotoUrl] = useState('');
   const [newPhotoTitle, setNewPhotoTitle] = useState('');
-
-  // Unified Autoplaying Carousel States: Leadership Desk
-  const [leaderIndex, setLeaderIndex] = useState(0);
-  const [isLeaderHovered, setIsLeaderHovered] = useState(false);
 
   // Unified Autoplaying Carousel States: Committee Slider (2 cards at a time on desktop)
   const [commSliderIndex, setCommSliderIndex] = useState(0);
@@ -1296,6 +1289,7 @@ export default function App() {
 
       const sourceData = cloudData || cachedCms;
       if (sourceData) {
+        const clean24h = (str) => typeof str === 'string' ? str.replace(/\b36[- ]?(hours?|h)\b/gi, '24-hour').replace(/\b36\s*hours\b/gi, '24 hours') : (str || '');
         const merged = {
           ...INITIAL_CONTENT,
           ...sourceData,
@@ -1303,33 +1297,40 @@ export default function App() {
           datesSchedule: (sourceData.datesSchedule && sourceData.datesSchedule.length > 0)
             ? sourceData.datesSchedule.map((d, i) => ({
                 id: d.id || `m-${i + 1}`,
-                label: d.label || "",
+                label: clean24h(d.label),
                 date: d.date || "",
                 status: d.status || "Upcoming",
-                desc: d.desc || INITIAL_CONTENT.datesSchedule[i]?.desc || ""
+                desc: clean24h(d.desc) || INITIAL_CONTENT.datesSchedule[i]?.desc || ""
               }))
             : INITIAL_CONTENT.datesSchedule,
-          hackathonRoadmap: (sourceData.hackathonRoadmap && sourceData.hackathonRoadmap.length > 0)
+          hackathonRoadmap: (sourceData.hackathonRoadmap && sourceData.hackathonRoadmap.length > 0 && !sourceData.hackathonRoadmap[6]?.time?.includes("01:00 PM"))
             ? sourceData.hackathonRoadmap.map((r, i) => ({
                 id: r.id || `s-${i + 1}`,
                 time: r.time || "",
-                title: r.title || "",
-                desc: r.desc || "",
+                title: clean24h(r.title),
+                desc: clean24h(r.desc),
                 venue: r.venue || INITIAL_CONTENT.hackathonRoadmap[i]?.venue || "NIIS Innovation Labs",
-                actionItem: r.actionItem || INITIAL_CONTENT.hackathonRoadmap[i]?.actionItem || "Checkpoint"
+                actionItem: clean24h(r.actionItem) || INITIAL_CONTENT.hackathonRoadmap[i]?.actionItem || "Checkpoint"
               }))
             : INITIAL_CONTENT.hackathonRoadmap,
           rulesList: (sourceData.rulesList && sourceData.rulesList.length > 0)
             ? sourceData.rulesList
             : INITIAL_CONTENT.rulesList,
           eventFlow: (sourceData.eventFlow && sourceData.eventFlow.length > 0)
-            ? sourceData.eventFlow
+            ? sourceData.eventFlow.map(e => ({ ...e, title: clean24h(e.title), desc: clean24h(e.desc) }))
             : INITIAL_CONTENT.eventFlow,
           committeeMembers: (sourceData.committeeMembers && sourceData.committeeMembers.length >= 15)
             ? sourceData.committeeMembers
             : OFFICIAL_COMMITTEE_MEMBERS,
           problemStatements: (sourceData.problemStatements && sourceData.problemStatements.length >= 12 && sourceData.problemStatements[0]?.title?.includes("Campus Life"))
-            ? sourceData.problemStatements
+            ? sourceData.problemStatements.map(ps => {
+                const official = OFFICIAL_PROBLEM_STATEMENTS.find(o => o.id === ps.id) || {};
+                return {
+                  ...ps,
+                  category: official.category || ps.category,
+                  pdfUrl: official.pdfUrl || `/briefs/${ps.id}.pdf`
+                };
+              })
             : OFFICIAL_PROBLEM_STATEMENTS
         };
         setContent(merged);
@@ -1593,14 +1594,54 @@ export default function App() {
     return () => clearInterval(interval);
   }, [content.countdownTarget]);
 
-  // UNIFIED AUTOPLAYING CAROUSEL 1: Leadership Desk (Rotates every 6s)
+  // Dynamic 24-Hour Sprint Real-Time Monitor (1-minute interval)
+  const [currentSprintTime, setCurrentSprintTime] = useState(() => Date.now());
   useEffect(() => {
-    if (isLeaderHovered) return;
-    const timer = setInterval(() => {
-      setLeaderIndex((prev) => (prev + 1) % PERMANENT_LEADERS.length);
-    }, 6000);
+    const updateSprintTime = () => setCurrentSprintTime(Date.now());
+    updateSprintTime();
+    const timer = setInterval(updateSprintTime, 60000); // 1-minute interval
     return () => clearInterval(timer);
-  }, [isLeaderHovered]);
+  }, []);
+
+  const sprintStartTime = useMemo(() => {
+    return content.countdownTarget ? new Date(content.countdownTarget).getTime() : HACKATHON_START_TIMESTAMP;
+  }, [content.countdownTarget]);
+
+  // Dynamic status evaluation for 24h sprint slots (Hour 0 to Hour 24)
+  const getDynamicSlotStatus = (slot, idx, totalSlots) => {
+    const slotHours = SPRINT_SLOT_HOURS[slot.id] || {
+      start: idx * (24 / Math.max(1, totalSlots)),
+      end: (idx + 1) * (24 / Math.max(1, totalSlots))
+    };
+    const slotStartMs = sprintStartTime + (slotHours.start * 3600000);
+    const slotEndMs = sprintStartTime + (slotHours.end * 3600000);
+    const now = currentSprintTime;
+
+    if (now > slotEndMs) {
+      return { status: "Completed", isLive: false, isCompleted: true, isUpcoming: false, badgeClass: "bg-slate-100 text-slate-500 border-slate-200" };
+    } else if (now >= slotStartMs && now <= slotEndMs) {
+      return { status: "Live Now", isLive: true, isCompleted: false, isUpcoming: false, badgeClass: "bg-emerald-50 text-emerald-700 border-emerald-300 font-bold" };
+    } else {
+      return { status: "Upcoming", isLive: false, isCompleted: false, isUpcoming: true, badgeClass: "bg-blue-50 text-blue-700 border-blue-200" };
+    }
+  };
+
+  // Dynamic status evaluation for macro event milestones
+  const getDynamicMilestoneStatus = (item) => {
+    const window = MACRO_MILESTONE_WINDOWS[item.id];
+    if (!window) {
+      const isAct = item.status === "Active" || item.status === "In Progress" || item.status === "Live Now";
+      return { status: item.status || "Upcoming", isLive: isAct, isCompleted: item.status === "Completed" };
+    }
+    const now = currentSprintTime;
+    if (now > window.end) {
+      return { status: "Completed", isLive: false, isCompleted: true };
+    } else if (now >= window.start && now <= window.end) {
+      return { status: "Live Now", isLive: true, isCompleted: false };
+    } else {
+      return { status: "Upcoming", isLive: false, isCompleted: false };
+    }
+  };
 
   // UNIFIED AUTOPLAYING CAROUSEL 2: Committee Members (Rotates 2 cards every 4.5s)
   useEffect(() => {
@@ -1614,15 +1655,13 @@ export default function App() {
   }, [isCommHovered, content.committeeMembers]);
 
   // Problem Statement Category Filter Logic (4 Categories)
-  const domainList = useMemo(() => {
-    const set = new Set((content.problemStatements || []).map(p => p.category || p.domain));
-    return ['All', ...Array.from(set)];
-  }, [content.problemStatements]);
+  const TRACK_CATEGORIES = ['All', 'Campus Nexus', 'Meditech AI', 'AI & Machine Learning', 'Neurocore / GeoNavX'];
+  const domainList = TRACK_CATEGORIES;
 
   const filteredTracks = useMemo(() => {
-    return (content.problemStatements || []).filter(p => {
-      const cat = p.category || p.domain || '';
-      const matchesDomain = selectedDomain === 'All' || cat === selectedDomain;
+    return (content.problemStatements || OFFICIAL_PROBLEM_STATEMENTS).filter(p => {
+      const cat = (p.category || p.domain || '').trim();
+      const matchesDomain = selectedDomain === 'All' || cat.toLowerCase() === selectedDomain.toLowerCase();
       const matchesSearch = (p.title || '').toLowerCase().includes(searchTrack.toLowerCase()) ||
                             cat.toLowerCase().includes(searchTrack.toLowerCase()) ||
                             (p.shortDesc || '').toLowerCase().includes(searchTrack.toLowerCase()) ||
@@ -2233,25 +2272,28 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
           ========================================================================= */}
       <section
         id="home"
-        className="w-full relative min-h-[600px] text-white -mt-16 pt-24 pb-16 sm:pb-24 px-4 overflow-hidden border-b border-white/[0.08] flex items-center justify-center bg-slate-950"
+        className="w-full relative min-h-[600px] text-white -mt-16 pt-24 pb-16 sm:pb-24 px-4 overflow-hidden border-b border-white/[0.08] flex items-center justify-center bg-[#0a0f1d]"
       >
-        {/* Cinematic Live Campus Backdrop with subtle ambient Ken-Burns zoom */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <img
-            src="/campus-bg.jpg"
-            alt="NIIS Campus"
-            style={{ objectPosition: 'center 40%' }}
-            className="w-full h-full object-cover animate-ken-burns scale-105 filter brightness-90 contrast-105"
-            onError={(e) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = "/campus-bg.jpeg";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/60 to-slate-950/90 backdrop-blur-[1px]" />
-        </div>
+        {/* Subtle Ambient Radial Glows (Live / Floating Tech Feel) */}
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-[30%] right-[10%] w-[400px] h-[300px] bg-indigo-600/10 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[10%] w-[500px] h-[300px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none" />
 
-        {/* Sleek ambient radial glow behind crisp typography */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[900px] h-[400px] sm:h-[500px] bg-gradient-to-r from-blue-600/25 via-indigo-600/20 to-blue-400/15 rounded-full blur-[130px] pointer-events-none" />
+        {/* Clean Subtle Tech Grid / Dot Matrix */}
+        <div className="absolute inset-0 z-0 opacity-[0.07] pointer-events-none overflow-hidden">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="hero-tech-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-blue-400" />
+                <circle cx="0" cy="0" r="1.2" fill="currentColor" className="text-cyan-300" />
+                <circle cx="40" cy="0" r="1.2" fill="currentColor" className="text-cyan-300" />
+                <circle cx="0" cy="40" r="1.2" fill="currentColor" className="text-cyan-300" />
+                <circle cx="40" cy="40" r="1.2" fill="currentColor" className="text-cyan-300" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hero-tech-grid)" />
+          </svg>
+        </div>
 
         {/* Interactive Particle Network */}
         <HeroInteractiveNetwork />
@@ -2375,11 +2417,11 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
         
         <div className="max-w-5xl mx-auto space-y-8 relative z-10 text-center">
           
-          <div className="space-y-2">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 inline-block">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 mb-3.5">
               EVENT PREVIEW
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1e3a8a] mt-3 mb-2 font-['Outfit']">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1e3a8a] mb-2.5 font-['Outfit']">
               Official Event Teaser & Promo
             </h2>
             <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto">
@@ -2576,11 +2618,11 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
 
           {/* Right Column (Rich Detailed Copy) - lg:col-span-8 flex flex-col items-start text-left */}
           <div className="lg:col-span-8 flex flex-col items-start text-left">
-            <span className="px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-blue-50 text-blue-700 border border-blue-200">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-blue-50 text-blue-700 border border-blue-200 mb-3.5">
               ABOUT THE EVENT
             </span>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1e3a8a] tracking-tight mt-3 mb-2 font-['Outfit']">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1e3a8a] tracking-tight mb-2.5 font-['Outfit']">
               Fostering Technology & Innovation at NIIS
             </h2>
 
@@ -2618,150 +2660,19 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       </section>
 
       {/* =========================================================================
-          5. UNIFIED AUTOPLAYING SLIDER: LEADERSHIP DESK (PROMINENT EXECUTIVE HIERARCHY)
-          ========================================================================= */}
-      <section id="leadership" className="w-full py-16 px-4 sm:px-8 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-5xl mx-auto space-y-8">
-          
-          <div className="text-center space-y-1">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
-              Leadership Desk
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-sans font-black text-[#0f2d59]">
-              Messages from Institutional Leadership
-            </h3>
-            <p className="text-xs text-slate-500 max-w-md mx-auto">
-              Inspirational vision and guidance from the honorable leadership of NIIS Group of Institutions.
-            </p>
-          </div>
-
-          {/* Unified Autoplaying Leadership Carousel Slider */}
-          <div
-            onMouseEnter={() => setIsLeaderHovered(true)}
-            onMouseLeave={() => setIsLeaderHovered(false)}
-            className="relative"
-          >
-            {/* Active Leader Executive Card */}
-            {(() => {
-              const currentLeader = PERMANENT_LEADERS[leaderIndex];
-              return (
-                <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-lg flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left transition-all duration-500">
-                  
-                  {/* Dignitary Photo Box */}
-                  <div className="w-56 sm:w-64 h-72 sm:h-80 rounded-2xl overflow-hidden border-4 border-slate-100 shadow-md flex-shrink-0 bg-slate-100 flex items-center justify-center relative">
-                    <img
-                      src={currentLeader.photo}
-                      alt={currentLeader.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-top"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = "/chairman.15c124f6375fe3d6762b.png";
-                      }}
-                    />
-                    <div className="absolute top-2 left-2 bg-[#0f2d59]/90 text-amber-300 font-mono text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-xs">
-                      Executive Dignitary {leaderIndex + 1}/3
-                    </div>
-                  </div>
-
-                  {/* Content & Quote */}
-                  <div className="space-y-4 flex-1">
-                    <div>
-                      <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 px-2.5 py-1 rounded border border-amber-200 inline-block mb-1.5">
-                        {currentLeader.badge}
-                      </span>
-                      <h4 className="font-bold text-slate-900 text-xl sm:text-2xl leading-snug">
-                        {currentLeader.name}
-                      </h4>
-                      <p className="text-xs sm:text-sm text-slate-500 font-medium">
-                        {currentLeader.role}
-                      </p>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-slate-700 italic font-sans leading-relaxed pt-1">
-                      “{currentLeader.quote}”
-                    </p>
-
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-xs text-emerald-700 font-semibold flex items-center gap-1.5">
-                        <CheckCircle2 className="w-4 h-4" /> Official Message
-                      </span>
-                      <span className="text-xs font-bold text-blue-900 font-mono">
-                        NIIS Group of Institutions
-                      </span>
-                    </div>
-                  </div>
-
-                </div>
-              );
-            })()}
-
-            {/* Slider Navigation Chevrons */}
-            <button
-              onClick={() => setLeaderIndex((prev) => (prev > 0 ? prev - 1 : PERMANENT_LEADERS.length - 1))}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 border border-slate-200 shadow-md text-[#0f2d59] flex items-center justify-center hover:bg-[#0f2d59] hover:text-white transition cursor-pointer z-10"
-              title="Previous Leader"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <button
-              onClick={() => setLeaderIndex((prev) => (prev + 1) % PERMANENT_LEADERS.length)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 border border-slate-200 shadow-md text-[#0f2d59] flex items-center justify-center hover:bg-[#0f2d59] hover:text-white transition cursor-pointer z-10"
-              title="Next Leader"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Quick Dignitary Selectors */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {PERMANENT_LEADERS.map((leader, idx) => (
-              <button
-                key={leader.id}
-                onClick={() => setLeaderIndex(idx)}
-                className={`p-3 rounded-2xl border text-left transition flex items-center gap-3 cursor-pointer ${
-                  leaderIndex === idx
-                    ? 'bg-white border-blue-900 shadow-md ring-1 ring-blue-900'
-                    : 'bg-white/60 border-slate-200 hover:bg-white'
-                }`}
-              >
-                <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 border">
-                  <img
-                    src={leader.photo}
-                    alt={leader.name}
-                    className="w-full h-full object-cover object-top"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/chairman.15c124f6375fe3d6762b.png";
-                    }}
-                  />
-                </div>
-                <div className="truncate">
-                  <span className="font-bold text-xs text-[#0f2d59] block truncate">{leader.name}</span>
-                  <span className="text-[10px] text-slate-500 block truncate">{leader.badge}</span>
-                </div>
-              </button>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* =========================================================================
-          6. PROBLEM STATEMENTS / TRACKS
+          5. PROBLEM STATEMENTS / TRACKS
           ========================================================================= */}
       <section id="tracks" className="w-full py-16 px-4 sm:px-6 bg-white border-b border-slate-200">
         <div className="max-w-6xl mx-auto space-y-8">
           
-          <div className="text-center space-y-3">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-900 border border-blue-200/80 mb-3.5">
               4 Flagship Categories • 12 Innovation Challenges
             </span>
-            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
+            <h3 className="text-2xl sm:text-3xl font-sans font-black text-[#0f2d59] mt-2 mb-2">
               Explore 12 Official Problem Statements
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
+            <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto mb-4">
               Curated across 4 pivotal domains with 3 dedicated challenges each. Download the official problem brief (PDF) or apply directly.
             </p>
 
@@ -2817,27 +2728,10 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             {filteredTracks.map((ps) => (
               <div key={ps.id} className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-blue-700 transition flex flex-col justify-between group">
                 <div>
-                  <div className="flex flex-wrap items-center justify-between gap-1.5 mb-2">
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-mono text-xs font-black text-[#0f2d59] bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
-                        {ps.id}
-                      </span>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                        ps.difficulty === 'Hard' ? 'bg-red-50 text-red-700 border border-red-200' :
-                        ps.difficulty === 'Medium' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                      }`}>
-                        {ps.difficulty}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-1.5 text-[11px] font-medium">
-                      <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-700 border border-emerald-500/30">
-                        {psMetrics[ps.id]?.teams || 0} Teams
-                      </span>
-                      <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-700 border border-cyan-500/30">
-                        {psMetrics[ps.id]?.participants || 0} Participants
-                      </span>
-                    </div>
+                  <div className="mb-2">
+                    <span className="inline-block px-2.5 py-1 rounded-md text-xs font-bold text-blue-600 bg-blue-50 border border-blue-200">
+                      {ps.id}
+                    </span>
                   </div>
 
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
@@ -2875,14 +2769,17 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
 
                 <div className="pt-4 border-t border-slate-100 mt-4 space-y-2">
                   <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => handleDownloadProblemBrief(ps, content.collegeName)}
+                    <a
+                      href={ps.pdfUrl || `/briefs/${ps.id}.pdf`}
+                      download={`${ps.id}.pdf`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 text-center bg-blue-50 hover:bg-blue-100 text-[#0f2d59] font-bold py-1.5 px-3 rounded-lg text-xs transition cursor-pointer flex items-center justify-center gap-1.5 border border-blue-200 shadow-xs"
-                      title="Download Detailed PDF Problem Brief"
+                      title={`Download Detailed PDF Brief for ${ps.id}`}
                     >
                       <Download className="w-3.5 h-3.5 text-blue-900" />
                       <span>Download Brief</span>
-                    </button>
+                    </a>
                     
                     <a
                       href={googleFormPsUrl}
@@ -2909,11 +2806,11 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       <section id="schedule" className="w-full py-16 px-4 sm:px-6 bg-slate-50 border-b border-slate-200">
         <div className="max-w-6xl mx-auto space-y-12">
           
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 mb-3.5">
               Timeline & Phases
             </span>
-            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
+            <h3 className="text-2xl sm:text-3xl font-sans font-black text-[#0f2d59] mb-2.5">
               Milestones & Event Flow
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -2947,31 +2844,40 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                   <span>Timeline</span>
                 </div>
                 <div className="divide-y divide-slate-100 text-xs">
-                  {content.datesSchedule.map((item, idx) => (
-                    <div key={item.id || idx} className="px-5 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-slate-50 transition">
-                      <div className="flex items-start gap-3">
-                        <span className={`w-2.5 h-2.5 rounded-full mt-1 flex-shrink-0 ${
-                          item.status === 'Completed' ? 'bg-slate-400' :
-                          (item.status === 'Active' || item.status === 'In Progress') ? 'bg-emerald-600 animate-pulse' : 'bg-blue-600'
-                        }`} />
-                        <div>
-                          <span className="font-semibold text-slate-800 block text-xs sm:text-sm">{item.label}</span>
-                          {item.desc && (
-                            <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{item.desc}</p>
-                          )}
+                  {content.datesSchedule.map((item, idx) => {
+                    const dynStatus = getDynamicMilestoneStatus(item);
+                    return (
+                      <div key={item.id || idx} className="px-5 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-slate-50 transition">
+                        <div className="flex items-start gap-3">
+                          <span className={`w-2.5 h-2.5 rounded-full mt-1 flex-shrink-0 ${
+                            dynStatus.isCompleted ? 'bg-slate-400' :
+                            dynStatus.isLive ? 'bg-emerald-600 animate-pulse' : 'bg-blue-600'
+                          }`} />
+                          <div>
+                            <span className="font-semibold text-slate-800 block text-xs sm:text-sm">{item.label}</span>
+                            {item.desc && (
+                              <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{item.desc}</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="sm:text-right flex-shrink-0 pl-5.5 sm:pl-0">
+                          <span className="font-bold text-[#0f2d59] block">{item.date}</span>
+                          <span className={`text-[10px] uppercase font-bold inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded ${
+                            dynStatus.isCompleted ? 'bg-slate-100 text-slate-500' :
+                            dynStatus.isLive ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-blue-100 text-blue-700'
+                          }`}>
+                            {dynStatus.isLive && (
+                              <span className="relative flex h-1.5 w-1.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-600"></span>
+                              </span>
+                            )}
+                            {dynStatus.status}
+                          </span>
                         </div>
                       </div>
-                      <div className="sm:text-right flex-shrink-0 pl-5.5 sm:pl-0">
-                        <span className="font-bold text-[#0f2d59] block">{item.date}</span>
-                        <span className={`text-[10px] uppercase font-bold inline-block px-2 py-0.5 rounded ${
-                          item.status === 'Completed' ? 'bg-slate-100 text-slate-500' :
-                          (item.status === 'Active' || item.status === 'In Progress') ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-700'
-                        }`}>
-                          {item.status}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -2979,49 +2885,70 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
 
           {/* Hour-by-Hour 24h Roadmap */}
           <div id="roadmap" className="space-y-6 pt-6">
-            <div className="text-center space-y-1">
-              <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
+            <div className="text-center mb-6">
+              <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 mb-3.5">
                 Grand Finale Schedule
               </span>
-              <h4 className="text-2xl font-sans font-black text-[#0f2d59]">
+              <h4 className="text-2xl font-sans font-black text-[#0f2d59] mb-2.5">
                 Hour-by-Hour 24h Sprint Schedule
               </h4>
+              <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
+                Strict 24-hour non-stop development timeline from Day 1 Kickoff (Hour 0) to Day 2 Code Freeze (Hour 24).
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {content.hackathonRoadmap.map((r, i) => (
-                <div key={r.id || i} className="relative group">
-                  <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm space-y-2 hover:border-blue-900 transition flex flex-col justify-between h-full">
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between gap-1 flex-wrap">
-                        <span className="text-[11px] font-mono font-bold text-amber-700 bg-amber-50 border border-amber-200/60 px-2 py-0.5 rounded">
-                          {r.time}
-                        </span>
-                        {r.venue && (
-                          <span className="text-[10px] font-medium text-slate-500 flex items-center gap-1">
-                            <MapPin className="w-3 h-3 text-blue-700" />
-                            <span>{r.venue}</span>
+              {content.hackathonRoadmap.map((r, i) => {
+                const slotStatus = getDynamicSlotStatus(r, i, content.hackathonRoadmap.length);
+                return (
+                  <div key={r.id || i} className="relative group">
+                    <div className={`bg-white border rounded-xl p-4 shadow-sm space-y-2 transition flex flex-col justify-between h-full ${
+                      slotStatus.isLive
+                        ? 'border-emerald-500 ring-2 ring-emerald-500/20 shadow-md'
+                        : 'border-slate-200 hover:border-blue-900'
+                    }`}>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between gap-1 flex-wrap">
+                          <span className="text-[11px] font-mono font-bold text-amber-700 bg-amber-50 border border-amber-200/60 px-2 py-0.5 rounded">
+                            {r.time}
                           </span>
-                        )}
+                          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${slotStatus.badgeClass}`}>
+                            {slotStatus.isLive && (
+                              <span className="relative flex h-1.5 w-1.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                              </span>
+                            )}
+                            {slotStatus.status}
+                          </span>
+                        </div>
+                        <h5 className="font-bold text-[#0f2d59] text-xs sm:text-sm">{r.title}</h5>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          {r.actionItem && (
+                            <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-800 border border-blue-200">
+                              ⚡ {r.actionItem}
+                            </span>
+                          )}
+                          {r.venue && (
+                            <span className="text-[10px] font-medium text-slate-500 flex items-center gap-1">
+                              <MapPin className="w-3 h-3 text-blue-700" />
+                              <span>{r.venue}</span>
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs text-slate-600 leading-relaxed">{r.desc}</p>
                       </div>
-                      <h5 className="font-bold text-[#0f2d59] text-xs sm:text-sm">{r.title}</h5>
-                      {r.actionItem && (
-                        <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-800 border border-blue-200">
-                          ⚡ {r.actionItem}
-                        </span>
-                      )}
-                      <p className="text-xs text-slate-600 leading-relaxed">{r.desc}</p>
                     </div>
-                  </div>
 
-                  {/* Minimal subtle inline arrow between horizontally adjacent cards in row */}
-                  {i < content.hackathonRoadmap.length - 1 && (i + 1) % 3 !== 0 && (
-                    <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-6 h-6 rounded-full bg-white border border-blue-200 shadow-sm items-center justify-center pointer-events-none text-blue-500">
-                      <ArrowRight className="w-3.5 h-3.5 stroke-[2]" />
-                    </div>
-                  )}
-                </div>
-              ))}
+                    {/* Minimal subtle inline arrow between horizontally adjacent cards in row */}
+                    {i < content.hackathonRoadmap.length - 1 && (i + 1) % 3 !== 0 && (
+                      <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-6 h-6 rounded-full bg-white border border-blue-200 shadow-sm items-center justify-center pointer-events-none text-blue-500">
+                        <ArrowRight className="w-3.5 h-3.5 stroke-[2]" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -3034,11 +2961,11 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       <section id="prizes" className="w-full py-16 px-4 sm:px-6 bg-white border-b border-slate-200">
         <div className="max-w-6xl mx-auto space-y-8">
           
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 mb-3.5">
               Verified Rewards & Bounty Structure
             </span>
-            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
+            <h3 className="text-2xl sm:text-3xl font-sans font-black text-[#0f2d59] mb-2.5">
               Prizes, Trophies & Seed Support
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -3092,11 +3019,11 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       <section id="guidelines" className="w-full py-16 px-4 sm:px-6 bg-slate-50 border-b border-slate-200">
         <div className="max-w-4xl mx-auto space-y-8">
           
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 mb-3.5">
               Standard Protocols
             </span>
-            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
+            <h3 className="text-2xl sm:text-3xl font-sans font-black text-[#0f2d59] mb-2.5">
               Hackathon Guidelines & Requirements
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -3191,150 +3118,16 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       </section>
 
       {/* =========================================================================
-          4. NASA-STYLE PHOTO ARCHIVES GRID (NO CATEGORIES)
-          Streamlined right above the Committee & Feedback sections
-          ========================================================================= */}
-      <section id="gallery" className="w-full py-16 px-4 sm:px-6 bg-white border-b border-slate-200">
-        <div className="max-w-6xl mx-auto space-y-8">
-          
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
-              Visual Archives
-            </span>
-            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
-              Campus Moments & Hackathon Chronicles
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
-              Relive the collaborative intensity, mentorship sessions, and grand valedictory awards from our previous hackathon edition.
-            </p>
-          </div>
-
-          {/* NASA-Style Compact Uniform Image Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-            {currentGallery.map((item, idx) => {
-              const photoSrc = item.url || item.src;
-              const photoTitle = item.title || item.caption || `Hackathon Moment #${idx + 1}`;
-              return (
-                <div
-                  key={item.id || idx}
-                  onClick={() => setLightboxIndex(idx)}
-                  className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-slate-900 border border-slate-800/80 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
-                >
-                  <img
-                    src={photoSrc}
-                    alt={photoTitle}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/campus-bg.jpg";
-                    }}
-                  />
-                  {/* Subtle bottom caption overlay */}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-2.5 sm:p-3 transition-opacity duration-200 flex flex-col justify-end">
-                    <p className="text-white text-xs sm:text-sm font-semibold truncate group-hover:text-amber-300 transition-colors">
-                      {photoTitle}
-                    </p>
-                    {item.caption && item.caption !== photoTitle && (
-                      <p className="text-slate-300 text-[10px] sm:text-[11px] line-clamp-1 opacity-80 group-hover:opacity-100 transition-opacity">
-                        {item.caption}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </section>
-
-      {/* Gallery Full-screen Lightbox Modal */}
-      {lightboxIndex !== null && currentGallery[lightboxIndex] && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
-          onClick={() => setLightboxIndex(null)}
-        >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setLightboxIndex(null);
-            }}
-            className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer z-50 transition"
-            title="Close"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          {currentGallery.length > 1 && (
-            <>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev > 0 ? prev - 1 : currentGallery.length - 1));
-                }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer z-50 transition"
-                title="Previous photo"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev < currentGallery.length - 1 ? prev + 1 : 0));
-                }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer z-50 transition"
-                title="Next photo"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </>
-          )}
-
-          <div 
-            className="max-w-4xl w-full max-h-[90vh] flex flex-col items-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="max-h-[72vh] rounded-xl overflow-hidden border border-white/20 shadow-2xl bg-black">
-              <img
-                src={currentGallery[lightboxIndex].url || currentGallery[lightboxIndex].src}
-                alt={currentGallery[lightboxIndex].title || "Hackathon Moment"}
-                className="max-h-[72vh] w-auto object-contain mx-auto"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = "/campus-bg.jpg";
-                }}
-              />
-            </div>
-            <div className="mt-4 text-center text-white space-y-1 max-w-xl">
-              <span className="text-xs text-amber-400 font-mono">
-                Photo {lightboxIndex + 1} of {currentGallery.length}
-              </span>
-              <h3 className="text-lg font-bold">
-                {currentGallery[lightboxIndex].title || currentGallery[lightboxIndex].caption || "Hackathon Moment"}
-              </h3>
-              {currentGallery[lightboxIndex].caption && currentGallery[lightboxIndex].caption !== currentGallery[lightboxIndex].title && (
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {currentGallery[lightboxIndex].caption}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* =========================================================================
           5. UNIFIED AUTOPLAYING SLIDER: COMMITTEE MEMBERS (EXACT SAME MOTION, 2 CARDS AT A TIME)
           ========================================================================= */}
       <section id="committee" className="w-full py-16 px-4 sm:px-6 bg-slate-50 border-b border-slate-200">
         <div className="max-w-5xl mx-auto space-y-8">
           
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 mb-3.5">
               Organizing Core
             </span>
-            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
+            <h3 className="text-2xl sm:text-3xl font-sans font-black text-[#0f2d59] mb-2.5">
               Tech Club Faculty & Organizing Committee
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -3498,16 +3291,138 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
       </section>
 
       {/* =========================================================================
+          CAMPUS MOMENTS & HACKATHON CHRONICLES GALLERY
+          ========================================================================= */}
+      <section id="gallery" className="w-full py-6 md:py-8 px-4 sm:px-6 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="text-center mb-5">
+            <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 mb-3">
+              EVENT MEMORIES • PREVIOUS EDITIONS
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-1.5">
+              Campus Moments & Hackathon Chronicles
+            </h2>
+            <p className="text-xs md:text-sm text-slate-600 max-w-2xl mx-auto">
+              Snapshots of 24h innovation sprints, mentorship, and award moments.
+            </p>
+          </div>
+
+          {/* Horizontally scrolling marquee track */}
+          <div className="relative w-full overflow-hidden py-2">
+            {/* Edge Blur / Fade Effect */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10" />
+
+            {/* Horizontally scrolling row */}
+            <div className="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth px-4 pb-2 snap-x snap-mandatory">
+              {hackathonMoments.map((item, idx) => (
+                <div
+                  key={item.id || idx}
+                  onClick={() => setLightboxIndex(idx)}
+                  className="flex-none snap-start w-52 md:w-64 h-36 md:h-40 rounded-xl overflow-hidden relative group border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      if (e.currentTarget.src.endsWith('.jpg')) {
+                        e.currentTarget.src = item.src.replace(/\.jpg$/, '.jpeg');
+                      }
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Gallery Full-screen Lightbox Modal */}
+      {lightboxIndex !== null && hackathonMoments[lightboxIndex] && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setLightboxIndex(null)}
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex(null);
+            }}
+            className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer z-50 transition"
+            title="Close"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {hackathonMoments.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex((prev) => (prev > 0 ? prev - 1 : hackathonMoments.length - 1));
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer z-50 transition"
+                title="Previous photo"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex((prev) => (prev < hackathonMoments.length - 1 ? prev + 1 : 0));
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer z-50 transition"
+                title="Next photo"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </>
+          )}
+
+          <div 
+            className="max-w-4xl w-full max-h-[90vh] flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="max-h-[72vh] rounded-xl overflow-hidden border border-white/20 shadow-2xl bg-black">
+              <img
+                src={hackathonMoments[lightboxIndex].src}
+                alt={hackathonMoments[lightboxIndex].title || "Hackathon Moment"}
+                className="max-h-[72vh] w-auto object-contain mx-auto"
+                onError={(e) => {
+                  if (e.currentTarget.src.endsWith('.jpg')) {
+                    e.currentTarget.src = hackathonMoments[lightboxIndex].src.replace(/\.jpg$/, '.jpeg');
+                  }
+                }}
+              />
+            </div>
+            <div className="mt-4 text-center text-white space-y-1 max-w-xl">
+              <span className="text-xs text-amber-400 font-mono">
+                Photo {lightboxIndex + 1} of {hackathonMoments.length}
+              </span>
+              <h3 className="text-lg font-bold">
+                {hackathonMoments[lightboxIndex].title}
+              </h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================================
           11. FAQS & CLARIFICATIONS
           ========================================================================= */}
       <section id="faqs" className="w-full py-16 px-4 sm:px-6 bg-slate-50 border-b border-slate-200">
         <div className="max-w-4xl mx-auto space-y-8">
           
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold text-blue-900 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 mb-3.5">
               Got Questions?
             </span>
-            <h3 className="text-3xl font-sans font-black text-[#0f2d59]">
+            <h3 className="text-2xl sm:text-3xl font-sans font-black text-[#0f2d59] mb-2.5">
               Frequently Asked Questions
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
@@ -3564,13 +3479,12 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
               <h6 className="font-bold text-white uppercase tracking-wider mb-3 text-xs">Portal Navigation</h6>
               <ul className="space-y-2 text-[11px]">
                 <li><a href="#about" className="hover:text-amber-300">About Hackathon</a></li>
-                <li><a href="#leadership" className="hover:text-amber-300">Chairperson Desk</a></li>
                 <li><a href="#tracks" className="hover:text-amber-300">Problem Statements</a></li>
                 <li><a href="#schedule" className="hover:text-amber-300">Timeline & Stages</a></li>
                 <li><a href="#prizes" className="hover:text-amber-300">Prizes (₹35K Pool)</a></li>
                 <li><a href="#guidelines" className="hover:text-amber-300">Guidelines & Rulebook</a></li>
-                <li><a href="#gallery" className="hover:text-amber-300">Hackathon Moments</a></li>
                 <li><a href="#committee" className="hover:text-amber-300">Committee & Contacts</a></li>
+                <li><a href="#gallery" className="hover:text-amber-300">Hackathon Moments</a></li>
                 <li><a href="#faqs" className="hover:text-amber-300">FAQs & Rules</a></li>
               </ul>
             </div>
@@ -3638,34 +3552,14 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
               <X className="w-5 h-5" />
             </button>
 
-            <div className="space-y-1.5 pr-6">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-black text-[#0f2d59] bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
-                    {modalTrack.id}
-                  </span>
-                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                    {modalTrack.category || modalTrack.domain}
-                  </span>
-                  {modalTrack.difficulty && (
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                      modalTrack.difficulty === 'Hard' ? 'bg-red-50 text-red-700 border border-red-200' :
-                      modalTrack.difficulty === 'Medium' ? 'bg-blue-50 text-blue-700 border border-blue-200' :
-                      'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                    }`}>
-                      {modalTrack.difficulty}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-1.5 text-[11px] font-medium">
-                  <span className="px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-700 border border-emerald-500/30 font-semibold">
-                    {psMetrics[modalTrack.id]?.teams || 0} Teams
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-700 border border-cyan-500/30 font-semibold">
-                    {psMetrics[modalTrack.id]?.participants || 0} Participants
-                  </span>
-                </div>
+            <div className="space-y-1.5 pr-8">
+              <div className="flex items-center gap-2.5">
+                <span className="font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                  {modalTrack.id}
+                </span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  {modalTrack.category || modalTrack.domain}
+                </span>
               </div>
               <h3 className="font-bold text-slate-900 text-base sm:text-lg pt-1">
                 {modalTrack.title}
@@ -3705,14 +3599,17 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-1">
-              <button
-                onClick={() => handleDownloadProblemBrief(modalTrack, content.collegeName)}
-                className="w-full sm:w-auto px-4 py-2 bg-blue-50 hover:bg-blue-100 text-[#0f2d59] border border-blue-200 rounded-lg font-bold flex items-center justify-center gap-1.5 transition cursor-pointer"
-                title="Download PDF Problem Brief"
+              <a
+                href={modalTrack.pdfUrl || `/briefs/${modalTrack.id}.pdf`}
+                download={`${modalTrack.id}.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-4 py-2 bg-blue-50 hover:bg-blue-100 text-[#0f2d59] border border-blue-200 rounded-lg font-bold flex items-center justify-center gap-1.5 transition cursor-pointer text-xs"
+                title={`Download Detailed PDF Brief for ${modalTrack.id}`}
               >
                 <Download className="w-4 h-4 text-blue-900" />
                 <span>Download Problem Brief (PDF)</span>
-              </button>
+              </a>
 
                 <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
                   <button
@@ -5738,7 +5635,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                           <div>
                             <label className="block text-[11px] font-bold text-slate-700 mb-0.5">Category Domain</label>
                             <select
-                              value={ps.category || ps.domain || "AI & Intelligent Systems"}
+                              value={ps.category || ps.domain || "Campus Nexus"}
                               onChange={(e) => {
                                 const up = [...adminDraft.problemStatements];
                                 up[idx].category = e.target.value;
@@ -5747,10 +5644,10 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                               }}
                               className="w-full border rounded p-1.5 bg-white text-xs font-semibold"
                             >
-                              <option value="AI & Intelligent Systems">AI & Intelligent Systems</option>
-                              <option value="Web3, FinTech & Enterprise Solutions">Web3, FinTech & Enterprise Solutions</option>
-                              <option value="HealthTech, Smart IoT & Sustainability">HealthTech, Smart IoT & Sustainability</option>
-                              <option value="Cybersecurity & Open Societal Innovation">Cybersecurity & Open Societal Innovation</option>
+                              <option value="Campus Nexus">Campus Nexus</option>
+                              <option value="Meditech AI">Meditech AI</option>
+                              <option value="AI & Machine Learning">AI & Machine Learning</option>
+                              <option value="Neurocore / GeoNavX">Neurocore / GeoNavX</option>
                             </select>
                           </div>
                           <div>
