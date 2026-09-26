@@ -13,7 +13,7 @@ import {
   Calendar, Clock, MapPin, Users, FileText, CheckCircle2,
   ChevronRight, ChevronLeft, Sparkles, Download, ExternalLink,
   Edit3, Plus, Trash2, X, Menu,
-  Phone, Mail, Trophy, BookOpen, ShieldCheck,
+  Phone, Mail, Trophy, BookOpen, ShieldCheck, Award,
   ArrowRight, Laptop, Search,
   ChevronDown, Terminal, Globe, ShieldAlert,
   Play, Pause, Volume2, VolumeX,
@@ -344,7 +344,7 @@ const OFFICIAL_COMMITTEE_MEMBERS = [
     name: "Ms. Rutuparna Nayak",
     role: "In-Charge Member, Tech Club",
     category: "Faculty Core",
-    phone: "+91 94370 11013",
+    phone: "+91 7751844982",
     email: "rutuparna.nayak@niis.edu.in",
     photo: ""
   },
@@ -353,7 +353,7 @@ const OFFICIAL_COMMITTEE_MEMBERS = [
     name: "Ms. Suchismita",
     role: "In-Charge Member, Tech Club",
     category: "Faculty Core",
-    phone: "+91 94370 11014",
+    phone: "+91 8917697561",
     email: "suchismita@niis.edu.in",
     photo: ""
   },
@@ -575,16 +575,15 @@ function handleDownloadProblemBrief(ps, collegeName = "NIIS INSTITUTE OF BUSINES
     { text: `1. System Architecture Diagram, Database Schemas & API Documentation`, font: 8.5, bold: false, spaceAfter: 2 },
     { text: `2. Working Software Codebase Prototype (Web Platform / Mobile / AI Engine)`, font: 8.5, bold: false, spaceAfter: 2 },
     { text: `3. Live Demonstration Video or Interactive Sprint Presentation`, font: 8.5, bold: false, spaceAfter: 2 },
-    { text: `4. 5-Minute Technical Pitch Deck covering Innovation, Usability & Feasibility`, font: 8.5, bold: false, spaceAfter: 6 },
+    { text: `4. 7-8 Slide Technical Pitch Deck (Problem Analysis, Core Innovation, Tech Stack & Impact)`, font: 8.5, bold: false, spaceAfter: 6 },
 
-    { text: `EVALUATION CRITERIA & SCORING RUBRIC:`, font: 10, bold: true, spaceAfter: 4 },
-    { text: `* Innovation, Problem Fit & Originality: 25%`, font: 8.5, bold: false, spaceAfter: 2 },
-    { text: `* Technical Feasibility, Architecture & Security: 25%`, font: 8.5, bold: false, spaceAfter: 2 },
-    { text: `* Completeness of Working Prototype: 25%`, font: 8.5, bold: false, spaceAfter: 2 },
-    { text: `* Social / Institutional Impact & Presentation Pitch: 25%`, font: 8.5, bold: false, spaceAfter: 8 },
+    { text: `EVALUATION CRITERIA & SCORING RUBRIC (NOTICE NO. 38/NIBA/26):`, font: 10, bold: true, spaceAfter: 4 },
+    { text: `* Concept & Planning: 20%`, font: 8.5, bold: false, spaceAfter: 2 },
+    { text: `* Development Progress: 40%`, font: 8.5, bold: false, spaceAfter: 2 },
+    { text: `* Presentation & Impact: 40%`, font: 8.5, bold: false, spaceAfter: 8 },
 
     { text: `PRIZE BOUNTY & RECOGNITION:`, font: 10, bold: true, spaceAfter: 4 },
-    { text: `Total Cash Prize Pool: Rs. 35,000 (1st: Rs. 20,000 | 2nd: Rs. 10,000 | 3rd: Rs. 5,000) + Trophies + Certificates`, font: 8.5, bold: false, spaceAfter: 8 },
+    { text: `Total Cash Prize Pool: Rs. 35,000 (1st: Rs. 20,000 + Winner Trophy + Certificate | 2nd: Rs. 10,000 + Runner-up Trophy + Certificate | 3rd: Rs. 5,000 + 2nd Runner-up Trophy + Certificate | All: Certificate of Participation)`, font: 8.5, bold: false, spaceAfter: 8 },
 
     { text: `-------------------------------------------------------------------------------------------------`, font: 8, bold: false, spaceAfter: 6 },
     { text: `Official Event Rulebook & Guidelines: https://niis-hackathon-2026.web.app | Kaushal Technical Club`, font: 8, bold: false, spaceAfter: 2 },
@@ -723,17 +722,21 @@ function getPsMetrics(telemetryMap, psId) {
 // Official 24-Hour Sprint Baseline Constants
 const HACKATHON_START_TIMESTAMP = new Date("2026-09-30T10:00:00+05:30").getTime();
 
-// Hour offsets for each sprint milestone slot (Hour 0 to Hour 24)
+// Hour offsets for each sprint milestone slot (Day 1 10:00 AM to Day 2 04:00 PM)
 const SPRINT_SLOT_HOURS = {
-  "s-1": { start: -1.5, end: 0 },
-  "s-2": { start: 0, end: 5 },
-  "s-3": { start: 5, end: 11 },
-  "s-4": { start: 11, end: 13.5 },
-  "s-5": { start: 13.5, end: 21.5 },
-  "s-6": { start: 21.5, end: 24 },
-  "s-7": { start: 24, end: 25.5 },
-  "s-8": { start: 25.5, end: 29.5 },
-  "s-9": { start: 29.5, end: 31 },
+  "s-1": { start: 0, end: 0.5 },     // 10:00 AM - 10:30 AM: Inauguration & Welcome
+  "s-2": { start: 0.5, end: 1.0 },   // 10:30 AM - 11:00 AM: Briefing & Guidelines
+  "s-3": { start: 1.0, end: 3.5 },   // 11:00 AM - 01:30 PM: 24h Sprint Commences
+  "s-4": { start: 3.5, end: 6.0 },   // 01:30 PM - 04:00 PM: Lunch Break
+  "s-5": { start: 6.0, end: 10.0 },  // 04:00 PM - 08:00 PM: Milestone 1 - Checkpoint
+  "s-6": { start: 10.0, end: 11.0 }, // 08:00 PM - 09:00 PM: Milestone 2 - Checkpoint
+  "s-7": { start: 11.0, end: 12.0 }, // 09:00 PM - 10:00 PM: Dinner Break
+  "s-8": { start: 12.0, end: 21.5 }, // 10:00 PM - 07:30 AM: Overnight Coding
+  "s-9": { start: 21.5, end: 22.5 }, // 07:30 AM - 08:30 AM: Breakfast
+  "s-10": { start: 22.5, end: 23.5 }, // 08:30 AM - 09:30 AM: CODE FREEZE & Submissions
+  "s-11": { start: 23.5, end: 27.0 }, // 09:30 AM - 01:00 PM: Pitch Presentations
+  "s-12": { start: 27.0, end: 28.0 }, // 01:00 PM - 02:00 PM: Lunch & Jury Deliberation
+  "s-13": { start: 28.0, end: 30.0 }, // 02:00 PM - 04:00 PM: Valedictory & Closing
 };
 
 // Official Macro Milestone Windows (IST Timestamps)
@@ -742,8 +745,8 @@ const MACRO_MILESTONE_WINDOWS = {
   "m-2": { start: new Date("2026-09-10T00:00:00+05:30").getTime(), end: new Date("2026-09-10T23:59:59+05:30").getTime() },
   "m-3": { start: new Date("2026-09-11T00:00:00+05:30").getTime(), end: new Date("2026-09-25T23:59:59+05:30").getTime() },
   "m-4": { start: new Date("2026-09-26T00:00:00+05:30").getTime(), end: new Date("2026-09-28T23:59:59+05:30").getTime() },
-  "m-5": { start: new Date("2026-09-30T10:00:00+05:30").getTime(), end: new Date("2026-10-01T10:00:00+05:30").getTime() },
-  "m-6": { start: new Date("2026-10-01T15:30:00+05:30").getTime(), end: new Date("2026-10-01T18:00:00+05:30").getTime() },
+  "m-5": { start: new Date("2026-09-30T10:00:00+05:30").getTime(), end: new Date("2026-10-01T08:30:00+05:30").getTime() },
+  "m-6": { start: new Date("2026-10-01T14:00:00+05:30").getTime(), end: new Date("2026-10-01T16:00:00+05:30").getTime() },
 };
 
 const INITIAL_CONTENT = {
@@ -779,7 +782,7 @@ const INITIAL_CONTENT = {
     heading: "Empowering Campus Innovators to Solve Real-World Challenges",
     subHeading: "An intensive 24-hour intra-college sprint connecting emerging student developers with faculty mentors and industrial problem statements.",
     para1: "NIIS Hackathon 2026 is the flagship annual intra-college technical championship hosted by Kaushal Tech Club at NIIS Institute of Business Administration, Bhubaneswar. Designed exclusively for our campus students across MCA, BCA, and Management disciplines, this 24-hour sprint challenges emerging developers, designers, and problem solvers to turn ideas into viable working prototypes.",
-    para2: "Grounded in academic excellence affiliated to BPUT, Odisha and accredited by NAAC, the event bridges classroom theory with direct industry problem-solving. Participants collaborate in squads of 3–4 members, tackle 12 curated problem statements, and compete under the mentorship of faculty guides and industry evaluators for a ₹35,000 cash prize pool along with prestigious institutional recognition.",
+    para2: "Grounded in academic excellence affiliated to BPUT, Odisha and accredited by NAAC, the event bridges classroom theory with direct industry problem-solving. Participants collaborate in squads of 4–6 members, tackle 12 curated problem statements, and compete under the mentorship of faculty guides and industry evaluators for a ₹35,000 cash prize pool along with prestigious institutional recognition.",
     pillars: [
       { num: "01", title: "24-Hour Sprint", desc: "Intensive non-stop prototyping and team collaboration." },
       { num: "02", title: "Industry Mentorship", desc: "Continuous guidance from senior faculty and tech leads." },
@@ -788,7 +791,7 @@ const INITIAL_CONTENT = {
   },
 
   eventFlow: [
-    { stage: "Stage 1", title: "Online Squad Registration", desc: "Submit squad registration via the in-app portal and select your target problem challenge." },
+    { stage: "Stage 1", title: "Online Squad Registration", desc: "Submit squad registration via the in-app portal (strictly 4 to 6 members) and select your target problem challenge." },
     { stage: "Stage 2", title: "Technical Screening & Finalist Pass", desc: "Jury panel evaluates architecture viability. Shortlisted finalist squads receive campus entry passes." },
     { stage: "Stage 3", title: "24-Hour Grand Finale at NIIS", desc: "24 hours continuous offline sprint (Hour 0 to Hour 24), mentor checkpoints, live jury demos, and grand valedictory." }
   ],
@@ -799,40 +802,47 @@ const INITIAL_CONTENT = {
   datesSchedule: [
     { id: "m-1", label: "Registration Opens", date: "01 September 2026", status: "Completed", desc: "Online registrations opened for all eligible student squads across colleges." },
     { id: "m-2", label: "Problem Statements Live", date: "10 September 2026", status: "Completed", desc: "12 curated real-world institutional and industry problem statements announced." },
-    { id: "m-3", label: "Registration Closes", date: "25 September 2026", status: "Active", desc: "Final deadline for squad registration and problem statement submission." },
-    { id: "m-4", label: "Round 1 Screening & Shortlist", date: "26 - 28 September 2026", status: "Upcoming", desc: "Expert technical committee evaluates architectural blueprints and shortlists top squads." },
+    { id: "m-3", label: "Registration Closes", date: "25 September 2026", status: "Completed", desc: "Final deadline for squad registration and problem statement submission." },
+    { id: "m-4", label: "Round 1 Screening & Shortlist", date: "26 - 28 September 2026", status: "Active", desc: "Expert technical committee evaluates architectural blueprints and shortlists top squads." },
     { id: "m-5", label: "Grand Finale (24h Non-stop)", date: "30 Sep - 01 Oct 2026", status: "Upcoming", desc: "24-hour on-campus non-stop development sprint, mentor checkpoints, and live jury evaluations." },
-    { id: "m-6", label: "Valedictory & Prize Distribution", date: "01 October 2026, 03:30 PM", status: "Upcoming", desc: "Announcement of winners, distribution of ₹35,000 cash prizes, and closing ceremonies." }
+    { id: "m-6", label: "Valedictory & Prize Distribution", date: "01 October 2026, 02:00 PM - 04:00 PM", status: "Upcoming", desc: "Announcement of winners, distribution of ₹35,000 cash prizes, winner trophies, certificates of excellence, and closing ceremonies." }
   ],
 
   hackathonRoadmap: [
-    { id: "s-1", time: "Day 1 - 08:30 AM", title: "Reporting & Verification", venue: "NIIS Innovation Labs", actionItem: "Kit & ID Check", desc: "Team check-in, physical ID verification, kit distribution and Wi-Fi onboarding at NIIS Innovation Labs." },
-    { id: "s-2", time: "Day 1 - 10:00 AM", title: "Inaugural Ceremony & 24h Sprint Begins", venue: "Main Auditorium", actionItem: "Hour 0 • 24h Timer Starts", desc: "Welcome address by Hon'ble Chairperson, release of secret API keys, and 24-hour non-stop countdown timer commencement." },
-    { id: "s-3", time: "Day 1 - 03:00 PM", title: "Mentorship Checkpoint 1 (Hour 5)", venue: "Sprint Hall A & B", actionItem: "Hour 5 • Architecture Review", desc: "Technical mentors and faculty evaluators review team architecture diagrams, API contracts, and database schemas." },
-    { id: "s-4", time: "Day 1 - 09:00 PM", title: "Midway Checkpoint 2 (Hour 11)", venue: "Sprint Hall A & B", actionItem: "Hour 11 • Prototype & API Check", desc: "Mid-sprint milestone evaluation; teams demonstrate working local servers, database connectivity, and initial UI screens." },
-    { id: "s-5", time: "Day 1 - 11:30 PM", title: "Midnight Coding Sprint & Refreshments", venue: "Cafeteria & Labs", actionItem: "Hour 14 • Midnight Sprint", desc: "Late-night refreshments, power snacks, technical debugging assistance, and non-stop dev sprints with mentor support." },
-    { id: "s-6", time: "Day 2 - 07:30 AM", title: "Breakfast & Final Sprint Push", venue: "Dining Hall & Labs", actionItem: "Hour 21 • Final Push", desc: "Morning breakfast served; teams enter final UI polish, containerization, deployment testing, and slide deck preparation." },
-    { id: "s-7", time: "Day 2 - 10:00 AM", title: "24h Sprint Code Freeze (Hour 24)", venue: "Online Git Portal", actionItem: "Hour 24 • Code Freeze", desc: "Strict 24-hour development sprint ends. Public repositories lock and presentation decks are submitted to the jury portal." },
-    { id: "s-8", time: "Day 2 - 11:30 AM", title: "Live Grand Jury Presentations", venue: "Conference Hall", actionItem: "8-Min Live Demos", desc: "Top finalist squads pitch 8-minute live demonstrations and functional prototypes before the esteemed jury panel." },
-    { id: "s-9", time: "Day 2 - 03:30 PM", title: "Valedictory & Cash Prize Distribution", venue: "Main Auditorium", actionItem: "₹35,000 Cash Prizes", desc: "Announcement of Winners, medal and trophy handover, and closing felicitations." }
+    { id: "s-1", time: "Day 1 - 10:00 AM", title: "Inauguration & Faculty Welcome", venue: "Main Auditorium", actionItem: "Faculty Welcome", desc: "Official inauguration and welcome address by Hon'ble Chairman, Dy. Director, Principal NIBA, and Principal NIIS." },
+    { id: "s-2", time: "Day 1 - 10:30 AM", title: "Problem Statement & Dataset Guidelines Briefing", venue: "Auditorium & Innovation Labs", actionItem: "Guidelines Briefing", desc: "Comprehensive briefing on official problem statements, dataset guidelines, evaluation rubrics, and submission parameters." },
+    { id: "s-3", time: "Day 1 - 11:00 AM", title: "24-Hour Hacking / Prototyping Sprint Commences", venue: "Sprint Hall & Innovation Labs", actionItem: "Hour 0 • 24h Timer Starts", desc: "Official commencement of the 24-hour sprint. Countdown timer starts and squads begin solution architecture and prototyping." },
+    { id: "s-4", time: "Day 1 - 01:30 PM", title: "Lunch Break", venue: "Dining Hall & Cafeteria", actionItem: "Lunch & Networking", desc: "Wholesome lunch served for all registered participants, faculty coordinators, and mentors." },
+    { id: "s-5", time: "Day 1 - 04:00 PM", title: "Milestone 1 - First Mentor Checkpoint", venue: "Sprint Hall & Labs", actionItem: "Architecture Review", desc: "Architecture and progress review; mentors assess project architecture, tech stacks, API contracts, and implementation blueprints." },
+    { id: "s-6", time: "Day 1 - 08:00 PM", title: "Milestone 2 - Second Mentor Checkpoint", venue: "Sprint Hall & Labs", actionItem: "Mid-Sprint Checkpoint", desc: "Second mentor checkpoint evaluating progress, API integration, database design, and sprint roadmap execution." },
+    { id: "s-7", time: "Day 1 - 09:00 PM", title: "Dinner Break", venue: "Dining Hall & Cafeteria", actionItem: "Dinner & Refreshment", desc: "Dinner served for all hackers; team strategy huddle and overnight preparation." },
+    { id: "s-8", time: "Day 1 - 10:00 PM - Over-night", title: "Continuous Coding & Mentor Rotation Rounds", venue: "Innovation Labs & Hall", actionItem: "Overnight Coding", desc: "Overnight continuous coding sprint with roving mentors, technical guidance, debugging assistance, and refreshments." },
+    { id: "s-9", time: "Day 2 - 07:30 AM", title: "Breakfast", venue: "Dining Hall", actionItem: "Morning Breakfast", desc: "Energizing breakfast served as teams prepare for final code commits and submission polish." },
+    { id: "s-10", time: "Day 2 - 08:30 AM", title: "CODE FREEZE & Final Project Submissions", venue: "Online Git Portal & Labs", actionItem: "Code Freeze & Submissions", desc: "Strict code freeze. Public repositories lock and final projects, codebases, and demo assets are submitted." },
+    { id: "s-11", time: "Day 2 - 09:30 AM - 01:00 PM", title: "Pitch Presentations", venue: "Auditorium & Conference Hall", actionItem: "7-8 Slides Pitch Demos", desc: "Finalist teams present 7-8 slides covering Problem Analysis, Core Innovation, Technology Stack & Measurable Impact before the jury." },
+    { id: "s-12", time: "Day 2 - 01:00 PM - 02:00 PM", title: "Lunch Break & Final Jury Deliberation", venue: "Dining Hall & Jury Room", actionItem: "Lunch & Jury Scoring", desc: "Lunch served while the evaluation jury deliberates and consolidates final scoring sheets." },
+    { id: "s-13", time: "Day 2 - 02:00 PM - 04:00 PM", title: "Grand Valedictory, Prize Distribution & Closing Ceremony", venue: "Main Auditorium", actionItem: "Valedictory & ₹35K Prizes", desc: "Announcement of winners, distribution of ₹35,000 cash prizes, winner trophies, certificates of excellence, and closing ceremony." }
   ],
 
-  /* Accurate Prize Structure: Total ₹35,000 Cash Pool */
+  /* Accurate Prize Structure: Total ₹35,000 Cash Pool (Notice No. 38/NIBA/26) */
   prizes: [
     {
-      rank: "Winner (1st Prize)",
+      place: "1st Place",
+      rank: "1st Place (Winner)",
       amount: "₹20,000",
-      perk: "Official Champion Trophy + Gold Medals + Certificate of Excellence + Incubation Seat at NIIS E-Cell"
+      perk: "₹20,000 Cash Prize + Winner Trophy + Certificate of Excellence"
     },
     {
-      rank: "1st Runner Up (2nd Prize)",
+      place: "2nd Place",
+      rank: "2nd Place (Runner-Up)",
       amount: "₹10,000",
-      perk: "Runner-Up Trophy + Silver Medals + Certificate of Excellence + Technical Goodies"
+      perk: "₹10,000 Cash Prize + Runner-up Trophy + Certificate of Excellence"
     },
     {
-      rank: "2nd Runner Up (3rd Prize)",
+      place: "3rd Place",
+      rank: "3rd Place (2nd Runner-Up)",
       amount: "₹5,000",
-      perk: "2nd Runner-Up Trophy + Bronze Medals + Certificate of Excellence + Cloud Developer Credits"
+      perk: "₹5,000 Cash Prize + 2nd Runner-up Trophy + Certificate of Excellence"
     }
   ],
 
@@ -840,89 +850,100 @@ const INITIAL_CONTENT = {
     {
       id: "r-1",
       category: "Team Rules",
-      title: "Squad Eligibility & Composition",
+      title: "Team Composition & Eligibility (Notice No. 38/NIBA/26)",
       points: [
-        "Each team must consist of 3 to 5 student members currently enrolled in any recognized College, Institute, or University.",
-        "Interdisciplinary teams (e.g. BCA + BBA + B.Tech + MCA) are strongly encouraged.",
-        "One member must be designated as the Team Leader for all official communication."
+        "Team size is strictly 4 to 6 student members (Solo entries are strictly not entertained).",
+        "Inter-department and inter-batch teams across all NIIS Group of Institutions are permitted.",
+        "Each participant is restricted to being part of only one team across the entire hackathon."
       ]
     },
     {
       id: "r-2",
       category: "Submission Deliverables",
-      title: "Institutional Identity & Bona Fide Verification",
+      title: "Presentation & Pitch Deck Requirements",
       points: [
-        "Shortlisted finalist squads attending the 24-hour on-campus grand finale must carry valid institutional student ID cards confirming their bona fide enrollment.",
-        "All squads must submit pitch decks and architecture blueprints before the specified deadline."
+        "Final presentations must be minimum 7-8 slides covering: Problem Analysis, Core Innovation, Technology Stack & Measurable Impact.",
+        "Shortlisted finalist squads attending the 24-hour grand finale must carry valid institutional student ID cards confirming their bona fide enrollment.",
+        "Codebases, architecture diagrams, and slide decks must be submitted prior to the Day 2 08:30 AM code freeze."
       ]
     },
     {
       id: "r-3",
       category: "Hardware/Software Rules",
-      title: "Hardware, Repository & Code Ethics",
+      title: "Scratch Build & Development Ethics",
       points: [
-        "Participants must bring their own development laptops, extension cords, and hardware sensor kits.",
-        "All code must be committed to a fresh public GitHub repository initiated at the Day 1 opening ceremony.",
-        "Pre-existing proprietary products will result in immediate disqualification; standard open-source libraries and APIs are fully permissible."
+        "All code must be built from scratch during the hackathon sprint; pre-built solutions are strictly prohibited.",
+        "Open-source libraries, frameworks, and public APIs are fully allowed with proper disclosure and documentation.",
+        "Participants must bring their own development laptops, extension cords, and testing hardware."
       ]
     },
     {
       id: "r-4",
       category: "Code of Conduct",
-      title: "Fair Play & Professionalism",
+      title: "Discipline, Academic Integrity & Fair Play",
       points: [
-        "All participants must uphold academic honesty, collaboration, and respectful behavior across the 24-hour sprint.",
-        "Plagiarism, offensive conduct, or intellectual property violation will result in immediate squad disqualification.",
-        "Campus rules and lab security protocols must be strictly adhered to at all times."
+        "All participants must uphold academic honesty, respectful collaboration, and institutional discipline.",
+        "Any form of plagiarism, unauthorized assistance, or misconduct will result in immediate squad disqualification.",
+        "Campus discipline and laboratory security protocols must be strictly adhered to at all times."
+      ]
+    },
+    {
+      id: "r-5",
+      category: "Evaluation Rubrics",
+      title: "Official Evaluation Criteria & Scoring Weightage",
+      points: [
+        "Concept & Planning: 20% (Problem comprehension, innovation fit & architectural planning).",
+        "Development Progress: 40% (Technical execution, feature completeness, code quality & working prototype).",
+        "Presentation & Impact: 40% (7-8 slide pitch clarity, practical feasibility & real-world impact)."
       ]
     }
   ],
 
   guidelines: {
-    rule1Title: "1. Squad Eligibility & Composition",
+    rule1Title: "1. Team Composition & Eligibility",
     rule1Points: [
-      "Each team must consist of 3 to 5 student members currently enrolled in any recognized College, Institute, or University.",
-      "Interdisciplinary teams (e.g. BCA + BBA + B.Tech + MCA) are strongly encouraged.",
-      "One member must be designated as the Team Leader for all official communication."
+      "Team size is strictly 4 to 6 student members (Solo entries are strictly not entertained).",
+      "Inter-department and inter-batch teams across all NIIS Group of Institutions are permitted.",
+      "Each participant is restricted to being part of only one team."
     ],
-    rule2Title: "2. Institutional Identity & Bona Fide Verification",
-    rule2Desc: "Shortlisted finalist squads attending the 24-hour on-campus grand finale must carry valid institutional student ID cards confirming their bona fide enrollment in an accredited college or university.",
-    rule3Title: "3. Hardware, Repository & Code Ethics",
+    rule2Title: "2. Presentation & Submission Requirements",
+    rule2Desc: "Final presentations must be minimum 7-8 slides covering Problem Analysis, Core Innovation, Technology Stack & Measurable Impact. All code must be submitted before the 08:30 AM code freeze.",
+    rule3Title: "3. Scratch Build & Ethics",
     rule3Points: [
-      "Participants must bring their own development laptops, extension cords, and hardware sensor kits.",
-      "All code must be committed to a fresh public GitHub repository initiated at the Day 1 opening ceremony.",
-      "Pre-existing proprietary products will result in immediate disqualification; standard open-source libraries and APIs are fully permissible."
+      "All code must be built from scratch during the hackathon; pre-built solutions are strictly prohibited.",
+      "Open-source libraries/frameworks & public APIs are allowed with proper disclosure.",
+      "Any plagiarism or misconduct will lead to immediate squad disqualification."
     ]
   },
 
   faqs: [
     {
       q: "Who is eligible to participate in NIIS Hackathon 2026?",
-      a: "Any bonafide undergraduate or postgraduate student currently enrolled in an accredited college, university, or polytechnic institution (BCA, BBA, B.Tech, MCA, MBA, B.Sc, Diploma) is fully eligible."
+      a: "Any bonafide undergraduate or postgraduate student currently enrolled in an accredited college, university, or polytechnic institution (BCA, BBA, B.Tech, MCA, MBA, B.Sc, Diploma) is fully eligible. Inter-department and inter-batch teams across NIIS Group of Institutions are permitted."
     },
     {
       q: "What is the team size policy?",
-      a: "Teams must consist of 3 to 5 student members (1 Team Leader + 2 to 4 Squad Members). Interdisciplinary squads are strongly encouraged."
+      a: "Teams must consist strictly of 4 to 6 student members (1 Team Leader + 3 to 5 Squad Members). Solo entries are strictly not entertained. Participants are restricted to being part of only one team."
     },
     {
       q: "Is there any registration fee to participate?",
       a: "No. Participation in NIIS Hackathon 2026 is completely free of charge. Shortlisted finalists are also provided complimentary campus accommodation, meals, and high-speed Wi-Fi."
     },
     {
-      q: "What is the official Cash Bounty pool?",
-      a: "The total verified cash bounty pool is ₹35,000 (₹20,000 for Winners, ₹10,000 for 1st Runners-Up, ₹5,000 for 2nd Runners-Up) along with trophies, medals, merit citations, and incubation support."
+      q: "What is the official Cash Bounty and Prize Structure?",
+      a: "The total verified cash bounty pool is ₹35,000 (1st Place: ₹20,000 Cash Prize + Winner Trophy + Certificate of Excellence; 2nd Place: ₹10,000 Cash Prize + Runner-up Trophy + Certificate of Excellence; 3rd Place: ₹5,000 Cash Prize + 2nd Runner-up Trophy + Certificate of Excellence). All participants receive Official Certificates of Participation."
     },
     {
       q: "Can teams submit pre-built software developed earlier?",
-      a: "Strictly no. All functional code must be authored inside a fresh public GitHub repository initialized during the Day 1 kick-off. Use of standard open-source libraries and APIs is permitted."
+      a: "Strictly no. All code must be built from scratch during the hackathon. Pre-built solutions are prohibited. Open-source libraries/frameworks and public APIs are permitted with proper disclosure."
     },
     {
-      q: "What documents must finalists present at the venue?",
-      a: "Each shortlisted finalist must carry a valid institutional student identity card confirming their bona fide enrollment in their college or university."
+      q: "What are the pitch presentation guidelines?",
+      a: "Pitch presentations must be a minimum of 7-8 slides covering Problem Analysis, Core Innovation, Technology Stack & Measurable Impact, followed by a live functional prototype demonstration."
     },
     {
-      q: "Will all participants receive official certificates?",
-      a: "Yes. Every candidate whose team successfully undergoes the 24-hour offline evaluation will receive a verified Certificate of Participation + Event Swag Kit endorsed by NIIS Institute of Business Administration."
+      q: "Who can we contact for queries or support?",
+      a: "You can reach out to our official faculty coordinators: Ms. Suchismita (+91 8917697561) or Ms. Rutuparna Nayak (+91 7751844982)."
     }
   ]
 };
@@ -1060,6 +1081,7 @@ export default function App() {
     leaderPhone: '',
     leaderEmail: '',
     members: [
+      { name: '', email: '' },
       { name: '', email: '' },
       { name: '', email: '' }
     ],
@@ -1294,7 +1316,7 @@ export default function App() {
           ...INITIAL_CONTENT,
           ...sourceData,
           showBrochureButton: sourceData.showBrochureButton !== undefined ? sourceData.showBrochureButton : true,
-          datesSchedule: (sourceData.datesSchedule && sourceData.datesSchedule.length > 0)
+          datesSchedule: (sourceData.datesSchedule && sourceData.datesSchedule.length === 6 && sourceData.datesSchedule[5]?.date?.includes("02:00 PM"))
             ? sourceData.datesSchedule.map((d, i) => ({
                 id: d.id || `m-${i + 1}`,
                 label: clean24h(d.label),
@@ -1303,7 +1325,7 @@ export default function App() {
                 desc: clean24h(d.desc) || INITIAL_CONTENT.datesSchedule[i]?.desc || ""
               }))
             : INITIAL_CONTENT.datesSchedule,
-          hackathonRoadmap: (sourceData.hackathonRoadmap && sourceData.hackathonRoadmap.length > 0 && !sourceData.hackathonRoadmap[6]?.time?.includes("01:00 PM"))
+          hackathonRoadmap: (sourceData.hackathonRoadmap && sourceData.hackathonRoadmap.length === 13 && sourceData.hackathonRoadmap[0]?.title?.includes("Inauguration"))
             ? sourceData.hackathonRoadmap.map((r, i) => ({
                 id: r.id || `s-${i + 1}`,
                 time: r.time || "",
@@ -1313,13 +1335,22 @@ export default function App() {
                 actionItem: clean24h(r.actionItem) || INITIAL_CONTENT.hackathonRoadmap[i]?.actionItem || "Checkpoint"
               }))
             : INITIAL_CONTENT.hackathonRoadmap,
-          rulesList: (sourceData.rulesList && sourceData.rulesList.length > 0)
+          rulesList: (sourceData.rulesList && sourceData.rulesList.length >= 5 && sourceData.rulesList[0]?.points?.some(p => p.includes("4 to 6")))
             ? sourceData.rulesList
             : INITIAL_CONTENT.rulesList,
+          prizes: (sourceData.prizes && sourceData.prizes.length === 3 && sourceData.prizes[0]?.perk?.includes("Winner Trophy"))
+            ? sourceData.prizes
+            : INITIAL_CONTENT.prizes,
+          guidelines: (sourceData.guidelines && sourceData.guidelines.rule1Points?.some(p => p.includes("4 to 6")))
+            ? sourceData.guidelines
+            : INITIAL_CONTENT.guidelines,
+          faqs: (sourceData.faqs && sourceData.faqs.length >= 7 && sourceData.faqs[1]?.a?.includes("4 to 6"))
+            ? sourceData.faqs
+            : INITIAL_CONTENT.faqs,
           eventFlow: (sourceData.eventFlow && sourceData.eventFlow.length > 0)
             ? sourceData.eventFlow.map(e => ({ ...e, title: clean24h(e.title), desc: clean24h(e.desc) }))
             : INITIAL_CONTENT.eventFlow,
-          committeeMembers: (sourceData.committeeMembers && sourceData.committeeMembers.length >= 15)
+          committeeMembers: (sourceData.committeeMembers && sourceData.committeeMembers.length >= 15 && sourceData.committeeMembers.some(c => c.phone === "+91 8917697561"))
             ? sourceData.committeeMembers
             : OFFICIAL_COMMITTEE_MEMBERS,
           problemStatements: (sourceData.problemStatements && sourceData.problemStatements.length >= 12 && sourceData.problemStatements[0]?.title?.includes("Campus Life"))
@@ -1817,8 +1848,8 @@ export default function App() {
   };
 
   const handleAddMember = () => {
-    if (regForm.members.length >= 4) {
-      alert("Maximum squad size is 5 (1 Leader + 4 Members).");
+    if (regForm.members.length >= 5) {
+      alert("Maximum squad size is 6 (1 Leader + 5 Members).");
       return;
     }
     setRegForm(prev => ({
@@ -1828,8 +1859,8 @@ export default function App() {
   };
 
   const handleRemoveMember = (idx) => {
-    if (regForm.members.length <= 2) {
-      alert("Minimum squad size is 3 (1 Leader + 2 Members).");
+    if (regForm.members.length <= 3) {
+      alert("Minimum squad size is 4 (1 Leader + 3 Members). Solo entries are strictly not entertained.");
       return;
     }
     setRegForm(prev => ({
@@ -1856,8 +1887,8 @@ export default function App() {
       return;
     }
     const validMembers = regForm.members.filter(m => m.name.trim() !== "");
-    if (validMembers.length < 2) {
-      alert("Please provide at least 2 squad members (minimum 3 members total including Leader).");
+    if (validMembers.length < 3) {
+      alert("Please provide at least 3 squad members (strictly 4 to 6 members total including Leader). Solo entries are strictly not entertained.");
       return;
     }
 
@@ -1913,6 +1944,7 @@ export default function App() {
       leaderPhone: '',
       leaderEmail: '',
       members: [
+        { name: '', email: '' },
         { name: '', email: '' },
         { name: '', email: '' }
       ]
@@ -3056,7 +3088,8 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                 "Team Rules": Users,
                 "Hardware/Software Rules": Laptop,
                 "Submission Deliverables": FileText,
-                "Code of Conduct": ShieldCheck
+                "Code of Conduct": ShieldCheck,
+                "Evaluation Rubrics": Award
               };
               const IconComp = categoryIcons[rule.category] || ShieldCheck;
               const pointsArr = Array.isArray(rule.points)
@@ -3088,6 +3121,71 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                 </div>
               );
             })}
+          </div>
+
+          {/* Official Evaluation Criteria & Scoring Weightage Banner (Notice No. 38/NIBA/26) */}
+          <div className="bg-white border border-blue-200 rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-0.5 rounded-full inline-block mb-1">
+                  Official Notice No. 38/NIBA/26 • Evaluation Rubrics
+                </span>
+                <h4 className="text-base sm:text-lg font-bold text-[#0f2d59]">
+                  Official Evaluation Criteria & Scoring Weightage
+                </h4>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-200">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <span>100 Total Points Normalized</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-bold text-sm text-[#0f2d59]">Concept & Planning</span>
+                    <span className="text-2xl font-black text-blue-900 font-mono">20%</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Problem analysis comprehension, innovation novelty, system architecture, database design & feasibility planning.
+                  </p>
+                </div>
+                <div className="w-full bg-blue-200/80 h-2 rounded-full mt-4 overflow-hidden">
+                  <div className="bg-blue-600 h-full rounded-full w-[20%]" />
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-bold text-sm text-[#0f2d59]">Development Progress</span>
+                    <span className="text-2xl font-black text-emerald-700 font-mono">40%</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Code built from scratch during the hackathon, feature completeness, working software prototype, and robust APIs.
+                  </p>
+                </div>
+                <div className="w-full bg-emerald-200/80 h-2 rounded-full mt-4 overflow-hidden">
+                  <div className="bg-emerald-600 h-full rounded-full w-[40%]" />
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-bold text-sm text-[#0f2d59]">Presentation & Impact</span>
+                    <span className="text-2xl font-black text-amber-700 font-mono">40%</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    7-8 slide pitch deck delivery (Problem, Solution, Tech Stack & Impact), live functional demo, and defense in jury Q&A.
+                  </p>
+                </div>
+                <div className="w-full bg-amber-200/80 h-2 rounded-full mt-4 overflow-hidden">
+                  <div className="bg-amber-600 h-full rounded-full w-[40%]" />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Download Rulebook Box (respects showBrochureButton toggle) */}
@@ -3267,6 +3365,55 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Official Contact Coordinators (Notice No. 38/NIBA/26) */}
+          <div className="bg-gradient-to-r from-amber-50/80 via-white to-blue-50/80 border-2 border-amber-300/80 rounded-2xl p-5 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-amber-200/60">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-0.5 rounded-full inline-block mb-1">
+                  Official Coordinators • Notice No. 38/NIBA/26
+                </span>
+                <h4 className="text-base sm:text-lg font-bold text-[#0f2d59]">
+                  Official Contact Coordinators
+                </h4>
+                <p className="text-xs text-slate-600">
+                  Direct helpline for participant queries, problem statement details, team composition, and offline stay.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between shadow-xs hover:border-[#0f2d59] transition">
+                <div className="space-y-0.5">
+                  <span className="text-xs font-bold text-[#0f2d59] block">Ms. Suchismita</span>
+                  <span className="text-[11px] text-slate-500 block">In-Charge Member, Tech Club</span>
+                  <span className="font-mono text-xs font-semibold text-slate-700 block">+91 8917697561</span>
+                </div>
+                <a
+                  href="tel:+918917697561"
+                  className="bg-[#0f2d59] hover:bg-blue-900 text-white px-3.5 py-2 rounded-lg text-xs font-bold inline-flex items-center gap-1.5 transition flex-shrink-0 cursor-pointer shadow-xs"
+                >
+                  <Phone className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Call Now</span>
+                </a>
+              </div>
+
+              <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between shadow-xs hover:border-[#0f2d59] transition">
+                <div className="space-y-0.5">
+                  <span className="text-xs font-bold text-[#0f2d59] block">Ms. Rutuparna Nayak</span>
+                  <span className="text-[11px] text-slate-500 block">In-Charge Member, Tech Club</span>
+                  <span className="font-mono text-xs font-semibold text-slate-700 block">+91 7751844982</span>
+                </div>
+                <a
+                  href="tel:+917751844982"
+                  className="bg-[#0f2d59] hover:bg-blue-900 text-white px-3.5 py-2 rounded-lg text-xs font-bold inline-flex items-center gap-1.5 transition flex-shrink-0 cursor-pointer shadow-xs"
+                >
+                  <Phone className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Call Now</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -3457,9 +3604,10 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
           ========================================================================= */}
       <footer className="w-full bg-[#0a1c36] text-slate-400 text-xs py-12 px-4 sm:px-6 mt-auto">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-blue-900/60">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-blue-900/60">
             
-            <div className="md:col-span-2 space-y-3">
+            {/* Col 1: Institute Branding */}
+            <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <NIISOfficialCrest className="w-11 h-11" />
                 <div>
@@ -3467,7 +3615,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                   <p className="text-[11px] text-slate-400">{content.affiliation} • {content.city}</p>
                 </div>
               </div>
-              <p className="text-slate-400 text-xs leading-relaxed max-w-md">
+              <p className="text-slate-400 text-xs leading-relaxed">
                 Established in 2000, NIIS has championed quality technical, IT, and management education across Odisha with 26 years of excellence in student mentorship.
               </p>
               <div className="pt-1 flex items-center gap-3">
@@ -3475,6 +3623,42 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
               </div>
             </div>
 
+            {/* Col 2: Official Contact Coordinators (Notice No. 38/NIBA/26) */}
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <h6 className="font-bold text-white uppercase tracking-wider text-xs">Official Coordinators</h6>
+                <span className="text-[9px] bg-amber-400/20 text-amber-300 border border-amber-400/40 px-1.5 py-0.5 rounded font-mono">Notice 38</span>
+              </div>
+              <p className="text-[11px] text-slate-400 mb-3 leading-snug">
+                For team registration, problem statement clarification & event inquiries:
+              </p>
+              <div className="space-y-2.5">
+                <div className="bg-slate-900/70 border border-blue-900/70 rounded-xl p-2.5">
+                  <div className="font-bold text-white text-xs">Ms. Suchismita</div>
+                  <div className="text-[10px] text-slate-400 mb-1">In-Charge Member, Tech Club</div>
+                  <a
+                    href="tel:+918917697561"
+                    className="inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-semibold font-mono text-xs transition"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-amber-400" />
+                    <span>+91 8917697561</span>
+                  </a>
+                </div>
+                <div className="bg-slate-900/70 border border-blue-900/70 rounded-xl p-2.5">
+                  <div className="font-bold text-white text-xs">Ms. Rutuparna Nayak</div>
+                  <div className="text-[10px] text-slate-400 mb-1">In-Charge Member, Tech Club</div>
+                  <a
+                    href="tel:+917751844982"
+                    className="inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-semibold font-mono text-xs transition"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-amber-400" />
+                    <span>+91 7751844982</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Col 3: Portal Navigation */}
             <div>
               <h6 className="font-bold text-white uppercase tracking-wider mb-3 text-xs">Portal Navigation</h6>
               <ul className="space-y-2 text-[11px]">
@@ -3489,6 +3673,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
               </ul>
             </div>
 
+            {/* Col 4: Dynamic Maintenance */}
             <div>
               <h6 className="font-bold text-white uppercase tracking-wider mb-3 text-xs">Dynamic Maintenance</h6>
               <p className="text-[11px] text-slate-400 mb-3 leading-relaxed">
@@ -3591,9 +3776,9 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
               </div>
 
               <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1 text-xs">
-                <strong className="text-[#0f2d59] block">Evaluation Scoring Highlights:</strong>
+                <strong className="text-[#0f2d59] block">Official Evaluation Scoring Weightage (Notice No. 38/NIBA/26):</strong>
                 <p className="text-slate-600">
-                  • 25% Innovation & Problem Fit &bull; 30% Architecture & Security &bull; 30% Working Prototype &bull; 15% Pitch & Presentation
+                  • Concept & Planning: <strong>20%</strong> &bull; Development Progress: <strong>40%</strong> &bull; Presentation & Impact: <strong>40%</strong>
                 </p>
               </div>
             </div>
@@ -3692,7 +3877,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
               {registerStep === 1 && (
                 <div className="space-y-4">
                   <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-900 leading-relaxed">
-                    💡 Teams must consist of <strong>3 to 5 student members</strong> (1 Team Leader + 2 to 4 Squad Members). Cross-disciplinary branches (BCA, MCA, B.Tech, BBA, B.Sc) are eligible.
+                    💡 Teams must consist strictly of <strong>4 to 6 student members</strong> (1 Team Leader + 3 to 5 Squad Members). Solo entries are strictly not entertained. Inter-department and inter-batch teams across all NIIS Group of Institutions are permitted. Participants may be part of only one team.
                   </div>
 
                   <div>
@@ -3813,13 +3998,13 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-bold text-[#0f2d59] text-xs uppercase tracking-wider">
-                        Squad Members (Minimum 2, Maximum 4 Additional)
+                        Squad Members (Minimum 3, Maximum 5 Additional)
                       </h4>
                       <p className="text-[11px] text-slate-500">
-                        Total Squad Size: {regForm.members.length + 1} technocrats (including Team Leader)
+                        Total Squad Size: {regForm.members.length + 1} members (strictly 4 to 6 members total including Team Leader)
                       </p>
                     </div>
-                    {regForm.members.length < 4 && (
+                    {regForm.members.length < 5 && (
                       <button
                         type="button"
                         onClick={handleAddMember}
@@ -3837,7 +4022,7 @@ Venue: Auditorium & Innovation Labs, NIIS Campus, Bhubaneswar
                           <span className="text-xs font-bold text-[#0f2d59] font-mono">
                             Squad Member #{idx + 1}
                           </span>
-                          {regForm.members.length > 2 && (
+                          {regForm.members.length > 3 && (
                             <button
                               type="button"
                               onClick={() => handleRemoveMember(idx)}
